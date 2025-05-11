@@ -1,0 +1,13 @@
+﻿{
+  "applications": {
+    "SophiChainThemeDemo": {
+      "type": "dotnet-project",
+      "launchUrl": "https://localhost:44394",
+      "healthCheckEndpoint": "/",
+      "path": "../../SophiChainThemeDemo/SophiChainThemeDemo.csproj",
+      "execution": {
+        "order": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "id": "4c2c077b-f8c4-451b-a3ff-b6607245ff6f",
+  "template": "app-nolayers",
+  "versions": {
+    "AbpFramework": "9.1.1",
+    "AbpStudio": "0.9.26",
+    "TargetDotnetFramework": "net9.0"
+  },
+  "modules": {
+    "SophiChainThemeDemo": {
+      "path": "SophiChainThemeDemo.abpmdl"
+    }
+  },
+  "runProfiles": {
+    "Default": {
+      "path": "etc/run-profiles/Default.abprun.json"
+    }
+  },
+  "options": {
+    "httpRequests": {
+      "ignoredUrls": [
+      
+      ]
+    }
+  },
+  "creatingStudioConfiguration": {
+    "template": "app-nolayers",
+    "createdAbpStudioVersion": "0.9.26",
+    "multiTenancy": "true",
+    "runInstallLibs": "true",
+    "useLocalReferences": "false",
+    "uiFramework": "blazor-webapp",
+    "databaseProvider": "mongodb",
+    "runDbMigrator": "true",
+    "theme": "basic",
+    "themeStyle": "",
+    "themeMenuPlacement": "",
+    "publicWebsite": "",
+    "socialLogin": "false",
+    "createCommand": "abp new SophiChainThemeDemo -t app-nolayers --ui-framework blazor-webapp --mobile  --database-provider mongodb --theme basic --skip-migration  --no-tests --without-cms-kit --dont-run-bundling --no-social-logins -no-gdpr -no-openiddict-admin-ui -no-audit-logging -no-file-management -no-language-management -no-text-template-management"
+  }
+}

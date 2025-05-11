@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <TargetFramework>net9.0</TargetFramework>
+    <Version>9.1.1</Version>
+    <CopyLocalLockFileAssemblies>True</CopyLocalLockFileAssemblies>
+		<PackageId>SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme</PackageId>
+		<AssemblyName>SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme</AssemblyName>
+
+	</PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.AspNetCore.Components.Web.Theming" Version="9.1.1" />
+  </ItemGroup>
+</Project>
