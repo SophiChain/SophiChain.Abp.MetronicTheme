@@ -7,11 +7,13 @@ using Volo.Abp.AspNetCore.Components.Web.Theming.Routing;
 using Volo.Abp.AspNetCore.Components.Web.Theming.Theming;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.Modularity;
+using Volo.Abp.VirtualFileSystem;
 
 namespace SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme;
 
 [DependsOn(
     typeof(AbpAspNetCoreComponentsWebThemingModule),
+    typeof(AbpVirtualFileSystemModule),
     typeof(AbpAutoMapperModule)
 )]
 public class SophiChainAspNetCoreComponentsWebMetronicThemeModule : AbpModule
@@ -23,6 +25,12 @@ public class SophiChainAspNetCoreComponentsWebMetronicThemeModule : AbpModule
         ConfigurePageHeaderOptions();
         ConfigureRouterOptions();
         ConfigureSophiChainTheme();
+
+        Configure<AbpVirtualFileSystemOptions>(options =>
+        {
+            options.FileSets.AddEmbedded<SophiChainAspNetCoreComponentsWebMetronicThemeModule>();
+        });
+
 
         // Register IKTTheme service
         context.Services.AddSingleton<IKTTheme, KTTheme>();

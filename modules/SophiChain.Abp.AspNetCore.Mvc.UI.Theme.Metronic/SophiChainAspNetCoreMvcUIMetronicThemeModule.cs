@@ -41,7 +41,7 @@ public class SophiChainAspNetCoreMvcUIMetronicThemeModule : AbpModule
 
         Configure<AbpVirtualFileSystemOptions>(options =>
         {
-            options.FileSets.AddEmbedded<SophiChainAspNetCoreMvcUIMetronicThemeModule>("Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic");
+            options.FileSets.AddEmbedded<SophiChainAspNetCoreMvcUIMetronicThemeModule>("SophiChain.Abp.AspNetCore.Mvc.UI.Theme.Metronic");
         });
 
         Configure<AbpToolbarOptions>(options =>

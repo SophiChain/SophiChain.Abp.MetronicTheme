@@ -14,4 +14,10 @@
     <ProjectReference Include="..\SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme\SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme.csproj" />
     <!--<ProjectReference Include="..\SophiChain.Abp.AspNetCore.Components.WebAssembly.MetronicTheme.Bundling\SophiChain.Abp.AspNetCore.Components.WebAssembly.MetronicTheme.Bundling.csproj" />-->
   </ItemGroup>
+
+	<ItemGroup>
+		<Resource Include="icons.json" CopyToOutputDirectory="Always" Pack="true" PackagePath="contentFiles\any\any\" />
+		<Resource Include="themesettings.json" CopyToOutputDirectory="Always" Pack="true" PackagePath="contentFiles\any\any\" />
+	</ItemGroup>
+
 </Project>

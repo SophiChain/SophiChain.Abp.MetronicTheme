@@ -1,11 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk.Razor">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
     <TargetFramework>net8.0</TargetFramework>
     <CopyLocalLockFileAssemblies>True</CopyLocalLockFileAssemblies>
 		<PackageId>SophiChain.Abp.AspNetCore.Components.Server.MetronicTheme</PackageId>
-		<AssemblyName>SophiChain.Abp.AspNetCore.Components.Server.MetronicThem</AssemblyName>
+		<AssemblyName>SophiChain.Abp.AspNetCore.Components.Server.MetronicTheme</AssemblyName>
 	</PropertyGroup>
+  <ItemGroup>
+    <Content Remove="icons.json" />
+    <Content Remove="themesettings.json" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="8.0.4" />
   </ItemGroup>
@@ -15,4 +19,10 @@
   <ItemGroup>
     <ProjectReference Include="..\SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme\SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme.csproj" />
   </ItemGroup>
+
+	<ItemGroup>
+		<Resource Include="icons.json" CopyToOutputDirectory="Always" Pack="true" PackagePath="contentFiles\any\any\" />
+		<Resource Include="themesettings.json" CopyToOutputDirectory="Always" Pack="true" PackagePath="contentFiles\any\any\" />
+	</ItemGroup>
+
 </Project>

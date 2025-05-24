@@ -1,9 +1,9 @@
 {
-  "name": "Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic",
+  "name": "SophiChain.Abp.AspNetCore.Mvc.UI.Theme.Metronic",
   "hash": "",
   "contents": [
     {
-      "namespace": "Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic",
+      "namespace": "SophiChain.Abp.AspNetCore.Mvc.UI.Theme.Metronic",
       "dependsOnModules": [
         {
           "declaringAssemblyName": "Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared",
