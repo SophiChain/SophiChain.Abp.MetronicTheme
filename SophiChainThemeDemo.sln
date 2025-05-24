@@ -17,8 +17,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SophiChain.Abp.AspNetCore.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SophiChain.Abp.AspNetCore.Components.WebAssembly.MetronicTheme", "modules\SophiChain.Abp.AspNetCore.Components.WebAssembly.MetronicTheme\SophiChain.Abp.AspNetCore.Components.WebAssembly.MetronicTheme.csproj", "{785ADF33-C4B3-4273-9457-7AAADE468273}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SophiChain.Abp.AspNetCore.Components.WebAssembly.MetronicTheme.Bundling", "modules\SophiChain.Abp.AspNetCore.Components.WebAssembly.MetronicTheme.Bundling\SophiChain.Abp.AspNetCore.Components.WebAssembly.MetronicTheme.Bundling.csproj", "{0FE43741-252F-4860-B790-8D02985ACAD4}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SophiChain.Abp.AspNetCore.Mvc.UI.Theme.Metronic", "modules\SophiChain.Abp.AspNetCore.Mvc.UI.Theme.Metronic\SophiChain.Abp.AspNetCore.Mvc.UI.Theme.Metronic.csproj", "{B5B5CEBB-A45F-4343-93E1-E89F80183708}"
 EndProject
 Global
@@ -51,10 +49,6 @@ Global
 		{785ADF33-C4B3-4273-9457-7AAADE468273}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{785ADF33-C4B3-4273-9457-7AAADE468273}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{785ADF33-C4B3-4273-9457-7AAADE468273}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0FE43741-252F-4860-B790-8D02985ACAD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0FE43741-252F-4860-B790-8D02985ACAD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0FE43741-252F-4860-B790-8D02985ACAD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0FE43741-252F-4860-B790-8D02985ACAD4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B5B5CEBB-A45F-4343-93E1-E89F80183708}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B5B5CEBB-A45F-4343-93E1-E89F80183708}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5B5CEBB-A45F-4343-93E1-E89F80183708}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -67,7 +61,6 @@ Global
 		{41F0CA0A-2935-46A3-B720-9CEECEBB3627} = {3F2A939D-4DF2-484C-AF31-D9023AE8779F}
 		{4AAA4417-7ADF-4C31-B157-DEAED2A60D29} = {3F2A939D-4DF2-484C-AF31-D9023AE8779F}
 		{785ADF33-C4B3-4273-9457-7AAADE468273} = {3F2A939D-4DF2-484C-AF31-D9023AE8779F}
-		{0FE43741-252F-4860-B790-8D02985ACAD4} = {3F2A939D-4DF2-484C-AF31-D9023AE8779F}
 		{B5B5CEBB-A45F-4343-93E1-E89F80183708} = {3F2A939D-4DF2-484C-AF31-D9023AE8779F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
