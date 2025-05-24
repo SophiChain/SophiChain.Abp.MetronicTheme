@@ -19,6 +19,10 @@
   --sc-menu-item-color: #909398;
   --sc-white-color: #fff;
   --sc-black-color: #000;
+  --sc-border-radius-small: 4px;
+  --sc-border-radius-medium: 8px;
+  --sc-border-radius-large: 16px;
+  --sc-border-radius-circle: 50%;
 }
 
 :root {
@@ -34,8 +38,9 @@
 
 /******************** GLOBAL ********************/
 body {
-  font-family: IRANSans, Inter, Helvetica, "sans-serif";
+  font-family: IRANSansXFaNum, Inter, Helvetica, "sans-serif";
   font-size: 14px !important;
+  line-height: 1.5;
   text-align: right;
   direction: rtl;
   color: var(--sc-text-color);
@@ -92,7 +97,7 @@ a {
   height: 30px;
   background-color: var(--sc-primary-color);
   color: var(--sc-white-color);
-  border-radius: 8px;
+  border-radius: var(--sc-border-radius-medium);
   z-index: 2;
   border-inline-start-width: 0;
 }
@@ -101,7 +106,7 @@ a {
   padding: 5px;
   background-color: rgb(249, 249, 249);
   border: 1px solid rgb(222, 226, 230);
-  border-radius: 7px;
+  border-radius: var(--sc-border-radius-medium);
 }
 .sc-button-group .k-button {
   background-color: rgb(249, 249, 249);
@@ -216,7 +221,7 @@ a {
     height: 70px;
     top: -50px;
     background-color: var(--sc-secondary-color);
-    border-radius: 50%;
+    border-radius: var(--sc-border-radius-circle);
     font-size: 30px;
   }
   .sc-mobile-navbar-container .sc-mobile-nav-center .sc-mobile-nav-hamburger-btn i {
