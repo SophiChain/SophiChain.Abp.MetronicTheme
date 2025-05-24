@@ -8,6 +8,22 @@
 
 	</PropertyGroup>
   <ItemGroup>
+    <Content Remove="compilerconfig.json" />
+    <Content Remove="icons.json" />
+    <Content Remove="themesettings.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="compilerconfig.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="icons.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="themesettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
 		<PackageReference Include="Volo.Abp.AspNetCore.Components.Web.Theming" Version="8.3.4" />
 		<PackageReference Include="Volo.Abp.AutoMapper" Version="8.3.4" />
   </ItemGroup>
