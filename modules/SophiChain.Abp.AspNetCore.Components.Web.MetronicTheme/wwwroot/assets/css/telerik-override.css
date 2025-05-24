@@ -1,0 +1,489 @@
+/******************** BUTTON ********************/
+.k-button {
+    font-family: IRANSans;
+    padding: 7px 16px;
+}
+
+.k-button-text {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.k-button-solid-base:focus,
+.k-button-solid-base.k-focus {
+    box-shadow: none;
+}
+
+.k-button-solid-primary {
+    border-color: var(--sc-primary-color, #1f2d40);
+    color: var(--sc-white-color, #ffffff);
+    background-color: var(--sc-primary-color, #1f2d40);
+}
+
+.k-button-solid-primary:hover,
+.k-button-solid-primary.k-hover {
+    border-color: rgb(31 45 64 / 85%);
+    background-color: rgb(31 45 64 / 85%);
+}
+
+.k-button-solid-secondary {
+    border-color: #F1F1F4;
+    color: var(--sc-primary-color, #1f2d40);
+    background-color: #F1F1F4;
+}
+
+.k-button-solid-secondary:hover,
+.k-button-solid-secondary.k-hover {
+    border-color: #e1e1e1;
+    background-color: #e1e1e1;
+}
+
+.k-button-solid-light {
+    border-color: var(--sc-primary-color, #1f2d40);
+}
+
+.k-button-solid-light:hover,
+.k-button-solid-light.k-hover {
+    border-color: var(--sc-primary-color, #1f2d40);
+}
+
+.k-button-icon {
+    line-height: 20px;
+}
+
+/******************** LIST ********************/
+.k-list {
+    font-family: IRANSans;
+}
+
+.sc-theme-dark .k-popup,
+.sc-theme-dark .k-popup.k-list {
+    background-color: rgba(50, 68, 92, 1);
+}
+
+.k-popup .k-list-item {
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+}
+
+.k-list-item:focus,
+.k-list-optionlabel:focus,
+.k-list-item.k-focus,
+.k-focus.k-list-optionlabel {
+    box-shadow: none;
+    background-color: var(--kendo-color-base-subtle-hover, #dee2e6);
+    color: var(--sc-text-color);
+}
+
+.sc-theme-dark .k-popup .k-list-content .k-list-item {
+    color: var(--sc-dark-text-color);
+}
+
+.sc-theme-dark .k-popup .k-list-content .k-list-item:hover {
+    background-color: #202020;
+    color: var(--sc-dark-text-color);
+}
+
+.k-list-optionlabel {
+    padding-block: 0.8rem !important;
+}
+/******************** FORM ********************/
+.k-form .k-form-fieldset {
+    margin: 1rem 0 0;
+}
+
+.k-form-md .k-form-field {
+    margin-top: 1.5rem;
+}
+
+.sc-theme-dark .k-label {
+    color: var(--sc-dark-text-color);
+}
+
+.k-input {
+    background-color: var(--sc-input-color);
+    height: 40px;
+}
+
+.k-input.k-textarea {
+    height: auto;
+}
+
+.sc-theme-dark .k-input {
+    background-color: var(--sc-dark-input-color);
+}
+
+.k-input.k-disabled {
+    background-color: #DEE2E6;
+    opacity: 1;
+}
+
+.sc-theme-dark .k-input.k-disabled {
+    background-color: rgba(50, 68, 92, 0.45);
+}
+
+.k-input-inner {
+    font-family: IRANSans;
+    height: 40px;
+}
+
+.k-input.k-textarea .k-input-inner {
+    height: auto;
+}
+
+[dir=rtl] .k-floating-label-container > .k-floating-label,
+.k-rtl .k-floating-label-container > .k-floating-label,
+.k-floating-label-container[dir=rtl] > .k-floating-label {
+    top: -10px;
+}
+
+[dir=rtl] .k-floating-label-container.k-empty > .k-floating-label, 
+.k-rtl .k-floating-label-container.k-empty > .k-floating-label, 
+.k-floating-label-container[dir=rtl].k-empty > .k-floating-label {
+    top: 30px;
+}
+
+[dir=rtl] .k-floating-label-container.k-focus > .k-floating-label,
+.k-rtl .k-floating-label-container.k-focus > .k-floating-label,
+.k-floating-label-container[dir=rtl].k-focus > .k-floating-label {
+    top: -10px;
+}
+
+
+.sc-theme-dark .k-input-inner::placeholder {
+    color: var(--sc-dark-text-color);
+}
+
+.sc-theme-dark .k-input-inner {
+    color: var(--sc-dark-text-color);
+}
+
+.k-input-prefix {
+    width: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.k-input-prefix .k-icon {
+    width: 20px;
+}
+
+.sc-theme-dark .k-clear-value {
+    color: var(--sc-dark-text-color);
+}
+
+.k-checkbox {
+    width: 20px;
+    height: 20px;
+    margin-left: 3px;
+}
+
+.sc-theme-dark .k-checkbox {
+    background-color: var(--sc-dark-input-color);
+}
+
+.sc-theme-dark .k-checkbox:checked {
+    background-color: var(--sc-secondary-color);
+    color: var(--sc-primary-color);
+}
+
+.k-picker {
+    background-color: var(--sc-input-color);
+}
+
+.sc-theme-dark .k-picker {
+    background-color: var(--sc-dark-input-color);
+    border-color: var(--kendo-color-border-alt, rgba(33, 37, 41, 0.2));
+}
+
+.k-radio {
+    width: 20px;
+    height: 20px;
+    margin-left: 3px;
+}
+
+.k-radio-list .k-radio-list-item {
+    height: 40px;
+}
+
+.k-radio-list .k-radio-list-item .k-radio-wrap {
+    height: 40px;
+}
+
+.k-radio:focus,
+.k-radio.k-focus,
+.k-radio:checked:focus,
+.k-radio.k-checked.k-focus {
+    box-shadow: none;
+}
+
+.sc-theme-dark .k-radio {
+    background-color: var(--sc-dark-input-color);
+}
+
+.k-switch-on:focus .k-switch-track,
+.k-switch-on.k-focus .k-switch-track,
+.k-switch-off:focus .k-switch-track,
+.k-switch-off.k-focus .k-switch-track {
+    outline: none;
+    border-color: rgba(33, 37, 41, 0.34);
+}
+
+.k-switch-md .k-switch-track {
+    height: 22px;
+}
+
+.k-switch-md .k-switch-thumb {
+    height: 30px;
+    width: 30px;
+    z-index: 1;
+}
+
+.k-switch-label-on, .k-switch-label-off {
+    display: inline;
+}
+
+.k-switch-label-on {
+    right: 18px;
+    color: #ffffff;
+    font-family: IRANSans;
+    line-height: 32px;
+    font-size: 12px;
+}
+
+.k-switch-label-off {
+    left: 8px;
+    color: #424242;
+    font-family: IRANSans;
+    line-height: 32px;
+    font-size: 12px;
+}
+
+.k-switch-on .k-switch-thumb {
+    border-color: var(--sc-primary-color);
+}
+
+.k-switch-off .k-switch-thumb {
+    background-color: #ccc;
+}
+
+.sc-theme-dark .k-switch-on .k-switch-thumb {
+    background-color: var(--sc-secondary-color);
+    border-color: var(--sc-secondary-color);
+}
+
+.sc-theme-dark .k-switch-off .k-switch-track {
+    background-color: var(--sc-dark-input-color);
+}
+
+.sc-theme-dark .k-switch-label-off {
+    color: var(--sc-dark-text-color);
+}
+
+.sc-theme-dark .k-switch-off .k-switch-thumb {
+    background-color: var(--sc-dark-text-color);
+}
+
+.sc-theme-dark .k-switch-on .k-switch-label-off {
+    display: none
+}
+
+/******************** CHIP ********************/
+.k-chip {
+    font-family: IRANSans;
+    border-radius: 16px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.k-chip-action {
+    padding: 0 !important;
+}
+
+.k-chip-content:first-child {
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+}
+
+.sc-theme-dark .k-chip-solid-base {
+    background-color: var(--sc-dark-input-color);
+    border-color: var(--sc-dark-input-color);
+    color: var(--sc-dark-text-color);
+}
+
+.sc-theme-dark .k-radio:checked,
+.sc-theme-dark .k-radio.k-checked {
+    background-color: var(--sc-secondary-color);
+    color: var(--sc-primary-color);
+}
+
+.sc-chip {
+    flex-direction: row-reverse;
+}
+
+/******************** DIALOG ********************/
+.k-window-titlebar.k-dialog-titlebar {
+    font-family: 'IRANSANS';
+}
+
+.k-window-content.k-dialog-content {
+    font-family: 'IRANSANS';
+}
+
+/******************** DRAWER ********************/
+.k-drawer {
+    font-family: 'IRANSANS';
+}
+
+/******************** PAGER ********************/
+.k-pager {
+    justify-content: center;
+}
+
+.k-pager-info {
+    flex: initial;
+}
+
+.k-pager .k-button-text {
+    color: var(--sc-text-color);
+}
+
+.k-button-overlay, 
+.k-button::before {
+    background-color: var(--sc-primary-color);
+    border-radius: 7px;
+}
+
+/******************** POPOVER ********************/
+.k-popover {
+    font-family: 'IRANSANS';
+}
+
+/******************** STEPPER ********************/
+.k-stepper {
+    font-family: 'IRANSANS';
+}
+
+.k-stepper .k-step.k-focus .k-step-label:only-child, 
+.k-stepper .k-step .k-step-link:focus .k-step-label:only-child {
+    box-shadow: none;
+}
+
+.k-stepper .k-step-list-horizontal .k-step-current .k-step-label {
+    background-color: var(--sc-primary-color);
+    color: var(--sc-white-color);
+}
+
+.k-stepper .k-step-list-horizontal .k-step-current .k-step-label .k-step-label-optional {
+    color: var(--sc-white-color);
+}
+
+/******************** TIME PICKER ********************/
+.k-timepicker {
+    width: 100%;
+    max-width: 160px;
+}
+
+.k-timepicker .k-input-inner {
+    direction: ltr;
+    text-align: right;
+}
+
+.k-time-header,
+.k-time-selector-header {
+    flex-direction: row-reverse;
+}
+
+.k-time-header .k-title {
+    direction: ltr;
+}
+
+.k-time-list-container {
+    flex-direction: row-reverse;
+}
+
+.k-timepicker .k-icon-button {
+    min-width: 35px;
+}
+
+/******************** TAB STRIP ********************/
+.k-tabstrip {
+    font-family: 'IRANSANS';
+}
+
+.k-tabstrip-items-wrapper .k-item:focus, .k-tabstrip-items-wrapper .k-item.k-focus {
+    box-shadow: none
+}
+
+/******************** TOOLTIP ********************/
+.k-tooltip {
+    font-family: 'IRANSANS';
+}
+
+/******************** WINDOW ********************/
+.k-window {
+    font-family: 'IRANSANS';
+}
+
+/******************** WIZARD ********************/
+.k-wizard {
+    font-family: 'IRANSANS';
+}
+
+.k-wizard-buttons-right {
+    display: flex;
+    gap: 1rem;
+}
+
+.sc-wizard .k-stepper > .k-progressbar {
+    height: 4px;
+    top: 18px;
+}
+
+.sc-wizard .k-stepper > .k-progressbar .k-selected {
+    background-color: var(--sc-primary-color);
+}
+
+.sc-wizard-step {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--sc-border-color);
+    border-radius: 10px;
+    background-clip: padding-box;
+    border-radius: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--sc-white-color);
+    margin-bottom: 5px;
+}
+
+.sc-wizard .k-step-done .sc-wizard-step {
+    background-color: var(--sc-success-color);
+    color: var(--sc-white-color);
+    border: 1px solid #ccc;
+}
+
+.sc-wizard .k-step:not(.k-step-done):not(.k-step-current) .sc-wizard-step {
+    border: 2px solid #ccc;
+}
+
+.sc-wizard .k-step-current .sc-wizard-step {
+    background-color: var(--sc-primary-color);
+    color: var(--sc-white-color);
+    border: 1px solid #ccc;
+}
+
+.sc-wizard .k-step-link .k-icon {
+    width: 24px;
+    color: #000;
+}
+
+.k-step-link .sc-wizard-label {
+    color: var(--sc-primary-color);
+    font-weight: bold;
+}

@@ -1,0 +1,109 @@
+﻿@using Volo.Abp.UI.Navigation
+@inject NavigationManager Navigation
+
+@{
+	var cssClass = string.IsNullOrEmpty(MenuItem.MenuItem.CssClass) ? string.Empty : MenuItem.MenuItem.CssClass;
+	var customComponentType = MenuItem.MenuItem.GetComponentTypeOrDefault();
+}
+
+@if (MenuItem.MenuItem.IsLeaf)
+{
+	var currentUri = new Uri(Navigation.Uri);
+
+	var url = MenuItem.MenuItem.Url == null ? "#" : MenuItem.MenuItem.Url.TrimStart('/', '~');
+
+	@if (customComponentType != null && typeof(ComponentBase).IsAssignableFrom(customComponentType))
+	{
+		<DynamicComponent Type="@customComponentType" />
+	}
+	else if (MenuItem.MenuItem.Url.TrimStart('~') == currentUri.PathAndQuery)
+	{
+		<div class="menu-item">
+			<a class="menu-link @(MenuItem.IsActive ? "active" : "") @cssClass" id="@MenuItem.MenuItem.ElementId">
+				@if (!MenuItem.MenuItem.Icon.IsNullOrEmpty() || MenuItem.Parent is null)
+				{
+					<span class="menu-icon"><i class="sc-icon @MenuItem.MenuItem.Icon" aria-hidden="true"></i></span>
+				}
+				<span class="menu-title">@MenuItem.MenuItem.DisplayName</span>
+			</a>
+		</div>
+	}
+	else
+	{
+		@if (@MenuItem.MenuItem.Target == "forceLoad")
+		{
+			<div class="menu-item">
+				<a class="menu-link @(MenuItem.IsActive ? "active" : "") @cssClass" id="@MenuItem.MenuItem.ElementId" @onclick="()=>NavigateToUrl(url)">
+					@if (!MenuItem.MenuItem.Icon.IsNullOrEmpty() || MenuItem.Parent is null)
+					{
+						<span class="menu-icon"><i class="sc-icon @MenuItem.MenuItem.Icon" aria-hidden="true"></i></span>
+					}
+					<span class="menu-title">@MenuItem.MenuItem.DisplayName</span>
+				</a>
+			</div>
+		}
+		else
+		{
+			<div class="menu-item">
+				<a class="menu-link @(MenuItem.IsActive ? "active" : "") @cssClass" id="@MenuItem.MenuItem.ElementId" href="@url">
+					@if (!MenuItem.MenuItem.Icon.IsNullOrEmpty() || MenuItem.Parent is null)
+					{
+						<span class="menu-icon"><i class="sc-icon @MenuItem.MenuItem.Icon" aria-hidden="true"></i></span>
+					}
+					<span class="menu-title">@MenuItem.MenuItem.DisplayName</span>
+				</a>
+			</div>
+		}
+	}
+}
+else
+{
+	@if (customComponentType != null)
+	{
+		<DynamicComponent Type="@customComponentType" @onclick="ToggleMenu" />
+	}
+	else
+	{
+		<div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-end"
+			 class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention me-0 me-lg-2">
+			<span class="menu-link">
+				@if (!MenuItem.MenuItem.Icon.IsNullOrEmpty() || MenuItem.Parent is null)
+				{
+					<span class="menu-icon"><i class="sc-icon @MenuItem.MenuItem.Icon" aria-hidden="true"></i></span>
+				}
+				<span class="menu-title">@MenuItem.MenuItem.DisplayName</span>
+				<span class="menu-arrow d-lg-none"></span>
+			</span>
+
+			<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown px-lg-2 py-lg-4 w-lg-250px">
+				@foreach (var childMenuItem in MenuItem.Items)
+				{
+					@if (childMenuItem.MenuItem.IsLeaf)
+					{
+						<TopMenuItem Menu="@Menu" MenuItem="childMenuItem" />
+					}
+					else
+					{
+						<div data-kt-menu-trigger="{default:'click', lg: 'hover'}" data-kt-menu-placement="left-start"
+							 class="menu-item menu-lg-down-accordion">
+							<span class="menu-link">
+								@if (!childMenuItem.MenuItem.Icon.IsNullOrEmpty() || childMenuItem.Parent is null)
+								{
+									<span class="menu-icon"><i class="sc-icon @childMenuItem.MenuItem.Icon" aria-hidden="true"></i></span>
+								}
+								<span class="menu-title">@childMenuItem.MenuItem.DisplayName</span>
+								<span class="menu-arrow"></span>
+							</span>
+							<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown px-lg-2 py-lg-4 w-lg-225px">
+								@foreach (var item in childMenuItem.Items)
+								{
+									<TopMenuItem Menu="@Menu" MenuItem="item" />
+								}
+							</div>
+						</div>
+					}
+				}
+			</div>
+		</div>
+	}
+}

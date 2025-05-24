@@ -1,0 +1,71 @@
+﻿@using Microsoft.AspNetCore.Components.Authorization
+@using Volo.Abp.Ui.Branding
+@inject IBrandingProvider BrandingProvider
+
+<div class="sc-mobile-navbar-container">
+	<div class="sc-mobile-navbar">
+		<div class="sc-mobile-nav-wrapper">
+			<div class="sc-mobile-nav-right">
+				<ul class="sc-mobile-nav-menu">
+					@if (SelectedMenuItems is not null)
+					{
+						foreach (var viewModel in SelectedMenuItems)
+						{
+							<li class="sc-mobile-nav-item">
+								<a id="@viewModel.MenuItem.ElementId" href="@viewModel.MenuItem.Url" target="@viewModel.MenuItem.Target" class="sc-mobile-nav-link @viewModel.MenuItem.CssClass">
+									<i class="sc-mobile-nav-item-icon @viewModel.MenuItem.Icon" aria-hidden="true"></i>
+									<span class="sc-mobile-nav-text">@viewModel.MenuItem.DisplayName</span>
+								</a>
+							</li>
+						}
+					}
+				</ul>
+			</div>
+
+			<div class="sc-mobile-nav-center">
+				<div class="btn btn-icon sc-mobile-nav-hamburger-btn"
+					 id="kt_app_sidebar_mobile_toggle"
+					 title="Show sidebar menu">
+					@((MarkupString)KTTheme.GetIcon("burger-menu-6"))
+				</div>
+			</div>
+
+			<div class="sc-mobile-nav-left">
+				<ul class="sc-mobile-nav-menu">
+					<li class="sc-mobile-nav-item">
+						<a class="sc-mobile-nav-link" data-sc-mobile-menu-toggle="settings">
+							<i class="ki-duotone ki-setting-2 fs-1">
+								<span class="path1"></span>
+								<span class="path2"></span>
+							</i>
+							<span class="sc-mobile-nav-text">تنظیمات</span>
+						</a>
+					</li>
+					<li class="sc-mobile-nav-item">
+						<AuthorizeView>
+							<Authorized>
+								<a class="sc-mobile-nav-link" data-sc-mobile-menu-toggle="user">
+									<div class="sc-mobile-nav-avatar">
+										<img class="sc-avatar-img" src="@ProfileImageUrl" alt="@CurrentUser.UserName avatar" />
+									</div>
+
+									<span class="sc-mobile-nav-text">@CurrentUser.UserName</span>
+								</a>
+							</Authorized>
+							<NotAuthorized>
+								<a href="@LoginLink" class="sc-mobile-nav-link">
+									<i class="ki-duotone ki-profile-circle fs-1">
+										<span class="path1"></span>
+										<span class="path2"></span>
+										<span class="path3"></span>
+									</i>
+									<span class="sc-mobile-nav-text">ورود</span>
+								</a>
+							</NotAuthorized>
+						</AuthorizeView>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

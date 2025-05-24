@@ -1,0 +1,39 @@
+﻿@using Volo.Abp.Ui.Branding
+@inject IKTTheme KTTheme
+@inject IBrandingProvider BrandingProvider
+@inject MetronicThemeBrandingProvider MetronicThemeBrandingProvider
+
+@{
+	var lightLogo = MetronicThemeBrandingProvider.GetLogoUrl("light-logo");
+	var darkLogo = MetronicThemeBrandingProvider.GetLogoUrl("dark-logo");
+	var minimizedLogo = MetronicThemeBrandingProvider.GetLogoUrl("minimized-logo");
+}
+
+<div class="app-navbar-item ms-1 ms-md-4" id="kt_header_user_menu_toggle">
+	<div class="cursor-pointer symbol symbol-35px"
+		 data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
+		 data-kt-menu-attach="parent"
+		 data-kt-menu-placement="bottom-start">
+		<img alt="@BrandingProvider.AppName" src="@minimizedLogo" class="rounded-3" />
+	</div>
+	<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-color fw-semibold py-4 fs-6 w-275px" data-kt-menu="true">
+		<div class="menu-item px-3">
+			<div class="menu-content d-flex align-items-center px-3">
+				<div class="symbol symbol-50px ms-3">
+					<img alt="@BrandingProvider.AppName" src="@minimizedLogo" />
+				</div>
+				<div class="d-flex flex-column">
+					<div class="fw-bold d-flex flex-column align-items-start gap-2 fs-5">
+						@BrandingProvider.AppName
+						<span class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">فروشنده</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="separator my-2"></div>
+		@foreach (var menuItem in Menu.Items.Where(x => x.MenuItem.GroupName.IsNullOrWhiteSpace()))
+		{
+			<TopMenuItem Menu="@Menu" MenuItem="menuItem" />
+		}
+	</div>
+</div>

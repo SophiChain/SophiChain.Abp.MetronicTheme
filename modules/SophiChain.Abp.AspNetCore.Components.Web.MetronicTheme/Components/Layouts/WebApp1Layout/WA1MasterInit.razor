@@ -1,0 +1,12 @@
+﻿@inject NavigationManager NavigationManager
+@inherits LayoutComponentBase
+
+@Body
+
+<WA1LayoutScripts />
+
+<script suppress-error="BL9992">
+    window.emptyBody = function(){
+        document.body.className = '';
+    }
+</script>

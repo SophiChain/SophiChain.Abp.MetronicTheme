@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
-    <TargetFramework>net9.0</TargetFramework>
-    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+		<TargetFramework>net8.0</TargetFramework>
+		<AddRazorSupportForMvc>true</AddRazorSupportForMvc>
     <AssemblyName>SophiChain.Abp.AspNetCore.Mvc.UI.Theme.Metronic</AssemblyName>
     <PackageId>SophiChain.Abp.AspNetCore.Mvc.UI.Theme.Metronic</PackageId>
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
@@ -11,7 +11,6 @@
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <IsPackable>true</IsPackable>
     <OutputType>Library</OutputType>
-    <Version>9.1.1</Version>
     <CopyLocalLockFileAssemblies>True</CopyLocalLockFileAssemblies>
   </PropertyGroup>
   <ItemGroup>
@@ -21,7 +20,7 @@
     <Content Remove="wwwroot\**\*.*" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="9.1.1" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" Version="9.1.1" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="8.3.4" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" Version="8.3.4" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,18 @@
+﻿@using Volo.Abp.AspNetCore.Components.Web.Theming.Layout
+@using Volo.Abp.Ui.Branding
+@inherits PageHeader
+@inject IBrandingProvider BrandingProvider
+
+<div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
+	<h1 class="page-heading d-flex flex-column justify-content-center my-0">
+		@if (PageLayout.Title.IsNullOrEmpty())
+		{
+			@BrandingProvider.AppName
+		}
+		else
+		{
+			@PageLayout.Title
+		}
+	</h1>
+	<SCBreadCrumbs CustomBreadcrumb="@CustomBreadcrumb" />
+</div>

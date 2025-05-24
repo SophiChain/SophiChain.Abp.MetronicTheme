@@ -7,7 +7,6 @@ using Microsoft.OpenApi.Models;
 using OpenIddict.Validation.AspNetCore;
 using SophiChain.Abp.AspNetCore.Components.Server.MetronicTheme;
 using SophiChain.Abp.AspNetCore.Components.Server.MetronicTheme.Bundling;
-using SophiChain.Abp.AspNetCore.Components.WebAssembly.MetronicTheme.Bundling;
 using SophiChain.Abp.AspNetCore.Mvc.UI.Theme.Metronic;
 using SophiChain.Abp.AspNetCore.Mvc.UI.Theme.Metronic.Bundling;
 using SophiChainThemeDemo.Components;
@@ -15,13 +14,12 @@ using SophiChainThemeDemo.Data;
 using SophiChainThemeDemo.Localization;
 using SophiChainThemeDemo.Menus;
 using SophiChainThemeDemo.MultiTenancy;
-using SophiChainThemeDemo.Wrapper;
 using Volo.Abp;
 using Volo.Abp.Account;
 using Volo.Abp.Account.Web;
 using Volo.Abp.AspNetCore.Components.Web;
 using Volo.Abp.AspNetCore.Components.Web.Theming.Routing;
-using Volo.Abp.AspNetCore.Components.WebAssembly.Theming.Bundling;
+using Volo.Abp.AspNetCore.Components.Web.Theming.Toolbars;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc.Localization;
 using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
@@ -54,12 +52,10 @@ using Volo.Abp.Security.Claims;
 using Volo.Abp.SettingManagement;
 using Volo.Abp.SettingManagement.Blazor.Server;
 using Volo.Abp.SettingManagement.MongoDB;
-using Volo.Abp.Studio.Client.AspNetCore;
 using Volo.Abp.Swashbuckle;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.TenantManagement.Blazor.Server;
 using Volo.Abp.TenantManagement.MongoDB;
-using Volo.Abp.Ui.LayoutHooks;
 using Volo.Abp.UI.Navigation;
 using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.Uow;
@@ -77,12 +73,11 @@ namespace SophiChainThemeDemo;
     typeof(AbpCachingModule),
     typeof(AbpSwashbuckleModule),
     typeof(AbpAspNetCoreSerilogModule),
-    typeof(AbpStudioClientAspNetCoreModule),
 
     // Theme module packages
     typeof(SophiChainAspNetCoreMvcUIMetronicThemeModule),
     typeof(SophiChainAbpAspNetCoreComponentsServerMetronicThemeModule),
-    typeof(SophiChainAbpAspNetCoreComponentsWebAssemblyBundlingModule),
+    //typeof(SophiChainAbpAspNetCoreComponentsWebAssemblyBundlingModule),
 
     // Account module packages
     typeof(AbpAccountWebOpenIddictModule),
@@ -200,17 +195,10 @@ public class SophiChainThemeDemoModule : AbpModule
         ConfigureAutoApiControllers();
         ConfigureVirtualFiles(hostingEnvironment);
         ConfigureMongoDB(context);
-        ConfigureTelerik();
+        ConfigureToolbarOptions();
 
     }
-    private void ConfigureTelerik()
-    {
-        Configure<AbpLayoutHookOptions>(options =>
-        {
-            options.Add(LayoutHooks.Body.First, typeof(StartWrapper));
-            options.Add(LayoutHooks.Body.Last, typeof(EndWrapper));
-        });
-    }
+
     private void ConfigureAuthentication(ServiceConfigurationContext context)
     {
         context.Services.ForwardIdentityAuthenticationForBearer(OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme);
@@ -225,7 +213,7 @@ public class SophiChainThemeDemoModule : AbpModule
         Configure<AbpBundlingOptions>(options =>
         {
             // Blazor Web App
-            options.Parameters.InteractiveAuto = true;
+           // options.Parameters.InteractiveAuto = true;
 
             // MVC UI
             options.StyleBundles.Configure(
@@ -250,19 +238,20 @@ public class SophiChainThemeDemoModule : AbpModule
                 bundle =>
                 {
                     bundle.AddFiles("/global-styles.css");
+                    bundle.AddFiles("/css/shared-styles.css");
                 }
             );
         });
 
-        Configure<AbpBundlingOptions>(options =>
-        {
-            var globalStyles = options.StyleBundles.Get(BlazorWebAssemblyStandardBundles.Styles.Global);
-            globalStyles.AddContributors(typeof(SophiChainThemeDemoStyleBundleContributor));
+        //Configure<AbpBundlingOptions>(options =>
+        //{
+        //    var globalStyles = options.StyleBundles.Get(BlazorWebAssemblyStandardBundles.Styles.Global);
+        //    globalStyles.AddContributors(typeof(SophiChainThemeDemoStyleBundleContributor));
 
-            var globalScripts = options.ScriptBundles.Get(BlazorWebAssemblyStandardBundles.Scripts.Global);
-            globalScripts.AddContributors(typeof(SophiChainThemeDemoScriptBundleContributor));
+        //    var globalScripts = options.ScriptBundles.Get(BlazorWebAssemblyStandardBundles.Scripts.Global);
+        //    globalScripts.AddContributors(typeof(SophiChainThemeDemoScriptBundleContributor));
 
-        });
+        //});
     }
 
     private void ConfigureBlazorise(ServiceConfigurationContext context)
@@ -368,6 +357,14 @@ public class SophiChainThemeDemoModule : AbpModule
         });
     }
 
+    private void ConfigureToolbarOptions()
+    {
+        Configure<AbpToolbarOptions>(options =>
+        {
+            options.Contributors.Add(new CustomToolbarContributor());
+        });
+    }
+
     public override void OnApplicationInitialization(ApplicationInitializationContext context)
     {
         var app = context.GetApplicationBuilder();
@@ -388,8 +385,8 @@ public class SophiChainThemeDemoModule : AbpModule
         app.UseCorrelationId();
         app.UseAbpSecurityHeaders();
         app.UseRouting();
-        app.MapAbpStaticAssets();
-        app.UseAbpStudioLink();
+       // app.MapAbpStaticAssets();
+        app.UseStaticFiles();
         app.UseAuthentication();
         app.UseAbpOpenIddictValidation();
 

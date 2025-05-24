@@ -1,0 +1,10 @@
+﻿<div class="app-navbar flex-shrink-0">
+	<ToggleTheme />
+	@if (Toolbar != null)
+	{
+		@foreach (var item in Toolbar.Items)
+		{
+			<DynamicComponent Type="@item.ComponentType" />
+		}
+	}
+</div>

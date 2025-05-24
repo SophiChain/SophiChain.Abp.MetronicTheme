@@ -1,0 +1,31 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+
+@if (Href != null)
+{
+    <a href="@Href"
+       class="btn @GetBootstrapClass() @(Enabled ? "" : "btn-icon-muted btn-text-muted") btn-sm"
+       @onclick="OnClick"
+       disabled="@(!Enabled)"
+       id="@Id"
+       title="@Title">
+        @if (Icon != null)
+        {
+            <i class="@Icon"></i>
+        }
+        @ChildContent
+    </a>
+}
+else
+{
+    <button class="btn @GetBootstrapClass() btn-sm"
+            @onclick="OnClick"
+            disabled="@(!Enabled)"
+            id="@Id"
+            title="@Title">
+        @if (Icon != null)
+        {
+            <i class="@Icon"></i>
+        }
+        @ChildContent
+    </button>
+}

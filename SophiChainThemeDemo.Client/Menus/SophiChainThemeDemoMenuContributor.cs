@@ -28,19 +28,85 @@ public class SophiChainThemeDemoMenuContributor : IMenuContributor
         {
             await ConfigureUserMenuAsync(context);
         }
+
+        if (context.Menu.Name == SharedMenus.Timche.TimcheSideMenu)
+        {
+            await ConfigureTimcheMenu(context);
+        }
+        if (context.Menu.Name == SharedMenus.Settings.SettingsSideMenu)
+        {
+            await ConfigureSettingsMenu(context);
+        }
     }
 
     private static async Task ConfigureMainMenuAsync(MenuConfigurationContext context)
     {
         var l = context.GetLocalizer<SophiChainThemeDemoResource>();
 
-        context.Menu.AddItem(new ApplicationMenuItem(
-            SophiChainThemeDemoMenus.Home,
-            l["Menu:Home"],
-            "/",
-            icon: "fas fa-home",
-            order: 1
-        ));
+        context.Menu.AddItem(
+            new ApplicationMenuItem(
+                SophiChainThemeDemoMenus.Home,
+                l["خانه"],
+                "/",
+                icon: "fas fa-home",
+                order: 1,
+                target: "forceLoad"
+            )
+        );
+
+        context.Menu.AddItem(
+            new ApplicationMenuItem(
+                SophiChainThemeDemoMenus.HomeChild1,
+                displayName: l["تیمچه"],
+                "/timche",
+                icon: "fas fa-globe",
+                order: 2,
+                target: "forceLoad"
+            )
+            .AddItem(
+                new ApplicationMenuItem(
+                    SophiChainThemeDemoMenus.HomeChild3,
+                    displayName: l["گزارش"],
+                    "/report",
+                    target: "forceLoad"
+                )
+            )
+            .AddItem(
+                new ApplicationMenuItem(
+                    SophiChainThemeDemoMenus.HomeChild2,
+                    displayName: l["تیکت"],
+                    "/ticket",
+                    target: "forceLoad"
+                )
+            )
+        );
+
+        context.Menu.AddItem(
+            new ApplicationMenuItem(
+                SophiChainThemeDemoMenus.HomeChild4,
+                l["مدیریت خدمات"],
+                "/services",
+                icon: "fas fa-pen",
+                order: 3,
+                target: "forceLoad"
+            )
+            .AddItem(
+                new ApplicationMenuItem(
+                    SophiChainThemeDemoMenus.HomeChild5,
+                    displayName: l["صفحه پنج"],
+                    "/services/pagefive",
+                    target: "forceLoad"
+                )
+                .AddItem(
+                    new ApplicationMenuItem(
+                        SophiChainThemeDemoMenus.HomeChild6,
+                        displayName: l["صفحه شش"],
+                        "/services/pagefive/pagesix",
+                        target: "forceLoad"
+                    )
+                )
+            )
+        );
 
         /* Example nested menu definition:
 
@@ -97,6 +163,105 @@ public class SophiChainThemeDemoMenuContributor : IMenuContributor
             //Blazor server menu items
 
         }
+
+        await Task.CompletedTask;
+    }
+
+    private async Task ConfigureTimcheMenu(MenuConfigurationContext context)
+    {
+        var l = context.GetLocalizer<SophiChainThemeDemoResource>();
+
+        context.Menu.AddItem(
+            new ApplicationMenuItem(
+                SophiChainThemeDemoMenus.Home,
+                l["Menu:Home"],
+                "/",
+                icon: "fas fa-home",
+                order: 1,
+                target: "forceLoad"
+            )
+            .AddItem(
+                new ApplicationMenuItem(
+                    SophiChainThemeDemoMenus.HomeChild1,
+                    displayName: l["تیمچه"],
+                    "/timche",
+                    icon: "fas fa-pen",
+                    target: "forceLoad"
+                )
+                .AddItem(
+                    new ApplicationMenuItem(
+                        SophiChainThemeDemoMenus.HomeChild3,
+                        displayName: l["گزارش"],
+                        "/report",
+                        target: "forceLoad"
+                    )
+                )
+            )
+            .AddItem(
+                new ApplicationMenuItem(
+                    SophiChainThemeDemoMenus.HomeChild2,
+                    displayName: l["تیکت"],
+                    "/ticket",
+                    target: "forceLoad"
+                )
+            )
+        );
+
+        context.Menu.AddItem(
+            new ApplicationMenuItem(
+                SophiChainThemeDemoMenus.HomeChild4,
+                l["مدیریت خدمات"],
+                "/next/test",
+                icon: "fas fa-pen",
+                order: 2,
+                target: "forceLoad"
+            )
+        );
+
+        await Task.CompletedTask;
+    }
+
+    private async Task ConfigureSettingsMenu(MenuConfigurationContext context)
+    {
+        var l = context.GetLocalizer<SophiChainThemeDemoResource>();
+
+        context.Menu.AddItem(
+            new ApplicationMenuItem(
+                SophiChainThemeDemoMenus.HomeChild1,
+                displayName: l["تیمچه"],
+                "/timche",
+                icon: "fas fa-pen",
+                order: 1,
+                target: "forceLoad"
+            )
+            .AddItem(
+                new ApplicationMenuItem(
+                    SophiChainThemeDemoMenus.HomeChild3,
+                    displayName: l["گزارش"],
+                    "/report",
+                    target: "forceLoad"
+                )
+            )
+            .AddItem(
+                new ApplicationMenuItem(
+                    SophiChainThemeDemoMenus.HomeChild2,
+                    displayName: l["تیکت"],
+                    "/ticket",
+                    target: "forceLoad"
+                )
+            )
+        );
+
+        context.Menu.AddItem(
+            new ApplicationMenuItem(
+                SophiChainThemeDemoMenus.HomeChild4,
+                l["مدیریت خدمات"],
+                "/next/test",
+                icon: "fas fa-pen",
+                order: 2,
+                target: "forceLoad"
+            )
+        );
 
         await Task.CompletedTask;
     }
