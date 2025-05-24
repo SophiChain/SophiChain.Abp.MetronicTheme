@@ -39,4 +39,8 @@ jobs:
           dotnet pack modules/SophiChain.Abp.AspNetCore.Mvc.UI.Theme.Metronic/SophiChain.Abp.AspNetCore.Mvc.UI.Theme.Metronic.csproj --configuration Release --no-build --output ./nupkgs /p:PackageVersion=${{ github.ref_name }}
 
       - name: Publish to NuGet
-        run: dotnet nuget push ./nupkgs/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+        run: |
+          dotnet nuget push ./nupkgs/SophiChain.Abp.AspNetCore.Components.Server.MetronicTheme.${{ github.ref_name }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+          dotnet nuget push ./nupkgs/SophiChain.Abp.AspNetCore.Components.WebAssembly.MetronicTheme.${{ github.ref_name }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+          dotnet nuget push ./nupkgs/SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme.${{ github.ref_name }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+          dotnet nuget push ./nupkgs/SophiChain.Abp.AspNetCore.Mvc.UI.Theme.Metronic.${{ github.ref_name }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
