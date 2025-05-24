@@ -22,7 +22,6 @@ jobs:
           dotnet restore modules/SophiChain.Abp.AspNetCore.Components.WebAssembly.MetronicTheme/SophiChain.Abp.AspNetCore.Components.WebAssembly.MetronicTheme.csproj
           dotnet restore modules/SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme/SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme.csproj
           dotnet restore modules/SophiChain.Abp.AspNetCore.Mvc.UI.Theme.Metronic/SophiChain.Abp.AspNetCore.Mvc.UI.Theme.Metronic.csproj
-          dotnet restore modules/Volo.Abp.BasicTheme.Installer/Volo.Abp.BasicTheme.Installer.csproj
 
       - name: Build
         run: |
@@ -30,7 +29,6 @@ jobs:
           dotnet build modules/SophiChain.Abp.AspNetCore.Components.WebAssembly.MetronicTheme/SophiChain.Abp.AspNetCore.Components.WebAssembly.MetronicTheme.csproj --configuration Release --no-restore
           dotnet build modules/SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme/SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme.csproj --configuration Release --no-restore
           dotnet build modules/SophiChain.Abp.AspNetCore.Mvc.UI.Theme.Metronic/SophiChain.Abp.AspNetCore.Mvc.UI.Theme.Metronic.csproj --configuration Release --no-restore
-          dotnet build modules/Volo.Abp.BasicTheme.Installer/Volo.Abp.BasicTheme.Installer.csproj --configuration Release --no-restore
 
       - name: Pack NuGet packages
         run: |
@@ -39,7 +37,6 @@ jobs:
           dotnet pack modules/SophiChain.Abp.AspNetCore.Components.WebAssembly.MetronicTheme/SophiChain.Abp.AspNetCore.Components.WebAssembly.MetronicTheme.csproj --configuration Release --no-build --output ./nupkgs /p:PackageVersion=${{ github.ref_name }}
           dotnet pack modules/SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme/SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme.csproj --configuration Release --no-build --output ./nupkgs /p:PackageVersion=${{ github.ref_name }}
           dotnet pack modules/SophiChain.Abp.AspNetCore.Mvc.UI.Theme.Metronic/SophiChain.Abp.AspNetCore.Mvc.UI.Theme.Metronic.csproj --configuration Release --no-build --output ./nupkgs /p:PackageVersion=${{ github.ref_name }}
-          dotnet pack modules/Volo.Abp.BasicTheme.Installer/Volo.Abp.BasicTheme.Installer.csproj --configuration Release --no-build --output ./nupkgs /p:PackageVersion=${{ github.ref_name }}
 
       - name: Publish to NuGet
         run: dotnet nuget push ./nupkgs/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
