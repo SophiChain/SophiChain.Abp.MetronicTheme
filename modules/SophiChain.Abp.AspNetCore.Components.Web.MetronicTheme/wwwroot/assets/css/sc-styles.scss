@@ -21,6 +21,11 @@
     --sc-menu-item-color: #{$menu-item-color};
     --sc-white-color: #{$white-color};
     --sc-black-color: #{$black-color};
+
+    --sc-border-radius-small: #{$border-radius-small};
+    --sc-border-radius-medium: #{$border-radius-medium};
+    --sc-border-radius-large: #{$border-radius-large};
+    --sc-border-radius-circle: #{$border-radius-circle};
 }
 
 //Bootstrap Override
@@ -38,8 +43,9 @@
 
 /******************** GLOBAL ********************/
 body {
-    font-family: IRANSans, Inter, Helvetica, "sans-serif";
+    font-family: IRANSansXFaNum, Inter, Helvetica, "sans-serif";
     font-size: 14px !important;
+    line-height: 1.5;
     text-align: right;
     direction: rtl;
     color: var(--sc-text-color);
@@ -97,7 +103,7 @@ a {
             height: 30px;
             background-color: var(--sc-primary-color);
             color: var(--sc-white-color);
-            border-radius: 8px;
+            border-radius: var(--sc-border-radius-medium);
             z-index: 2;
             border-inline-start-width: 0;
         }
@@ -108,7 +114,7 @@ a {
     padding: 5px;
     background-color: rgba(249, 249, 249, 1);
     border: 1px solid rgba(222, 226, 230, 1);
-    border-radius: 7px;
+    border-radius: var(--sc-border-radius-medium);
 
     .k-button {
         background-color: rgba(249, 249, 249, 1);
@@ -243,7 +249,7 @@ a {
                 height: 70px;
                 top: -50px;
                 background-color: var(--sc-secondary-color);
-                border-radius: 50%;
+                border-radius: var(--sc-border-radius-circle);
                 font-size: 30px;
 
                 i {

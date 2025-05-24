@@ -1,6 +1,6 @@
 /******************** BUTTON ********************/
 .k-button {
-    font-family: IRANSans;
+    font-family: IRANSansXFaNum;
     padding: 7px 16px;
 }
 
@@ -54,7 +54,7 @@
 
 /******************** LIST ********************/
 .k-list {
-    font-family: IRANSans;
+    font-family: IRANSansXFaNum;
 }
 
 .sc-theme-dark .k-popup,
@@ -124,7 +124,7 @@
 }
 
 .k-input-inner {
-    font-family: IRANSans;
+    font-family: IRANSansXFaNum;
     height: 40px;
 }
 
@@ -138,8 +138,8 @@
     top: -10px;
 }
 
-[dir=rtl] .k-floating-label-container.k-empty > .k-floating-label, 
-.k-rtl .k-floating-label-container.k-empty > .k-floating-label, 
+[dir=rtl] .k-floating-label-container.k-empty > .k-floating-label,
+.k-rtl .k-floating-label-container.k-empty > .k-floating-label,
 .k-floating-label-container[dir=rtl].k-empty > .k-floating-label {
     top: 30px;
 }
@@ -248,7 +248,7 @@
 .k-switch-label-on {
     right: 18px;
     color: #ffffff;
-    font-family: IRANSans;
+    font-family: IRANSansXFaNum;
     line-height: 32px;
     font-size: 12px;
 }
@@ -256,7 +256,7 @@
 .k-switch-label-off {
     left: 8px;
     color: #424242;
-    font-family: IRANSans;
+    font-family: IRANSansXFaNum;
     line-height: 32px;
     font-size: 12px;
 }
@@ -292,8 +292,8 @@
 
 /******************** CHIP ********************/
 .k-chip {
-    font-family: IRANSans;
-    border-radius: 16px;
+    font-family: IRANSansXFaNum;
+    border-radius: var(--sc-border-radius-large);
     padding-right: 8px;
     padding-left: 8px;
 }
@@ -325,16 +325,16 @@
 
 /******************** DIALOG ********************/
 .k-window-titlebar.k-dialog-titlebar {
-    font-family: 'IRANSANS';
+    font-family: 'IRANSansXFaNum';
 }
 
 .k-window-content.k-dialog-content {
-    font-family: 'IRANSANS';
+    font-family: 'IRANSansXFaNum';
 }
 
 /******************** DRAWER ********************/
 .k-drawer {
-    font-family: 'IRANSANS';
+    font-family: 'IRANSansXFaNum';
 }
 
 /******************** PAGER ********************/
@@ -350,23 +350,23 @@
     color: var(--sc-text-color);
 }
 
-.k-button-overlay, 
+.k-button-overlay,
 .k-button::before {
     background-color: var(--sc-primary-color);
-    border-radius: 7px;
+    border-radius: var(--sc-border-radius-small);
 }
 
 /******************** POPOVER ********************/
 .k-popover {
-    font-family: 'IRANSANS';
+    font-family: 'IRANSansXFaNum';
 }
 
 /******************** STEPPER ********************/
 .k-stepper {
-    font-family: 'IRANSANS';
+    font-family: 'IRANSansXFaNum';
 }
 
-.k-stepper .k-step.k-focus .k-step-label:only-child, 
+.k-stepper .k-step.k-focus .k-step-label:only-child,
 .k-stepper .k-step .k-step-link:focus .k-step-label:only-child {
     box-shadow: none;
 }
@@ -410,7 +410,7 @@
 
 /******************** TAB STRIP ********************/
 .k-tabstrip {
-    font-family: 'IRANSANS';
+    font-family: 'IRANSansXFaNum';
 }
 
 .k-tabstrip-items-wrapper .k-item:focus, .k-tabstrip-items-wrapper .k-item.k-focus {
@@ -419,17 +419,17 @@
 
 /******************** TOOLTIP ********************/
 .k-tooltip {
-    font-family: 'IRANSANS';
+    font-family: 'IRANSansXFaNum';
 }
 
 /******************** WINDOW ********************/
 .k-window {
-    font-family: 'IRANSANS';
+    font-family: 'IRANSansXFaNum';
 }
 
 /******************** WIZARD ********************/
 .k-wizard {
-    font-family: 'IRANSANS';
+    font-family: 'IRANSansXFaNum';
 }
 
 .k-wizard-buttons-right {
@@ -450,9 +450,8 @@
     width: 40px;
     height: 40px;
     border: 2px solid var(--sc-border-color);
-    border-radius: 10px;
+    border-radius: var(--sc-border-radius-medium);
     background-clip: padding-box;
-    border-radius: 10px;
     box-sizing: border-box;
     text-align: center;
     display: inline-flex;
