@@ -13,8 +13,23 @@ public class SophiChainAbpAspNetCoreComponentsWebAssemblyBundlingModule : AbpMod
     {
         Configure<AbpBundlingOptions>(options =>
         {
-            var globalStyles = options.StyleBundles.Get(BlazorWebAssemblyStandardBundles.Styles.Global);
-            globalStyles.AddContributors(typeof(MetronicThemeBundleStyleContributor));
+            // Configure global styles
+            options.StyleBundles.Configure(
+                BlazorWebAssemblyStandardBundles.Styles.Global,
+                bundle =>
+                {
+                    bundle.AddContributors(typeof(MetronicThemeBundleStyleContributor));
+                }
+            );
+
+            // Configure global scripts
+            options.ScriptBundles.Configure(
+                BlazorWebAssemblyStandardBundles.Scripts.Global,
+                bundle =>
+                {
+                    bundle.AddContributors(typeof(MetronicThemeBundleScriptContributor));
+                }
+            );
         });
     }
 }

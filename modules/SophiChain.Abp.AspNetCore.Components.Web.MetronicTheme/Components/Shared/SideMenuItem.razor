@@ -1,0 +1,110 @@
+﻿@using Volo.Abp.UI.Navigation
+@inject NavigationManager Navigation
+
+@{
+	var cssClass = string.IsNullOrEmpty(MenuItem.MenuItem.CssClass) ? string.Empty : MenuItem.MenuItem.CssClass;
+	var customComponentType = MenuItem.MenuItem.GetComponentTypeOrDefault();
+}
+
+@if (MenuItem.MenuItem.IsLeaf)
+{
+	var currentUri = new Uri(Navigation.Uri);
+
+	var url = MenuItem.MenuItem.Url == null ? "#" : MenuItem.MenuItem.Url.TrimStart('/', '~');
+
+	@if (customComponentType != null && typeof(ComponentBase).IsAssignableFrom(customComponentType))
+	{
+		<DynamicComponent Type="@customComponentType" />
+	}
+	else if (MenuItem.MenuItem.Url.TrimStart('~') == currentUri.PathAndQuery)
+	{
+		<div class="menu-item">
+			<a class="menu-link @(MenuItem.IsActive ? "active" : "") @cssClass" id="@MenuItem.MenuItem.ElementId">
+				@if (MenuItem.Parent != null)
+				{
+					<span class="menu-bullet">
+						<span class="bullet bullet-dot"></span>
+					</span>
+				}
+				@if (!MenuItem.MenuItem.Icon.IsNullOrEmpty() || MenuItem.Parent is null)
+				{
+					<span class="menu-icon"><i class="sc-icon @MenuItem.MenuItem.Icon" aria-hidden="true"></i></span>
+				}
+				<span class="menu-title">@MenuItem.MenuItem.DisplayName</span>
+			</a>
+		</div>
+	}
+	else
+	{
+		@if (@MenuItem.MenuItem.Target == "forceLoad")
+		{
+			<div class="menu-item">
+				<a class="menu-link @(MenuItem.IsActive ? "active" : "") @cssClass" id="@MenuItem.MenuItem.ElementId" @onclick="()=>NavigateToUrl(url)">
+					@if (MenuItem.Parent != null)
+					{
+						<span class="menu-bullet">
+							<span class="bullet bullet-dot"></span>
+						</span>
+					}
+					@if (!MenuItem.MenuItem.Icon.IsNullOrEmpty() || MenuItem.Parent is null)
+					{
+						<span class="menu-icon"><i class="sc-icon @MenuItem.MenuItem.Icon" aria-hidden="true"></i></span>
+					}
+					<span class="menu-title">@MenuItem.MenuItem.DisplayName</span>
+				</a>
+			</div>
+		}
+		else
+		{
+			<div class="menu-item">
+				<a class="menu-link @(MenuItem.IsActive ? "active" : "") @cssClass" id="@MenuItem.MenuItem.ElementId" href="@url">
+					@if (MenuItem.Parent != null)
+					{
+						<span class="menu-bullet">
+							<span class="bullet bullet-dot"></span>
+						</span>
+					}
+					@if (!MenuItem.MenuItem.Icon.IsNullOrEmpty() || MenuItem.Parent is null)
+					{
+						<span class="menu-icon"><i class="sc-icon @MenuItem.MenuItem.Icon" aria-hidden="true"></i></span>
+					}
+					<span class="menu-title">@MenuItem.MenuItem.DisplayName</span>
+				</a>
+			</div>
+		}
+	}
+}
+else
+{
+	@if (customComponentType != null)
+	{
+		<DynamicComponent Type="@customComponentType" @onclick="ToggleMenu" />
+	}
+	else
+	{
+		var openParent = MenuItem.Items.Any(x => x.IsActive);
+
+		<div data-kt-menu-trigger="click" class="menu-item @(openParent ? "here show" : "") menu-accordion" @onclick="ToggleMenu">
+			<span class="menu-link">
+				@if (MenuItem.Parent != null)
+				{
+					<span class="menu-bullet">
+						<span class="bullet bullet-dot"></span>
+					</span>
+				}
+				@if (!MenuItem.MenuItem.Icon.IsNullOrEmpty() || MenuItem.Parent is null)
+				{
+					<span class="menu-icon"><i class="sc-icon @MenuItem.MenuItem.Icon" aria-hidden="true"></i></span>
+				}
+				<span class="menu-title">@MenuItem.MenuItem.DisplayName</span>
+				<span class="menu-arrow"></span>
+			</span>
+			<div class="menu-sub menu-sub-accordion">
+				@foreach (var childMenuItem in MenuItem.Items)
+				{
+					<SideMenuItem Menu="@Menu" MenuItem="childMenuItem" />
+				}
+			</div>
+		</div>
+	}
+}

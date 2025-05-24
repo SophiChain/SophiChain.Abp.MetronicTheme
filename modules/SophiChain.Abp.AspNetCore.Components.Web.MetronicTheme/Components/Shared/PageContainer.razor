@@ -1,0 +1,105 @@
+﻿@using Volo.Abp.AspNetCore.Components.Web.Theming.Components.LayoutHooks
+@using Volo.Abp.AspNetCore.Components.Web.Theming.Layout
+@using Volo.Abp.BlazoriseUI.Components
+@using Volo.Abp.Ui.LayoutHooks
+
+<div class="d-flex flex-column flex-root app-root" id="kt_app_root">
+	<PageLoader IsLoading="@IsLoading" IsLoadingText="@IsLoadingText" />
+
+	@if (SelectedLayout == "WebApp1Layout")
+	{
+		<style>
+			:root {
+				--sc-primary-color: #1f2d40;
+			}
+		</style>
+		<div class="app-page flex-column flex-column-fluid" id="kt_app_page">
+			<WA1Header PageMenuName="@PageMenuName"
+					   PageHeaderTitle="@PageHeaderTitle"
+					   CustomBreadcrumb="@CustomBreadcrumb" />
+			<div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
+				<WA1Sidebar />
+				<div class="app-main flex-column flex-row-fluid" id="kt_app_main">
+					<div class="d-flex flex-column flex-column-fluid">
+						<WA1PageToolbar Toolbar="@PageToolbar"
+									  PageMenuName="@PageMenuName" />
+						<div id="kt_app_content" class="app-content flex-column-fluid">
+							<div id="kt_app_content_container" class="app-container container-fluid">
+								<PageAlert />
+								<UiPageProgress />
+								<LayoutHook Name="@LayoutHooks.Body.First" Layout="@StandardLayouts.Application" />
+								<div class="page-layout">
+									<div class="page-container page-full">
+										<div class="page-wrapper">
+											<ErrorBoundary>
+												<ChildContent>
+													@PageFilters
+													<div class="page-content">
+														@MainContent
+													</div>
+												</ChildContent>
+											</ErrorBoundary>
+										</div>
+									</div>
+								</div>
+								<LayoutHook Name="@LayoutHooks.Body.Last" Layout="@StandardLayouts.Application" />
+								<Volo.Abp.AspNetCore.Components.Web.Theming.Components.DynamicLayoutComponent />
+								<UiMessageAlert />
+							</div>
+						</div>
+					</div>
+					<WA1Footer />
+				</div>
+			</div>
+		</div>
+	}
+	else if (SelectedLayout == "WebApp2Layout")
+	{
+		<style>
+			:root {
+				--sc-primary-color: #ffd54f;
+			}
+		</style>
+		<div class="app-page flex-column flex-column-fluid" id="kt_app_page">
+			<WA1Header PageMenuName="@PageMenuName"
+					   PageHeaderTitle="@PageHeaderTitle"
+					   CustomBreadcrumb="@CustomBreadcrumb" />
+			<div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
+				<WA1Sidebar />
+				<div class="app-main flex-column flex-row-fluid" id="kt_app_main">
+					<div class="d-flex flex-column flex-column-fluid">
+						<WA1PageToolbar Toolbar="@PageToolbar"
+										PageMenuName="@PageMenuName" />
+						<div id="kt_app_content" class="app-content flex-column-fluid">
+							<div id="kt_app_content_container" class="app-container container-fluid">
+								<PageAlert />
+								<UiPageProgress />
+								<LayoutHook Name="@LayoutHooks.Body.First" Layout="@StandardLayouts.Application" />
+								<div class="page-layout">
+									<div class="page-container page-full">
+										<div class="page-wrapper">
+											<ErrorBoundary>
+												<ChildContent>
+													@PageFilters
+													<div class="page-content">
+														@MainContent
+													</div>
+												</ChildContent>
+											</ErrorBoundary>
+										</div>
+									</div>
+								</div>
+								<LayoutHook Name="@LayoutHooks.Body.Last" Layout="@StandardLayouts.Application" />
+								<Volo.Abp.AspNetCore.Components.Web.Theming.Components.DynamicLayoutComponent />
+								<UiMessageAlert />
+							</div>
+						</div>
+					</div>
+					<WA1Footer />
+				</div>
+			</div>
+		</div>
+	}
+</div>
+<MobileBottomMenu />
+@Drawers

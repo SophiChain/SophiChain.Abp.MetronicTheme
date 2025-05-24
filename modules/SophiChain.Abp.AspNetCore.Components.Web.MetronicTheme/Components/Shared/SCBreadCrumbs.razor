@@ -1,0 +1,80 @@
+﻿@using Volo.Abp.AspNetCore.Components.Web.Theming.Layout
+@using Microsoft.Extensions.Localization
+
+<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
+    @if (CustomBreadcrumb.IsNullOrEmpty())
+    {
+        @if (Options.Value.RenderBreadcrumbs && !Breadcrumbs.IsNullOrEmpty())
+        {
+            var currentPath = GetRelativePath(NavigationManager.Uri);
+            var processed = GetProcessedBreadcrumbs();
+            var singleHomeBreadcrumb = processed.Count == 1 && processed[0].Url?.Trim('/') == currentPath;
+
+            @if (singleHomeBreadcrumb)
+            {
+                <li class="breadcrumb-item">
+                    <span class="breadcrumb-text text-muted">
+                        @(processed[0].Text ?? string.Empty)
+                    </span>
+                </li>
+            }
+            else
+            {
+                @foreach (var breadcrumb in processed)
+                {
+                    var isCurrent = breadcrumb.Url?.Trim('/') == currentPath;
+                    <li class="breadcrumb-item">
+                        @if (!string.IsNullOrEmpty(breadcrumb.Url) && !isCurrent)
+                        {
+                            <a @onclick:preventDefault @onclick=@(() => OnBreadcrumbItemClick(breadcrumb)) class="breadcrumb-link">
+                                @(breadcrumb.Text ?? string.Empty)
+                            </a>
+                        }
+                        else
+                        {
+                            <span class="breadcrumb-text text-muted">
+                                @(breadcrumb.Text ?? string.Empty)
+                            </span>
+                        }
+                    </li>
+
+                    @if (breadcrumb != processed.Last())
+                    {
+                        <li class="breadcrumb-item">
+                            <span class="bullet bg-gray-500 w-5px h-2px"></span>
+                        </li>
+                    }
+                }
+            }
+        }
+    }
+    else
+    {
+        var currentPath = GetRelativePath(NavigationManager.Uri);
+        @foreach (var breadcrumb in CustomBreadcrumb)
+        {
+            var isCurrent = breadcrumb.Url?.Trim('/') == currentPath;
+            <li class="breadcrumb-item">
+                @if (!string.IsNullOrEmpty(breadcrumb.Url) && !isCurrent)
+                {
+                    <a @onclick:preventDefault @onclick=@(() => OnBreadcrumbItemClick(breadcrumb)) class="breadcrumb-link">
+                        @(breadcrumb.Text ?? string.Empty)
+                    </a>
+                }
+                else
+                {
+                    <span class="breadcrumb-text text-muted">
+                        @(breadcrumb.Text ?? string.Empty)
+                    </span>
+                }
+            </li>
+
+            @if (breadcrumb != CustomBreadcrumb.Last())
+            {
+                <li class="breadcrumb-item">
+                    <span class="bullet bg-gray-500 w-5px h-2px"></span>
+                </li>
+            }
+        }
+    }
+</ul>

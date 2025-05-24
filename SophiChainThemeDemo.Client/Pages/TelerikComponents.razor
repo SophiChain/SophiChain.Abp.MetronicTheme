@@ -1,0 +1,681 @@
+﻿@page "/telerik-component"
+@using SophiChainThemeDemo.Components.Drawers
+@using SophiChainThemeDemo.Menus
+@using Telerik.Blazor
+@using Telerik.Blazor.Components
+@using Telerik.Blazor.Components.Editor
+@using Telerik.SvgIcons
+@inherits SophiChainThemeDemoComponentBase
+
+<PageContainer PageHeaderTitle="المان های تلریک"
+			   PageMenuName="@SharedMenus.Settings.SettingsSideMenu"
+			   PageToolbar="@PageToolbar"
+			   IsLoading="@IsLoading"
+			   IsLoadingText="@IsLoadingText">
+	<MainContent>
+		<div class="card shadow-sm">
+			<div class="card-body">
+				<h3>Badge</h3>
+				<TelerikButton Icon="@SvgIcon.Cart">
+					سبد خرید
+					<TelerikBadge Position="@BadgePosition.Edge"
+								  HorizontalAlign="@BadgeHorizontalAlign.End"
+								  VerticalAlign="@BadgeVerticalAlign.Top">
+						10
+					</TelerikBadge>
+				</TelerikButton>
+				<hr />
+				<h3>QR Code</h3>
+				<TelerikQRCode Size="120px"
+							   Value="https://demos.telerik.com/blazor-ui"
+							   ErrorCorrection="@QRCodeErrorCorrectionLevel.M">
+					<QRCodeBorder Color="#000" Width="5"></QRCodeBorder>
+				</TelerikQRCode>
+				<hr />
+				<h3>Button</h3>
+				<div>
+					<TelerikButton ThemeColor="@(ThemeConstants.Button.ThemeColor.Base)">
+						<i class="fa-solid fa-user"></i>
+						Base Button
+					</TelerikButton>
+					<TelerikButton ThemeColor="@(ThemeConstants.Button.ThemeColor.Primary)">Primary Button</TelerikButton>
+					<TelerikButton ThemeColor="@(ThemeConstants.Button.ThemeColor.Secondary)">Secondary Button</TelerikButton>
+					<TelerikButton ThemeColor="@(ThemeConstants.Button.ThemeColor.Tertiary)">Tertiary Button</TelerikButton>
+					<TelerikButton ThemeColor="@(ThemeConstants.Button.ThemeColor.Light)">Light Button</TelerikButton>
+					<TelerikButton ThemeColor="@(ThemeConstants.Button.ThemeColor.Dark)">Dark Button</TelerikButton>
+					<TelerikButton ThemeColor="@(ThemeConstants.Button.ThemeColor.Inverse)">Inverse Button</TelerikButton>
+					<TelerikButton ThemeColor="@(ThemeConstants.Button.ThemeColor.Info)">Info Button</TelerikButton>
+					<TelerikButton ThemeColor="@(ThemeConstants.Button.ThemeColor.Success)">Success Button</TelerikButton>
+					<TelerikButton ThemeColor="@(ThemeConstants.Button.ThemeColor.Warning)">Warning Button</TelerikButton>
+					<TelerikButton ThemeColor="@(ThemeConstants.Button.ThemeColor.Error)">Error Button</TelerikButton>
+				</div>
+
+				<div class="mt-4">
+					<TelerikButton ThemeColor="@(ThemeConstants.Button.ThemeColor.Primary)"
+								   FillMode="@ThemeConstants.Button.FillMode.Solid">Solid Button</TelerikButton>
+					<TelerikButton ThemeColor="@(ThemeConstants.Button.ThemeColor.Primary)"
+								   FillMode="@ThemeConstants.Button.FillMode.Flat">Flat Button</TelerikButton>
+					<TelerikButton ThemeColor="@(ThemeConstants.Button.ThemeColor.Primary)"
+								   FillMode="@ThemeConstants.Button.FillMode.Outline">Outline Button</TelerikButton>
+					<TelerikButton ThemeColor="@(ThemeConstants.Button.ThemeColor.Primary)"
+								   FillMode="@ThemeConstants.Button.FillMode.Link">Link Button</TelerikButton>
+					<TelerikButton ThemeColor="@(ThemeConstants.Button.ThemeColor.Primary)"
+								   FillMode="@ThemeConstants.Button.FillMode.Clear">Clear Button</TelerikButton>
+				</div>
+
+				<hr />
+				<h3>ButtonGroup </h3>
+				<TelerikButtonGroup SelectionMode="@ButtonGroupSelectionMode.Multiple">
+					<ButtonGroupToggleButton>Bold</ButtonGroupToggleButton>
+					<ButtonGroupToggleButton>Italic</ButtonGroupToggleButton>
+					<ButtonGroupToggleButton>Underline</ButtonGroupToggleButton>
+				</TelerikButtonGroup>
+
+				<div class="mt-3">
+					<TelerikButtonGroup SelectionMode="@ButtonGroupSelectionMode.Single">
+						<ButtonGroupToggleButton>Bold</ButtonGroupToggleButton>
+						<ButtonGroupToggleButton>Italic</ButtonGroupToggleButton>
+						<ButtonGroupToggleButton>Underline</ButtonGroupToggleButton>
+					</TelerikButtonGroup>
+				</div>
+
+				<div class="mt-3">
+					<TelerikButtonGroup Class="sc-button-group" SelectionMode="@ButtonGroupSelectionMode.Single">
+						<ButtonGroupToggleButton>Bold</ButtonGroupToggleButton>
+						<ButtonGroupToggleButton>Italic</ButtonGroupToggleButton>
+						<ButtonGroupToggleButton>Underline</ButtonGroupToggleButton>
+					</TelerikButtonGroup>
+				</div>
+
+				<hr />
+				<h3>Carousel</h3>
+				<TelerikCarousel Arrows="true"
+								 Pageable="true"
+								 LoopPages="true"
+								 @bind-Page="@PageIndex"
+								 AutomaticPageChange="true"
+								 AutomaticPageChangeInterval="5000"
+								 Data="@CarouselData"
+								 Width="512px"
+								 Height="384px"
+								 ThemeColor="@ThemeConstants.Carousel.ThemeColor.Light">
+					<Template>
+						<img src="images/photos/@(context.ImageID).jpg" alt="Photograph" width="512" height="384" />
+					</Template>
+				</TelerikCarousel>
+
+				<hr />
+				<h3>Chip</h3>
+				<div>
+					<TelerikChip Text="فیلتر"
+								 FillMode="@ThemeConstants.Chip.FillMode.Solid"
+								 Removable="false"
+								 Rounded="false"
+								 Size="@ThemeConstants.Chip.Rounded.Small"
+								 ThemeColor="@ThemeConstants.Chip.ThemeColor.Base" />
+
+					<TelerikChip Class="sc-chip"
+								 Text="فیلتر غیرفعال"
+								 FillMode="@ThemeConstants.Chip.FillMode.Outline"
+								 Removable="false"
+								 Rounded="true"
+								 Size="@ThemeConstants.Chip.Rounded.Small"
+								 ThemeColor="@ThemeConstants.Chip.ThemeColor.Base" />
+
+					<TelerikChip Class="sc-chip"
+								 Text="کنسل شده"
+								 FillMode="@ThemeConstants.Chip.FillMode.Solid"
+								 Removable="true"
+								 RemoveIcon="@SvgIcon.XCircle"
+								 Rounded="true"
+								 Size="@ThemeConstants.Chip.Rounded.Medium"
+								 ThemeColor="@ThemeConstants.Chip.ThemeColor.Warning" />
+
+					<TelerikChip Class="sc-chip"
+								 Text="در حال اجرا"
+								 FillMode="@ThemeConstants.Chip.FillMode.Solid"
+								 Removable="true"
+								 RemoveIcon="@SvgIcon.XCircle"
+								 Rounded="true"
+								 Size="@ThemeConstants.Chip.Rounded.Large"
+								 ThemeColor="@ThemeConstants.Chip.ThemeColor.Info" />
+
+					<TelerikChip Text="فعال"
+								 FillMode="@ThemeConstants.Chip.FillMode.Solid"
+								 Removable="true"
+								 RemoveIcon="@SvgIcon.XCircle"
+								 Rounded="true"
+								 Size="@ThemeConstants.Chip.Rounded.Full"
+								 ThemeColor="@ThemeConstants.Chip.ThemeColor.Success" />
+
+					<TelerikChip Text="غیرفعال"
+								 FillMode="@ThemeConstants.Chip.FillMode.Solid"
+								 Removable="true"
+								 RemoveIcon="@SvgIcon.XCircle"
+								 Rounded="true"
+								 Size="@ThemeConstants.Chip.Rounded.Full"
+								 ThemeColor="@ThemeConstants.Chip.ThemeColor.Error" />
+				</div>
+
+
+				<hr />
+				<h3>Dialog</h3>
+				<TelerikButton OnClick="@(() => Visible = true)">
+					نمایش دیالوگ
+				</TelerikButton>
+				<h5 class="mt-5">دیالوگ های آماده</h5>
+				<TelerikButton ThemeColor="@(ThemeConstants.Button.ThemeColor.Primary)" OnClick="@ActivateAlert">اخطار</TelerikButton>
+				<TelerikButton ThemeColor="@(ThemeConstants.Button.ThemeColor.Primary)" OnClick="@ActivateConfirm">نیاز به تایید</TelerikButton>
+				<TelerikButton ThemeColor="@(ThemeConstants.Button.ThemeColor.Primary)" OnClick="@ActivatePrompt">وارد کردن مقدار</TelerikButton>
+
+				<hr />
+				<h3>Drawer</h3>
+				<TelerikButton OnClick="@ToggleDrawer"
+							   ThemeColor="@(ThemeConstants.Button.ThemeColor.Primary)">
+					نمایش دراور
+				</TelerikButton>
+
+				<hr />
+				<h3>DropDownButton </h3>
+				<TelerikDropDownButton Icon="@SvgIcon.Clipboard"
+									   FillMode="@ThemeConstants.DropDownButton.FillMode.Solid"
+									   Rounded="@ThemeConstants.DropDownButton.Rounded.Medium"
+									   Size="@ThemeConstants.DropDownButton.Size.Medium"
+									   ThemeColor="@ThemeConstants.DropDownButton.ThemeColor.Base">
+					<DropDownButtonContent>نمایش منو</DropDownButtonContent>
+
+					<DropDownButtonItems>
+						<DropDownButtonItem Icon="@SvgIcon.ClipboardText">Paste Text</DropDownButtonItem>
+						<DropDownButtonItem Icon="@SvgIcon.ClipboardCode">Paste as HTML</DropDownButtonItem>
+						<DropDownButtonItem Icon="@SvgIcon.ClipboardMarkdown">Paste Markdown</DropDownButtonItem>
+						<DropDownButtonItem>Set Default Paste</DropDownButtonItem>
+					</DropDownButtonItems>
+
+				</TelerikDropDownButton>
+
+				<hr />
+				<h3>Editor</h3>
+				<TelerikEditor Tools="@EditorToolSets.All"
+							   Height="300px"
+							   @bind-Value="@Value"></TelerikEditor>
+
+				<hr />
+				<h3>Gauge </h3>
+				<TelerikArcGauge>
+					<ArcGaugeCenterLabel>
+						<Template>
+							@(context.Pointers[0].Value)%
+							<div>اعتبار استفاده شده</div>
+						</Template>
+					</ArcGaugeCenterLabel>
+					<ArcGaugeScales>
+						<ArcGaugeScale Min="0" Max="100">
+						</ArcGaugeScale>
+					</ArcGaugeScales>
+					<ArcGaugePointers>
+						<ArcGaugePointer Value="@ArcGaugeValue">
+						</ArcGaugePointer>
+					</ArcGaugePointers>
+				</TelerikArcGauge>
+				<TelerikCircularGauge>
+					<CircularGaugeCenterLabel>
+						<Template>
+							@(context.Pointers[0].Value)%
+							<div>اعتبار استفاده شده</div>
+						</Template>
+					</CircularGaugeCenterLabel>
+					<CircularGaugeScales>
+						<CircularGaugeScale Min="0" Max="100">
+						</CircularGaugeScale>
+					</CircularGaugeScales>
+					<CircularGaugePointers>
+						<CircularGaugePointer Value="@ArcGaugeValue">
+						</CircularGaugePointer>
+					</CircularGaugePointers>
+				</TelerikCircularGauge>
+
+				<hr />
+				<h3>Loader </h3>
+				<div class="d-flex gap-4 align-items-center">
+					<div class="d-flex gap-3 align-items-center">
+						<span>Small</span>
+						<TelerikLoader Type="@LoaderType.Pulsing"
+									   Size="@(ThemeConstants.Loader.Size.Small)"></TelerikLoader>
+					</div>
+					<div class="d-flex gap-3 align-items-center">
+						<span>Medium</span>
+						<TelerikLoader Type="@LoaderType.InfiniteSpinner"
+									   Size="@(ThemeConstants.Loader.Size.Medium)"></TelerikLoader>
+					</div>
+					<div class="d-flex gap-3 align-items-center">
+						<span>Large</span>
+						<TelerikLoader Type="@LoaderType.ConvergingSpinner"
+									   Size="@(ThemeConstants.Loader.Size.Large)"></TelerikLoader>
+					</div>
+				</div>
+
+				<hr />
+				<h3>Loader Container </h3>
+				<div class="demo-container">
+					<TelerikLoaderContainer Size="@ThemeConstants.Loader.Size.Medium"
+											ThemeColor="primary"
+											OverlayThemeColor="light"
+											LoaderPosition="@LoaderPosition.Start"
+											Text="در حال بارگذاری صفحه ..."
+											LoaderType="@LoaderType.ConvergingSpinner"></TelerikLoaderContainer>
+				</div>
+
+				<div class="demo-container">
+					<TelerikLoaderContainer Size="@ThemeConstants.Loader.Size.Small"
+											ThemeColor="primary"
+											OverlayThemeColor="dark"
+											LoaderPosition="@LoaderPosition.Top"
+											Text="در حال بارگذاری صفحه ..."
+											LoaderType="@LoaderType.InfiniteSpinner"></TelerikLoaderContainer>
+				</div>
+
+				<hr />
+				<h3>Pager </h3>
+				<TelerikPager @bind-PageSize="@PageSize"
+							  Total="@Total"
+							  @bind-Page="@Page"
+							  PageSizes="@PageSizes"
+							  ButtonCount="6"
+							  ShowInfo="true"></TelerikPager>
+
+				<hr />
+				<h3>Popover </h3>
+				<div class="popover-div">
+					<span class="special-inner">هاور برای پاپ اور</span>
+				</div>
+
+				<div class="click-popover-div">
+					<span class="special-inner">کلیک برای پاپ اور</span>
+				</div>
+
+				<hr />
+				<h3>Stepper </h3>
+
+				<TelerikStepper Linear="true" Orientation="@StepperOrientation.Horizontal" StepType="@StepperStepType.Labels">
+					<StepperSteps>
+						<StepperStep Icon="@SvgIcon.Cart" Label="نوع اعتبار"></StepperStep>
+						<StepperStep Icon="@SvgIcon.MapMarkerTarget" Label="تنظیمات"></StepperStep>
+						<StepperStep Icon="@SvgIcon.Dollar" Label="ویرایش اعتبار"></StepperStep>
+						<StepperStep Icon="@SvgIcon.Eye" Label="پیش نمایش" Optional="true"></StepperStep>
+						<StepperStep Icon="@SvgIcon.TrackChangesAccept" Label="نهایی سازی"></StepperStep>
+					</StepperSteps>
+				</TelerikStepper>
+
+				<TelerikStepper Linear="false" Orientation="@StepperOrientation.Vertical" StepType="@StepperStepType.Steps">
+					<StepperSteps>
+						<StepperStep Text="1" Label="نوع اعتبار"></StepperStep>
+						<StepperStep Text="2" Label="تنظیمات"></StepperStep>
+						<StepperStep Text="3" Label="ویرایش اعتبار"></StepperStep>
+						<StepperStep Text="4" Label="پیش نمایش" Optional="true"></StepperStep>
+						<StepperStep Text="5" Label="نهایی سازی"></StepperStep>
+					</StepperSteps>
+				</TelerikStepper>
+
+				<hr />
+				<h3>TabStrip </h3>
+
+				<div class="mb-4">
+					<TelerikTabStrip TabPosition="@Telerik.Blazor.TabPosition.Top"
+									 TabAlignment="@TabStripTabAlignment.Center">
+						<TabStripTab Title="تب 1">
+							محتوای تب 1
+						</TabStripTab>
+						<TabStripTab Title="تب 2">
+							محتوای تب 2
+						</TabStripTab>
+						<TabStripTab Title="تب 3">
+							محتوای تب 3
+						</TabStripTab>
+					</TelerikTabStrip>
+				</div>
+
+				<TelerikTabStrip TabPosition="@Telerik.Blazor.TabPosition.Right"
+								 TabAlignment="@TabStripTabAlignment.Start">
+					<TabStripTab Title="تب 1">
+						محتوای تب 1
+					</TabStripTab>
+					<TabStripTab Title="تب 2">
+						محتوای تب 2
+					</TabStripTab>
+					<TabStripTab Title="تب 3">
+						محتوای تب 3
+					</TabStripTab>
+				</TelerikTabStrip>
+
+				<hr />
+				<h3>ToggleButton </h3>
+
+				<TelerikToggleButton @bind-Selected="@SoundOn"
+									 Title="دکمه تاگل"
+									 OnClick="@MuteClickHandler">
+					@if (SoundOn)
+					{
+						<i class="fa-solid fa-volume-high"></i>
+						<span>
+							دکمه تاگل روشن
+						</span>
+					}
+					else
+					{
+						<i class="fa-solid fa-volume-off"></i>
+						<span>
+							دکمه تاگل خاموش
+						</span>
+					}
+
+				</TelerikToggleButton>
+
+				<hr />
+				<h3>Tooltip </h3>
+
+				<TelerikTooltip TargetSelector="#hover-tooltip"
+								ShowOn="@TooltipShowEvent.Hover"
+								Position="@TooltipPosition.Top">
+				</TelerikTooltip>
+
+				<TelerikTooltip TargetSelector="#click-tooltip"
+								ShowOn="@TooltipShowEvent.Click"
+								Position="@TooltipPosition.Right">
+				</TelerikTooltip>
+
+				<div class="text-center mt-sm">
+					<span id="hover-tooltip" class="k-button button-wide" title="متن نمایشی تولتیپ بالا">تولتیپ روی هاور</span>
+				</div>
+
+				<div class="text-center mt-4">
+					<span id="click-tooltip" class="k-button k-button-solid-primary button-wide" title="متن نمایشی تولتیپ راست">تولتیپ روی کلیک</span>
+				</div>
+
+				<hr />
+				<h3>Window & Modal </h3>
+
+				<TelerikButton OnClick="@ToggleWindow">باز کردن پنجره</TelerikButton>
+
+				<TelerikButton OnClick="@ToggleModal">باز کردن مودال</TelerikButton>
+
+				<hr />
+				<h3>Wizard </h3>
+
+				<TelerikWizard @bind-Value="@WizardValue" Class="sc-wizard">
+					<WizardSteps>
+						<WizardStep>
+							<StepTemplate>
+								<div class="sc-wizard-step">
+									<i class="fa-solid fa-user"></i>
+								</div>
+								<label class="sc-wizard-label">ثبت نام</label>
+							</StepTemplate>
+							<Content>
+								<TelerikForm Model="@RegistrationModel"
+											 @ref="@WizardForm">
+									<FormItems>
+										<FormItem LabelText="Email" Field="@nameof(UserDetails.Email)">
+											<Template>
+												<label for="mail" class="k-label k-form-label">Email:</label>
+												<TelerikTextBox Id="mail" @bind-Value="@RegistrationModel.Email" InputMode="email"></TelerikTextBox>
+											</Template>
+										</FormItem>
+										<FormItem LabelText="Password" Field="@nameof(UserDetails.Password)">
+											<Template>
+												<label for="pass" class="k-label k-form-label">Password:</label>
+												<TelerikTextBox Id="pass" @bind-Value="@RegistrationModel.Password" Password="true"></TelerikTextBox>
+											</Template>
+										</FormItem>
+									</FormItems>
+									<FormButtons></FormButtons>
+								</TelerikForm>
+							</Content>
+						</WizardStep>
+						<WizardStep>
+							<StepTemplate>
+								<div class="sc-wizard-step">
+									<i class="fa-solid fa-list"></i>
+								</div>
+								<label class="sc-wizard-label">ثبت اطلاعات</label>
+							</StepTemplate>
+							<Content>
+								<TelerikForm Model="@RegistrationModel"
+											 @ref="@WizardForm">
+									<FormItems>
+										<FormItem LabelText="Email" Field="@nameof(UserDetails.Email)">
+											<Template>
+												<label for="mail" class="k-label k-form-label">Email:</label>
+												<TelerikTextBox Id="mail" @bind-Value="@RegistrationModel.Email" InputMode="email"></TelerikTextBox>
+											</Template>
+										</FormItem>
+										<FormItem LabelText="Password" Field="@nameof(UserDetails.Password)">
+											<Template>
+												<label for="pass" class="k-label k-form-label">Password:</label>
+												<TelerikTextBox Id="pass" @bind-Value="@RegistrationModel.Password" Password="true"></TelerikTextBox>
+											</Template>
+										</FormItem>
+									</FormItems>
+									<FormButtons></FormButtons>
+								</TelerikForm>
+							</Content>
+						</WizardStep>
+						<WizardStep>
+							<StepTemplate>
+								<div class="sc-wizard-step">
+									<i class="fa-solid fa-check"></i>
+								</div>
+								<label class="sc-wizard-label">ثبت نهایی</label>
+							</StepTemplate>
+							<Content>
+								<h2>ثبت نام انجام شد.</h2>
+							</Content>
+						</WizardStep>
+					</WizardSteps>
+
+					<WizardButtons>
+						@{
+							var index = context;
+							if (index != 0)
+							{
+								<TelerikButton OnClick="@(() => WizardValue -= 1)">مرحله قبل</TelerikButton>
+							}
+
+							if (index != 2)
+							{
+								<TelerikButton ThemeColor="@(ThemeConstants.Button.ThemeColor.Primary)" OnClick="@(() => WizardValue += 1)">مرحله بعد</TelerikButton>
+							}
+
+							if (index == 2)
+							{
+								<TelerikButton ThemeColor="@(ThemeConstants.Button.ThemeColor.Primary)">ثبت نهایی</TelerikButton>
+							}
+						}
+					</WizardButtons>
+				</TelerikWizard>
+
+			</div>
+		</div>
+	</MainContent>
+</PageContainer>
+
+@* DIALOG *@
+<TelerikDialog @bind-Visible="@Visible"
+			   Width="500px"
+			   ShowCloseButton="true"
+			   CloseOnOverlayClick="true"
+			   ButtonsLayout="@DialogButtonsLayout.Center"
+			   ThemeColor="@ThemeConstants.Window.ThemeColor.Primary">
+	<DialogTitle>
+		<TelerikSvgIcon Icon="@SvgIcon.Gears"></TelerikSvgIcon>
+		<span>عنوان دیالوگ</span>
+	</DialogTitle>
+	<DialogContent>
+		<p>محتوای دیالوگ</p>
+
+	</DialogContent>
+	<DialogButtons>
+		<TelerikButton OnClick="@CloseDialog"
+					   ThemeColor="@(ThemeConstants.Button.ThemeColor.Secondary)">
+			<i class="fa-solid fa-times"></i>
+			انصراف
+		</TelerikButton>
+		<TelerikButton OnClick="@CloseDialog"
+					   ThemeColor="@(ThemeConstants.Button.ThemeColor.Primary)">
+			<i class="fa-solid fa-check"></i>
+			تایید
+		</TelerikButton>
+	</DialogButtons>
+</TelerikDialog>
+
+@* DRAWER *@
+<TelerikDrawer @ref="@Drawer"
+			   Data="@DrawerData"
+			   MiniMode="false"
+			   Mode="@DrawerMode.Overlay"
+			   Position="@DrawerPosition.End"
+			   Width="300px">
+	<Template>
+		<p>محتوای دراور</p>
+		<p>محتوای دراور</p>
+		<p>محتوای دراور</p>
+		<p>محتوای دراور</p>
+		<p>محتوای دراور</p>
+		<p>محتوای دراور</p>
+		<p>محتوای دراور</p>
+	</Template>
+</TelerikDrawer>
+
+@* POPOVER *@
+<TelerikPopover @ref="@PopoverRef"
+				AnimationType="@AnimationType.SlideUp"
+				AnchorSelector=".popover-div"
+				Collision="@PopoverCollision.Flip"
+				Offset="20"
+				Position="@PopoverPosition.Bottom"
+				Width="300px"
+				ShowOn="@PopoverShowOn.MouseEnter">
+	<PopoverHeader>
+		عنوان پاپ اور
+	</PopoverHeader>
+	<PopoverContent>
+		<p>محتوای پاپ اور</p>
+		<p>محتوای پاپ اور</p>
+		<p>محتوای پاپ اور</p>
+		<p>محتوای پاپ اور</p>
+		<p>محتوای پاپ اور</p>
+		<p>محتوای پاپ اور</p>
+		<p>محتوای پاپ اور</p>
+		<p>محتوای پاپ اور</p>
+	</PopoverContent>
+</TelerikPopover>
+
+<TelerikPopover @ref="@ClickPopoverRef"
+				AnimationType="@AnimationType.Fade"
+				AnchorSelector=".click-popover-div"
+				Collision="@PopoverCollision.Flip"
+				Offset="20"
+				Position="@PopoverPosition.Bottom"
+				Width="300px"
+				ShowOn="@PopoverShowOn.Click">
+	<PopoverHeader>
+		عنوان پاپ اور
+	</PopoverHeader>
+	<PopoverContent>
+		<p>محتوای پاپ اور</p>
+		<p>محتوای پاپ اور</p>
+		<p>محتوای پاپ اور</p>
+		<p>محتوای پاپ اور</p>
+		<p>محتوای پاپ اور</p>
+		<p>محتوای پاپ اور</p>
+		<p>محتوای پاپ اور</p>
+		<p>محتوای پاپ اور</p>
+	</PopoverContent>
+	<PopoverActions>
+		<TelerikButton Icon="@SvgIcon.CheckCircle"
+					   OnClick="@ClosePopover"
+					   ThemeColor="@ThemeConstants.Button.ThemeColor.Success">تایید</TelerikButton>
+		<TelerikButton Icon="@SvgIcon.XCircle" OnClick="@ClosePopover">بستن</TelerikButton>
+	</PopoverActions>
+</TelerikPopover>
+
+@* WINDOW *@
+<TelerikWindow @bind-Visible="@WindowIsVisible"
+			   Height="fit-content"
+			   Size="@ThemeConstants.Window.Size.Small"
+			   FooterLayoutAlign="@WindowFooterLayoutAlign.Center"
+			   ThemeColor="@ThemeConstants.Window.ThemeColor.Primary">
+	<WindowTitle>
+		<strong>عنوان پنجره</strong>
+	</WindowTitle>
+	<WindowActions>
+		<WindowAction Name="Close"></WindowAction>
+	</WindowActions>
+	<WindowContent>
+		<p>محتوای پنجره</p>
+		<p>محتوای پنجره</p>
+		<p>محتوای پنجره</p>
+		<p>محتوای پنجره</p>
+		<p>محتوای پنجره</p>
+	</WindowContent>
+	<WindowFooter>
+		<TelerikButton OnClick="Cancel"
+					   ThemeColor="@ThemeConstants.Button.ThemeColor.Primary">
+			ثبت
+		</TelerikButton>
+		<TelerikButton OnClick="Cancel"
+					   FillMode="@ThemeConstants.Button.FillMode.Flat">
+			انصراف
+		</TelerikButton>
+	</WindowFooter>
+</TelerikWindow>
+
+@* MODAL *@
+<TelerikWindow @bind-Visible="@ModalIsVisible"
+			   Modal="true"
+			   Width="400px"
+			   Height="fit-content"
+			   FooterLayoutAlign="@WindowFooterLayoutAlign.Center"
+			   ThemeColor="@ThemeConstants.Window.ThemeColor.Primary">
+	<WindowTitle>
+		<strong>عنوان مودال</strong>
+	</WindowTitle>
+	<WindowActions>
+		<WindowAction Name="Close"></WindowAction>
+	</WindowActions>
+	<WindowContent>
+		<p>محتوای مودال</p>
+		<p>محتوای مودال</p>
+		<p>محتوای مودال</p>
+		<p>محتوای مودال</p>
+		<p>محتوای مودال</p>
+	</WindowContent>
+	<WindowFooter>
+		<TelerikButton OnClick="CancelModal"
+					   ThemeColor="@ThemeConstants.Button.ThemeColor.Primary">
+			ثبت
+		</TelerikButton>
+		<TelerikButton OnClick="CancelModal"
+					   FillMode="@ThemeConstants.Button.FillMode.Flat">
+			انصراف
+		</TelerikButton>
+	</WindowFooter>
+</TelerikWindow>
+
+<style>
+	.demo-container {
+		position: relative;
+		height: 300px;
+		width: 75%;
+		margin: 0 auto;
+	}
+
+	.click-popover-div,
+	.popover-div {
+		width: 200px;
+		flex: 1 0 auto;
+		display: flex;
+		align-items: center;
+		padding: 4px;
+		font-weight: bold;
+	}
+</style>

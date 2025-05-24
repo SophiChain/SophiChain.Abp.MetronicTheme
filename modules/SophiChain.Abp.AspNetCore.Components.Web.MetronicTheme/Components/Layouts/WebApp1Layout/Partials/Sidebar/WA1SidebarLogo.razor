@@ -1,0 +1,28 @@
+﻿@using Volo.Abp.Ui.Branding
+@inject IBrandingProvider BrandingProvider
+@inject MetronicThemeBrandingProvider MetronicThemeBrandingProvider
+
+@{
+	var lightLogo = MetronicThemeBrandingProvider.GetLogoUrl("light-logo");
+	var darkLogo = MetronicThemeBrandingProvider.GetLogoUrl("dark-logo");
+	var minimizedLogo = MetronicThemeBrandingProvider.GetLogoUrl("minimized-logo");
+}
+
+<div class="app-sidebar-logo" id="kt_app_sidebar_logo">
+	<a href="/">
+		<img alt="@BrandingProvider.AppName" src="@lightLogo" class="h-25px app-sidebar-logo-default">
+		<img alt="@BrandingProvider.AppName" src="@darkLogo" class="h-25px app-sidebar-logo-dark">
+		<img alt="@BrandingProvider.AppName" src="@minimizedLogo" class="h-25px app-sidebar-logo-minimize">
+		@if (lightLogo.IsNullOrEmpty())
+		{
+			<div class="sc-brand-name">@BrandingProvider.AppName</div>
+		}
+	</a>
+	<div id="kt_app_sidebar_toggle"
+		 class="app-sidebar-toggle btn btn-icon btn-shadow btn-sm btn-color-muted btn-active-color-primary body-bg h-30px w-30px position-absolute top-50 start-100 translate-middle"
+		 data-kt-toggle="true"
+		 data-kt-toggle-target="body"
+		 data-kt-toggle-name="app-sidebar-minimize">
+		@((MarkupString)KTTheme.GetIcon("black-left-line", "fs-2 rotate-180"))
+	</div>
+</div>

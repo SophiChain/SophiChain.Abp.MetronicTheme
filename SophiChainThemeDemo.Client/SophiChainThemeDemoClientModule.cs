@@ -1,34 +1,26 @@
-using System.IO;
-using Volo.Abp.VirtualFileSystem;
 using Blazorise.Bootstrap5;
 using Blazorise.Icons.FontAwesome;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Volo.Abp.AspNetCore.Components.Web;
+using SophiChain.Abp.AspNetCore.Components.WebAssembly.MetronicTheme;
 using SophiChainThemeDemo.Menus;
 using Volo.Abp.Account;
-using SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme.Themes.Metronic;
-using Volo.Abp.AspNetCore.Components.WebAssembly.MetronicTheme;
+using Volo.Abp.AspNetCore.Components.Web;
 using Volo.Abp.AspNetCore.Components.Web.Theming.Routing;
-using Volo.Abp.OpenIddict;
-using Volo.Abp.Identity.Blazor.WebAssembly;
-using Volo.Abp.TenantManagement;
-using Volo.Abp.TenantManagement.Blazor.WebAssembly;
 using Volo.Abp.Autofac.WebAssembly;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.FeatureManagement.Blazor.WebAssembly;
 using Volo.Abp.Identity;
+using Volo.Abp.Identity.Blazor.WebAssembly;
 using Volo.Abp.Modularity;
+using Volo.Abp.OpenIddict;
 using Volo.Abp.PermissionManagement;
 using Volo.Abp.PermissionManagement.Blazor.WebAssembly;
-using Volo.Abp.SettingManagement.Blazor.WebAssembly;
 using Volo.Abp.SettingManagement;
+using Volo.Abp.SettingManagement.Blazor.WebAssembly;
+using Volo.Abp.TenantManagement;
+using Volo.Abp.TenantManagement.Blazor.WebAssembly;
 using Volo.Abp.UI.Navigation;
-using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
-using Volo.Abp.AspNetCore.Components.WebAssembly.Theming.Bundling;
-using SophiChain.Abp.AspNetCore.Components.WebAssembly.MetronicTheme;
-using Volo.Abp.Ui.LayoutHooks;
-using SophiChainThemeDemo.Wrapper;
 
 namespace SophiChainThemeDemo;
 
@@ -88,18 +80,22 @@ public class SophiChainThemeDemoClientModule : AbpModule
         ConfigureRouter(context);
         ConfigureMenu(context);
         ConfigureAutoMapper(context);
-        ConfigureTelerik();
+        //ConfigureWrappers();
 
         context.Services.AddHttpClientProxies(typeof(SophiChainThemeDemoContractsModule).Assembly);
+
+        context.Services.AddTelerikBlazor();
     }
-    private void ConfigureTelerik()
-    {
-        Configure<AbpLayoutHookOptions>(options =>
-        {
-            options.Add(LayoutHooks.Body.First, typeof(StartWrapper));
-            options.Add(LayoutHooks.Body.Last, typeof(EndWrapper));
-        });
-    }
+
+    //private void ConfigureWrappers()
+    //{
+    //    Configure<AbpLayoutHookOptions>(options =>
+    //    {
+    //        options.Add(LayoutHooks.Body.First, typeof(StartWrapper));
+    //        options.Add(LayoutHooks.Body.Last, typeof(EndWrapper));
+    //    });
+    //}
+
     private void ConfigureRouter(ServiceConfigurationContext context)
     {
         Configure<AbpRouterOptions>(options =>

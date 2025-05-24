@@ -1,0 +1,15 @@
+﻿@using System.Globalization
+@using System.Reflection
+@using SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme
+@using SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme.Components.Layouts.WebApp1Layout
+@using Telerik.Blazor
+@using Telerik.Blazor.Components
+@using Volo.Abp.DependencyInjection
+
+@inherits WebApp1Layout
+@attribute [ExposeServices(typeof(WebApp1Layout))]
+@attribute [Dependency(ReplaceServices = true)]
+
+<TelerikRootComponent EnableRtl="true" IconType="IconType.Svg">
+    @Body
+</TelerikRootComponent>

@@ -1,10 +1,23 @@
+@using SophiChain.Abp.AspNetCore.Components.Server.MetronicTheme
+@using SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme
 @using SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme.Themes.Metronic
+@using SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme.Components.Layouts.WebApp1Layout
+@using Volo.Abp.AspNetCore.Components.Web.Theming.Layout
 @using Volo.Abp.AspNetCore.Components.Web.Theming.Routing
 @using Microsoft.Extensions.Options
 @inject IOptions<AbpRouterOptions> RouterOptions
+@inject IOptions<MetronicThemeBlazorOptions> LayoutOptions
+@inject MetronicTheme MetronicTheme
+
+@{
+    var SelectedLayout = MetronicTheme.GetLayout(StandardLayouts.Application, true);
+    var AuthLayout = MetronicTheme.GetLayout(StandardLayouts.Account, true);
+    var EmptyLayout = MetronicTheme.GetLayout(StandardLayouts.Empty, true);
+}
+
 <Router AppAssembly="typeof(Program).Assembly" AdditionalAssemblies="RouterOptions.Value.AdditionalAssemblies">
     <Found Context="routeData">
-        <AuthorizeRouteView RouteData="routeData" DefaultLayout="typeof(MainLayout)">
+        <AuthorizeRouteView RouteData="routeData" DefaultLayout="@SelectedLayout">
             <NotAuthorized>
                 <RedirectToLogin />
             </NotAuthorized>

@@ -1,0 +1,250 @@
+﻿@page "/form"
+@using SophiChainThemeDemo.Components.Drawers
+@using SophiChainThemeDemo.Menus
+@using Telerik.Blazor
+@using Telerik.Blazor.Components
+@using Telerik.SvgIcons
+@inherits SophiChainThemeDemoComponentBase
+
+<PageContainer PageHeaderTitle="فرم"
+			   PageMenuName="@SharedMenus.Settings.SettingsSideMenu"
+			   PageToolbar="@PageToolbar"
+			   IsLoading="@IsLoading"
+			   IsLoadingText="@IsLoadingText">
+	<MainContent>
+		<div class="card shadow-sm">
+			<div class="card-body">
+				<TelerikForm Model="@FormData" @ref=FormDataRef Class="sc-form">
+					<FormItems>
+						<FormGroup Class="row">
+							<FormItem Class="col-12 col-md-6">
+								<Template>
+									<TelerikFloatingLabel Text="نام و نام خانوادگی">
+										<div class="k-form-field-wrap">
+											<TelerikTextBox @bind-Value="@FormData.Name"></TelerikTextBox>
+										</div>
+									</TelerikFloatingLabel>
+								</Template>
+							</FormItem>
+							<FormItem Class="col-12 col-md-6">
+								<Template>
+									<TelerikFloatingLabel Text="فیلد غیرفعال">
+										<div class="k-form-field-wrap">
+											<TelerikTextBox @bind-Value="@FormData.Phone" Enabled="false"></TelerikTextBox>
+										</div>
+									</TelerikFloatingLabel>
+								</Template>
+							</FormItem>
+							<FormItem Class="col-12 col-md-6">
+								<Template>
+									<TelerikFloatingLabel Text="متن با ماسک">
+										<div class="k-form-field-wrap">
+											<TelerikMaskedTextBox @bind-Value="@PhoneNumber"
+																  Mask="0900-0000000"
+																  Prompt="@PromptChar"
+																  MaskOnFocus="true"></TelerikMaskedTextBox>
+										</div>
+									</TelerikFloatingLabel>
+								</Template>
+							</FormItem>
+							<FormItem Class="col-12 col-md-6">
+								<Template>
+									@* default value for numeric can not be null so the label visual does not float *@
+									@* yet use it to be aligned with other fields *@
+									<TelerikFloatingLabel Text="تعداد اعتبار">
+										<div class="k-form-field-wrap">
+											<TelerikNumericTextBox Class="sc-numeric-box"
+																   Decimals="2"
+																   @bind-Value="IntValue"></TelerikNumericTextBox>
+										</div>
+									</TelerikFloatingLabel>
+								</Template>
+							</FormItem>
+							<FormItem Class="col-12 col-md-6">
+								<Template>
+									<TelerikFloatingLabel Text="انتخاب شهر با تایپ">
+										<div class="k-form-field-wrap">
+											<TelerikAutoComplete Data="@TypeDestinationsData"
+																 @bind-Value="@TypeSelectedDestination"
+																 ValueField="@nameof(DestinationDto.Title)"
+																 Placeholder="یک شهر انتخاب کنید"
+																 ShowPrefixSeparator="false"
+																 ShowSuffixSeparator="false"
+																 Width="100%">
+											</TelerikAutoComplete>
+										</div>
+									</TelerikFloatingLabel>
+								</Template>
+							</FormItem>
+							<FormItem Class="col-12 col-md-6">
+								<Template>
+									<TelerikFloatingLabel Text="انتخاب چند شهر">
+										<div class="k-form-field-wrap">
+											<TelerikMultiSelect Data="@MultiDestinationsData"
+																@bind-Value="@SelectedHobbyIds"
+																ValueField="@nameof(DestinationDto.Id)"
+																TextField="@nameof(DestinationDto.Title)"
+																Placeholder="شهرهای مورد نظر را انتخاب کنید ...">
+											</TelerikMultiSelect>
+										</div>
+									</TelerikFloatingLabel>
+								</Template>
+							</FormItem>
+							<FormItem Class="col-12 col-md-6">
+								<Template>
+									<TelerikFloatingLabel Text="انتخاب یک شهر">
+										<div class="k-form-field-wrap">
+											<TelerikDropDownList Data="@SingleDestinationsData"
+																 @bind-Value="@SingleSelectedDestinationId"
+																 TextField="@nameof(DestinationDto.Title)"
+																 ValueField="@nameof(DestinationDto.Id)">
+											</TelerikDropDownList>
+										</div>
+									</TelerikFloatingLabel>
+								</Template>
+							</FormItem>
+							<FormItem Class="col-12 col-md-6">
+								<Template>
+									@* if default value is defined the label visual does not float *@
+									@* yet use it to be aligned with other fields *@
+									<TelerikFloatingLabel Text="انتخاب یک شهر با فیلتر">
+										<div class="k-form-field-wrap">
+											<TelerikDropDownList Data="@SingleFilterDestinationsData"
+																 @bind-Value="@SingleFilterSelectedDestinationId"
+																 TextField="@nameof(DestinationDto.Title)"
+																 ValueField="@nameof(DestinationDto.Id)"
+																 Filterable="true"
+																 FilterOperator="@StringFilterOperator.Contains"
+																 FilterDebounceDelay="2000"
+																 FilterPlaceholder="یک شهر را انتخاب کنید ..."
+																 DefaultText="همه شهرها">
+											</TelerikDropDownList>
+										</div>
+									</TelerikFloatingLabel>
+								</Template>
+							</FormItem>
+							<FormItem Class="col-12 col-md-6">
+								<Template>
+									<TelerikCheckBox Id="selectAllCheckbox"
+													 @bind-Value="@SelectAllValue">
+									</TelerikCheckBox>
+									<label for="selectAllCheckbox">انتخاب چک باکس</label>
+								</Template>
+							</FormItem>
+							<FormItem Class="col-12 col-md-6">
+								<Template>
+									<div class="k-form-field">
+										<label class="k-label k-form-label">نحوه ارتباط</label>
+										<div class="k-form-field-wrap">
+											<TelerikRadioGroup Data="@CommunicationTypes"
+															   @bind-Value="@SelectedCommunicationType"
+															   Layout="@RadioGroupLayout.Vertical"></TelerikRadioGroup>
+										</div>
+									</div>
+								</Template>
+							</FormItem>
+							<FormItem Class="col-12 col-md-6">
+								<Template>
+									<label class="k-label k-form-label">تاریخ برنامه</label>
+									
+								</Template>
+							</FormItem>
+							<FormItem Class="col-12 col-md-6">
+								<Template>
+									<label class="k-label k-form-label">سانس</label>
+									<TelerikSwitch @bind-Value="@AllowNotifications"
+												   OnLabel="فعال"
+												   OffLabel="غیر فعال"
+												   Width="85px"></TelerikSwitch>
+								</Template>
+							</FormItem>
+							<FormItem Class="col-12 col-md-6">
+								<Template>
+									<label class="k-label k-form-label">زمان سانس</label>
+									<TelerikTimePicker Format="hh:mm tt"
+													   Size="@ThemeConstants.TimePicker.Size.Large"
+													   AdaptiveMode="@AdaptiveMode.Auto"
+													   @bind-Value="@selectedTime">
+									</TelerikTimePicker>
+								</Template>
+							</FormItem>
+							<FormItem Class="col-12 col-md-12">
+								<Template>
+									<label class="k-label k-form-label">توضیحات</label>
+									<TelerikTextArea @bind-Value="@PersonalDescription"
+													 Placeholder="توضیحات برنامه را وارد کنید ..."
+													 Rows="10">
+									</TelerikTextArea>
+								</Template>
+							</FormItem>
+						</FormGroup>
+					</FormItems>
+					<FormButtons></FormButtons>
+				</TelerikForm>
+			</div>
+		</div>
+	</MainContent>
+	<PageFilters>
+		<WA1PageFilters FiltersTitle="فرم"
+						IsFilterOpen="false"
+						ShowFiltersSave="true">
+			<FiltersContent>
+				<div class="row">
+					<div class="col-md-4">
+						<label class="k-label k-form-label">انتخاب شهر*</label>
+						<TelerikAutoComplete Data="@SingleDestinationsData"
+											 @bind-Value="@SelectedDestination"
+											 Title="Choose a product"
+											 ValueField="@nameof(DestinationDto.Title)"
+											 Placeholder="یک شهر انتخاب کنید"
+											 ShowClearButton="true"
+											 ShowPrefixSeparator="true">
+							<AutoCompletePrefixTemplate>
+								<TelerikSvgIcon Icon="@SvgIcon.Search"></TelerikSvgIcon>
+							</AutoCompletePrefixTemplate>
+						</TelerikAutoComplete>
+					</div>
+					<div class="col-md-4">
+						<label class="k-label k-form-label">انتخاب شهر*</label>
+						<TelerikAutoComplete Data="@SingleDestinationsData"
+											 @bind-Value="@SelectedDestination"
+											 Title="Choose a product"
+											 ValueField="@nameof(DestinationDto.Title)"
+											 Placeholder="یک شهر انتخاب کنید"
+											 ShowClearButton="true"
+											 ShowPrefixSeparator="true">
+							<AutoCompletePrefixTemplate>
+								<TelerikSvgIcon Icon="@SvgIcon.Search"></TelerikSvgIcon>
+							</AutoCompletePrefixTemplate>
+						</TelerikAutoComplete>
+					</div>
+					<div class="col-md-4">
+						<label class="k-label k-form-label">انتخاب شهر*</label>
+						<TelerikAutoComplete Data="@SingleDestinationsData"
+											 @bind-Value="@SelectedDestination"
+											 Title="Choose a product"
+											 ValueField="@nameof(DestinationDto.Title)"
+											 Placeholder="یک شهر انتخاب کنید"
+											 ShowClearButton="true"
+											 ShowPrefixSeparator="true">
+							<AutoCompletePrefixTemplate>
+								<TelerikSvgIcon Icon="@SvgIcon.Search"></TelerikSvgIcon>
+							</AutoCompletePrefixTemplate>
+						</TelerikAutoComplete>
+					</div>
+				</div>
+			</FiltersContent>
+			<FiltersButtons>
+				<button class="btn btn-sm btn-primary fs-7" type="button">
+					بازنشانی
+				</button>
+				<button class="btn btn-sm btn-primary fs-7" type="button">
+					جستجو
+				</button>
+			</FiltersButtons>
+		</WA1PageFilters>
+	</PageFilters>
+	<Drawers>
+		<ChatMessengerDrawer />
+	</Drawers>
+</PageContainer>
