@@ -2,7 +2,7 @@
 
 public class SophiChainThemeDemoMenus
 {
-    private const string Prefix = "tp_metronic";
+    private const string Prefix = "SC";
     public const string Home = Prefix + ".Home";
     public const string HomeChild1 = Home + ".Child1";
     public const string HomeChild2 = Home + ".Child2";

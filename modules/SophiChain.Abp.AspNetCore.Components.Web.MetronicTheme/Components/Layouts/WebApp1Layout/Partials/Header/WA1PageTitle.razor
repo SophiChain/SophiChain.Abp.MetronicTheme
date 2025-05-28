@@ -1,4 +1,5 @@
 ﻿@using Volo.Abp.AspNetCore.Components.Web.Theming.Layout
+@using Volo.Abp.DependencyInjection
 @using Volo.Abp.Ui.Branding
 @inherits PageHeader
 @inject IBrandingProvider BrandingProvider
@@ -14,5 +15,5 @@
 			@PageLayout.Title
 		}
 	</h1>
-	<SCBreadCrumbs CustomBreadcrumb="@CustomBreadcrumb" />
+	<SCBreadCrumbs />
 </div>

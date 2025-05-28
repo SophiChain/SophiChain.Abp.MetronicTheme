@@ -1,25 +1,66 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
-using Microsoft.Extensions.Options;
+using SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme.Components.Helpers;
 using Volo.Abp.AspNetCore.Components.Web.Theming.Layout;
 
 namespace SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme.Components.Layouts.WebApp1Layout.Partials.Page;
 public partial class WA1PageToolbar
 {
-    [Parameter] public string PageMenuName { get; set; } = default!;
+    [CascadingParameter(Name = "ThemeState")]
+    public ThemeCascadingState ThemeState { get; set; }
 
-    [Inject] public IOptions<PageHeaderOptions> Options { get; set; } = default!;
-
-    protected override async Task OnInitializedAsync()
+    protected override void OnInitialized()
     {
-        Options.Value.RenderToolbar = true;
-
-        await base.OnInitializedAsync();
+        if (ThemeState.ShowToolBar)
+        {
+            Options.Value.RenderToolbar = true;
+        }
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        await base.OnAfterRenderAsync(firstRender);
+        if (firstRender)
+        {
+            if (ThemeState.PageToolbar != null)
+            {
+                var toolbarItems = await PageToolbarManager.GetItemsAsync(ThemeState.PageToolbar);
+                ToolbarItemRenders.Clear();
 
+                if (!ShouldRenderToolbarItems(toolbarItems))
+                {
+                    return;
+                }
+
+                if (!Options.Value.RenderToolbar)
+                {
+                    PageLayout.ToolbarItems.Clear();
+                    foreach (var item in toolbarItems)
+                    {
+                        PageLayout.ToolbarItems.Add(item);
+                    }
+                    return;
+                }
+
+                foreach (var item in toolbarItems)
+                {
+                    var sequence = 0;
+                    ToolbarItemRenders.Add(builder =>
+                    {
+                        builder.OpenComponent(sequence, item.ComponentType);
+                        if (item.Arguments != null)
+                        {
+                            foreach (var argument in item.Arguments)
+                            {
+                                sequence++;
+                                builder.AddAttribute(sequence, argument.Key, argument.Value);
+                            }
+                        }
+                        builder.CloseComponent();
+                    });
+                }
+            }
+        }
+
+        await base.OnAfterRenderAsync(firstRender);
     }
 }

@@ -4,7 +4,7 @@
     {
         public static class Timche
         {
-            private const string Prefix = "tp_metronic";
+            private const string Prefix = "SC";
             public const string TimcheSideMenu = $"{Prefix}:Timche";
             public const string Profile = TimcheSideMenu + ":Profile";
             public const string MyApplications = TimcheSideMenu + ":MyApplications";
@@ -17,7 +17,7 @@
 
         public static class Settings
         {
-            private const string Prefix = "tp_metronic";
+            private const string Prefix = "SC";
             public const string SettingsSideMenu = $"{Prefix}:Settings";
             public const string Profile = SettingsSideMenu + ":Profile";
             public const string MyApplications = SettingsSideMenu + ":MyApplications";

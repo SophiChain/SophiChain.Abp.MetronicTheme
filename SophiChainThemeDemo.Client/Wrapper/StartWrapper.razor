@@ -1,1 +1,23 @@
-﻿
+﻿@using Telerik.Blazor
+@using Telerik.Blazor.Components
+
+@if (IsHeadVisible)
+{
+	<TelerikRootComponent EnableRtl="true" IconType="IconType.Svg">
+}
+else
+{
+	</TelerikRootComponent>
+}
+
+@code {
+	public bool IsHeadVisible { get; set; } = true;
+
+	protected override void OnInitialized()
+	{
+		if (!IsHeadVisible)
+		{
+			IsHeadVisible = true;
+		}
+	}
+}

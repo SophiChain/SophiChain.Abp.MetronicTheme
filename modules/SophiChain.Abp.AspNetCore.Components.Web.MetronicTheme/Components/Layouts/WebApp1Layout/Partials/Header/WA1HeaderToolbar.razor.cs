@@ -6,13 +6,12 @@ namespace SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme.Components.Layo
 public partial class WA1HeaderToolbar
 {
     [Inject] public IToolbarManager ToolbarManager { get; set; } = default!;
-    [Parameter] public string PageMenuName { get; set; } = default!;
 
-    private Toolbar Toolbar { get; set; }
+    private Toolbar SiteToolbar { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        Toolbar = await ToolbarManager.GetAsync(StandardToolbars.Main);
+        SiteToolbar = await ToolbarManager.GetAsync(StandardToolbars.Main);
 
         await base.OnInitializedAsync();
     }

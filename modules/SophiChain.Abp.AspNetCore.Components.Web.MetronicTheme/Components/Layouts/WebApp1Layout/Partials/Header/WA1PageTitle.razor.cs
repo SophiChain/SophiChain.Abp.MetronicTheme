@@ -1,9 +1,26 @@
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
-using System.Collections.Generic;
-using Volo.Abp.BlazoriseUI;
+using Microsoft.Extensions.Options;
+using SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme.Components.Helpers;
+using Volo.Abp.AspNetCore.Components.Web.Theming.Layout;
 
 namespace SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme.Components.Layouts.WebApp1Layout.Partials.Header;
 public partial class WA1PageTitle
 {
-    [Parameter] public List<BreadcrumbItem> CustomBreadcrumb { get; set; }
+    [CascadingParameter(Name = "ThemeState")]
+    public ThemeCascadingState ThemeState { get; set; }
+    [Inject] public IOptions<PageHeaderOptions> Options { get; set; } = default!;
+
+    protected override void OnInitialized()
+    {
+        if (ThemeState.ShowTitle)
+        {
+            Options.Value.RenderPageTitle = true;
+        }
+
+        if (ThemeState.ShowBreadCrumb)
+        {
+            Options.Value.RenderBreadcrumbs = true;
+        }
+    }
 }

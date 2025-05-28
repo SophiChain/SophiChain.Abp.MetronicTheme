@@ -14,10 +14,13 @@ using SophiChainThemeDemo.Data;
 using SophiChainThemeDemo.Localization;
 using SophiChainThemeDemo.Menus;
 using SophiChainThemeDemo.MultiTenancy;
+using SophiChainThemeDemo.Wrapper;
+using Telerik.Blazor.Components;
 using Volo.Abp;
 using Volo.Abp.Account;
 using Volo.Abp.Account.Web;
 using Volo.Abp.AspNetCore.Components.Web;
+using Volo.Abp.AspNetCore.Components.Web.Theming.Layout;
 using Volo.Abp.AspNetCore.Components.Web.Theming.Routing;
 using Volo.Abp.AspNetCore.Components.Web.Theming.Toolbars;
 using Volo.Abp.AspNetCore.Mvc;
@@ -56,6 +59,7 @@ using Volo.Abp.Swashbuckle;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.TenantManagement.Blazor.Server;
 using Volo.Abp.TenantManagement.MongoDB;
+using Volo.Abp.Ui.LayoutHooks;
 using Volo.Abp.UI.Navigation;
 using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.Uow;
@@ -197,6 +201,19 @@ public class SophiChainThemeDemoModule : AbpModule
         ConfigureMongoDB(context);
         ConfigureToolbarOptions();
 
+        //context.Services.AddScoped<TelerikWrapperStateService>();
+
+        //Configure<AbpLayoutHookOptions>(options =>
+        //{
+        //    options.Add(
+        //        LayoutHooks.Body.First, 
+        //        typeof(TelerikRootComponentWrapper),
+        //        layout: StandardLayouts.Application);
+        //    options.Add(
+        //        LayoutHooks.Body.Last, 
+        //        typeof(TelerikRootComponentWrapper),
+        //        layout: StandardLayouts.Application);
+        //});
     }
 
     private void ConfigureAuthentication(ServiceConfigurationContext context)

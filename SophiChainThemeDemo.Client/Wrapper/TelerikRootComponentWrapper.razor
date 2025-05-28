@@ -1,7 +1,8 @@
 ﻿@using Telerik.Blazor
 @using Telerik.Blazor.Components
+@inject TelerikWrapperStateService WrapperService
 
-@if (!IsEndVisible)
+@if (!WrapperService.IsStartRendered)
 {
 	<TelerikRootComponent EnableRtl="true" IconType="IconType.Svg">
 }
@@ -11,13 +12,11 @@ else
 }
 
 @code {
-	public bool IsEndVisible { get; set; } = true;
-
 	protected override void OnInitialized()
 	{
-		if (!IsEndVisible)
+		if (!WrapperService.IsStartRendered)
 		{
-			IsEndVisible = true;
+			WrapperService.IsStartRendered = true;
 		}
 	}
 }

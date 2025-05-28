@@ -1,8 +1,10 @@
 ﻿@using Volo.Abp.AspNetCore.Components.Web.Theming.Layout
 @using Microsoft.Extensions.Localization
+@using Volo.Abp.DependencyInjection
+@inherits PageHeader
 
 <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
-    @if (CustomBreadcrumb.IsNullOrEmpty())
+    @if (BreadcrumbItems.IsNullOrEmpty())
     {
         @if (Options.Value.RenderBreadcrumbs && !Breadcrumbs.IsNullOrEmpty())
         {
@@ -51,7 +53,7 @@
     else
     {
         var currentPath = GetRelativePath(NavigationManager.Uri);
-        @foreach (var breadcrumb in CustomBreadcrumb)
+        @foreach (var breadcrumb in BreadcrumbItems)
         {
             var isCurrent = breadcrumb.Url?.Trim('/') == currentPath;
             <li class="breadcrumb-item">
@@ -69,7 +71,7 @@
                 }
             </li>
 
-            @if (breadcrumb != CustomBreadcrumb.Last())
+            @if (breadcrumb != BreadcrumbItems.Last())
             {
                 <li class="breadcrumb-item">
                     <span class="bullet bg-gray-500 w-5px h-2px"></span>

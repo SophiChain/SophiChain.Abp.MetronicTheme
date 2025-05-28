@@ -2,12 +2,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme.Components.Helpers;
-using Volo.Abp.AspNetCore.Components.Web;
 
 namespace SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme.Components.Layouts.WebApp1Layout;
 public partial class WebApp1Layout
 {
-    [Inject] public CookieService CookieService { get; set; }
+    [CascadingParameter(Name = "ThemeState")]
+    public ThemeCascadingState ThemeState { get; set; } = new();
+
 
     private IKTThemeHelpers KTHelper = default!;
     public bool SidebarMinimizeState;

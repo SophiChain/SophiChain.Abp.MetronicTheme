@@ -1,14 +1,16 @@
-﻿@using Volo.Abp.AspNetCore.Components.Web.Theming.Layout
+﻿@using Microsoft.Extensions.Options
+@using Volo.Abp.AspNetCore.Components.Web.Theming.Layout
+@using Volo.Abp.AspNetCore.Components.Web.Theming.PageToolbars
+@using Volo.Abp.DependencyInjection
+@using Volo.Abp.Ui.Branding
 @inherits PageHeader
+@inject IPageToolbarManager PageToolbarManager
+@inject IOptions<PageHeaderOptions> Options
+@inject IBrandingProvider BrandingProvider
 
 <div id="kt_app_toolbar" class="app-toolbar py-4 py-lg-6">
-	<div id="kt_app_toolbar_container" class="app-container container-fluid d-flex flex-stack">
-		<div class="d-flex align-items-stretch justify-content-between" id="kt_app_header_wrapper">
-			@if (!PageMenuName.IsNullOrWhiteSpace())
-			{
-				<WA1PageMenu PageMenuName="@PageMenuName" />
-			}
-		</div>
+	<div id="kt_app_toolbar_container" class="app-container page-toolbar container-fluid d-flex flex-stack">
+		<WA1PageTitle />
 
 		<div class="d-flex align-items-center gap-2 gap-lg-3">
 			@foreach (var toolbarItemRender in ToolbarItemRenders)

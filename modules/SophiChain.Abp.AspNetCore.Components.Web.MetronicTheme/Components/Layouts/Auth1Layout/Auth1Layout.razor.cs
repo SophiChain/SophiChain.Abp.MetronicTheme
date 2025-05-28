@@ -17,6 +17,5 @@ public partial class Auth1Layout
     {
         await Task.Delay(300);
         await JS.InvokeVoidAsync("document.body.removeAttribute", "data-kt-app-reset-transition");
-        await JS.InvokeVoidAsync("document.body.removeAttribute", "data-kt-app-page-loading");
     }
 }

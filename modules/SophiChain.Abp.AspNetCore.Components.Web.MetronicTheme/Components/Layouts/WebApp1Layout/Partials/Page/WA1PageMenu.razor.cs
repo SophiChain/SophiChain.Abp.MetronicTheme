@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Components;
 using System.Threading.Tasks;
 using System;
 using SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme.Navigation;
+using Volo.Abp.AspNetCore.Components;
 
 namespace SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme.Components.Layouts.WebApp1Layout.Partials.Page;
 public partial class WA1PageMenu
@@ -11,10 +12,21 @@ public partial class WA1PageMenu
 
     protected MenuViewModel PageMenu { get; set; }
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnParametersSetAsync()
     {
-        PageMenu = await MainMenuProvider.GetMenuAsync(PageMenuName);
-        PageMenu.StateChanged += RefreshMenu;
+        if (!PageMenuName.IsNullOrWhiteSpace())
+        {
+            try
+            {
+                PageMenu = await MainMenuProvider.GetMenuAsync(PageMenuName);
+                PageMenu.StateChanged += RefreshMenu;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        await base.OnParametersSetAsync();
     }
 
     private void RefreshMenu(object sender, EventArgs e)

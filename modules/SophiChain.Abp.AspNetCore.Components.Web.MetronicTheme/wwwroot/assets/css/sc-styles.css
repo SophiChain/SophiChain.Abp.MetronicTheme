@@ -133,6 +133,12 @@ a {
 }
 
 /******************** NAV/MENU ********************/
+.show.menu-dropdown > .menu-sub-dropdown,
+.menu-sub-dropdown.menu.show,
+.menu-sub-dropdown.show[data-popper-placement] {
+  z-index: 10001 !important;
+}
+
 .sc-mobile-navbar-container {
   display: none;
 }
@@ -160,6 +166,19 @@ a {
   font-size: 18px;
 }
 
+@media (max-width: 768px) {
+  .page-content {
+    overflow-x: hidden;
+  }
+  .page-toolbar {
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .page-toolbar .page-title {
+    text-align: center;
+  }
+}
 /******************** FORM ********************/
 .sc-form .k-form-legend {
   display: none;

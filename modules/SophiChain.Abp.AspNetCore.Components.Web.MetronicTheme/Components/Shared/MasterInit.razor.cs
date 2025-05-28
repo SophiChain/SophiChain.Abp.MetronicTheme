@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Components.Routing;
 using Microsoft.JSInterop;
 
-namespace SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme.Components.Layouts.WebApp1Layout;
-public partial class WA1MasterInit
+namespace SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme.Components.Shared;
+public partial class MasterInit
 {
     protected override void OnAfterRender(bool firstRender)
     {

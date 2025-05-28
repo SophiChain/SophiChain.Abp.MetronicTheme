@@ -1,11 +1,10 @@
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
-using System.Collections.Generic;
-using Volo.Abp.BlazoriseUI;
+using SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme.Components.Helpers;
 
 namespace SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme.Components.Layouts.WebApp1Layout.Partials.Header;
 public partial class WA1Header
 {
-    [Parameter] public string PageMenuName { get; set; } = default!;
-    [Parameter] public string PageHeaderTitle { get; set; }
-    [Parameter] public List<BreadcrumbItem> CustomBreadcrumb { get; set; }
+    [CascadingParameter(Name = "ThemeState")]
+    public ThemeCascadingState ThemeState { get; set; }
 }

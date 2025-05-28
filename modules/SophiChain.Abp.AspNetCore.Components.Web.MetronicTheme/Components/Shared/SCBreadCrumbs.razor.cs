@@ -12,13 +12,11 @@ public partial class SCBreadCrumbs
     [Inject] public IOptions<PageHeaderOptions> Options { get; set; } = default!;
     [Inject] private IMenuManager MenuManager { get; set; }
     [Inject] protected NavigationManager NavigationManager { get; set; }
-    [Parameter] public List<BreadcrumbItem> CustomBreadcrumb { get; set; }
 
     private List<BreadcrumbItem> Breadcrumbs;
 
     protected override async Task OnInitializedAsync()
     {
-        Options.Value.RenderToolbar = true;
         Options.Value.RenderBreadcrumbs = true;
 
         var menu = await MenuManager.GetMainMenuAsync();

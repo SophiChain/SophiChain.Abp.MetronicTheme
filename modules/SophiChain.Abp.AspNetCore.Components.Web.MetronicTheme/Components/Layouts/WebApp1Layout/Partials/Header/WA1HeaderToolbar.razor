@@ -1,8 +1,8 @@
 ﻿<div class="app-navbar flex-shrink-0">
 	<ToggleTheme />
-	@if (Toolbar != null)
+	@if (SiteToolbar != null)
 	{
-		@foreach (var item in Toolbar.Items)
+		@foreach (var item in SiteToolbar.Items)
 		{
 			<DynamicComponent Type="@item.ComponentType" />
 		}

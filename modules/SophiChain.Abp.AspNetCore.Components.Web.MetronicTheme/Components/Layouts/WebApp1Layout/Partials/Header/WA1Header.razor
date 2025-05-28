@@ -1,4 +1,5 @@
-﻿@inherits Volo.Abp.AspNetCore.Components.AbpComponentBase
+﻿@using Microsoft.Extensions.Options
+@using Volo.Abp.AspNetCore.Components.Web.Theming.Layout
 
 <div id="kt_app_header"
 	 class="app-header"
@@ -8,18 +9,18 @@
 	 data-kt-sticky-offset="{default: '200px', lg: '0'}"
 	 data-kt-sticky-animation="false">
 	<div class="app-container container-fluid d-flex align-items-stretch justify-content-between" id="kt_app_header_container">
-		@if (!PageMenuName.IsNullOrWhiteSpace())
+		@if (!ThemeState.PageMenuName.IsNullOrWhiteSpace())
 		{
-			<div class="app-navbar-item d-lg-none d-flex align-items-center" title="Show header menu">
+			<div class="d-flex align-items-center d-lg-none ms-n3 me-1 me-md-2" title="Show header menu">
 				<div class="btn btn-flex btn-icon btn-active-color-primary w-100px h-30px" id="kt_app_header_menu_toggle">
 					@((MarkupString)KTTheme.GetIcon("element-4", "fs-2 fs-md-1 ms-2"))
 					<span>منوی صفحه</span>
 				</div>
 			</div>
 		}
-		<div class="d-flex align-items-stretch justify-content-end justify-content-md-between w-100">
-			<WA1PageTitle Title="@PageHeaderTitle" CustomBreadcrumb="@CustomBreadcrumb" />
-			<WA1HeaderToolbar PageMenuName="@PageMenuName" />
+		<div class="d-flex align-items-stretch justify-content-end justify-content-md-between flex-grow-1" id="kt_app_header_wrapper">
+			<WA1PageMenu PageMenuName="@ThemeState.PageMenuName" />
+			<WA1HeaderToolbar />
 		</div>
 	</div>
 </div>

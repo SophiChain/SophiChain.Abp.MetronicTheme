@@ -1,0 +1,11 @@
+﻿@using Microsoft.Extensions.Options
+@using Volo.Abp.AspNetCore.Components.Web.Theming.Layout
+@using Volo.Abp.AspNetCore.Components.Web.Theming.PageToolbars
+@using Volo.Abp.DependencyInjection
+@using Volo.Abp.Ui.Branding
+@inherits PageHeader
+@attribute [ExposeServices(typeof(PageHeader))]
+@attribute [Dependency(ReplaceServices = true)]
+@inject IPageToolbarManager PageToolbarManager
+@inject IOptions<PageHeaderOptions> Options
+@inject IBrandingProvider BrandingProvider
