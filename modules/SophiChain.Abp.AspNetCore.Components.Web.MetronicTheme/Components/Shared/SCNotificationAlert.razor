@@ -5,7 +5,12 @@
 @using Volo.Abp.BlazoriseUI
 @using Volo.Abp.Localization
 ﻿
-<SnackbarStack @ref="SnackbarStackRef" Location="SnackbarStackLocation.TopStart" DelayCloseOnClick="true" DelayCloseOnClickInterval="10000" Closed="@OnSnackbarClosed" />
+<SnackbarStack @ref="SnackbarStackRef"
+			   Location="SnackbarStackLocation.Top"
+			   DelayCloseOnClick="true"
+			   DelayCloseOnClickInterval="10000"
+			   DefaultInterval="99999999"
+			   Closed="@OnSnackbarClosed" />
 
 @code {
 	public SnackbarStack SnackbarStackRef { get; set; } = default!;

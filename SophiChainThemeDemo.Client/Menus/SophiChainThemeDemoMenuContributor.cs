@@ -56,11 +56,44 @@ public class SophiChainThemeDemoMenuContributor : IMenuContributor
 
         context.Menu.AddItem(
             new ApplicationMenuItem(
+                SophiChainThemeDemoMenus.Form,
+                l["فرم"],
+                "/form",
+                icon: "fas fa-circle",
+                order: 2,
+                target: "forceLoad"
+            )
+        );
+
+        context.Menu.AddItem(
+            new ApplicationMenuItem(
+                SophiChainThemeDemoMenus.Telerik,
+                l["کامپوننت های تلریک"],
+                "/telerik-component",
+                icon: "fas fa-circle",
+                order: 3,
+                target: "forceLoad"
+            )
+        );
+
+        context.Menu.AddItem(
+            new ApplicationMenuItem(
+                SophiChainThemeDemoMenus.Auth,
+                l["ورود"],
+                "/signup",
+                icon: "fas fa-circle",
+                order: 4,
+                target: "forceLoad"
+            )
+        );
+
+        context.Menu.AddItem(
+            new ApplicationMenuItem(
                 SophiChainThemeDemoMenus.HomeChild1,
                 displayName: l["تیمچه"],
                 "/timche",
                 icon: "fas fa-globe",
-                order: 2,
+                order: 5,
                 target: "forceLoad"
             )
             .AddItem(
@@ -87,7 +120,7 @@ public class SophiChainThemeDemoMenuContributor : IMenuContributor
                 l["مدیریت خدمات"],
                 "/services",
                 icon: "fas fa-pen",
-                order: 3,
+                order: 6,
                 target: "forceLoad"
             )
             .AddItem(

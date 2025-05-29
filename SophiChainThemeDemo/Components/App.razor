@@ -31,7 +31,7 @@
     <link rel="shortcut icon" href="@KTTheme.GetFavicon()" />
     <!-- METRONIC -->
 
-    <AbpStyles BundleName="@BlazorMetronicThemeBundles.Styles.Global" WebAssemblyStyleFiles="GlobalStyles" @rendermode="InteractiveServer" />
+    <AbpStyles BundleName="@BlazorMetronicThemeBundles.Styles.Global" @rendermode="InteractiveServer" />
 
     <HeadOutlet @rendermode="InteractiveAuto" />
 </head>
@@ -57,7 +57,7 @@
 
     <script src="_framework/blazor.web.js"></script>
 
-    <AbpScripts BundleName="@BlazorMetronicThemeBundles.Scripts.Global" WebAssemblyScriptFiles="GlobalScripts" @rendermode="InteractiveServer" />
+    <AbpScripts BundleName="@BlazorMetronicThemeBundles.Scripts.Global" @rendermode="InteractiveServer" />
 </body>
 </html>
 

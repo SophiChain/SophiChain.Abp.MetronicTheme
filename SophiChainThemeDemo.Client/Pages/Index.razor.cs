@@ -1,5 +1,6 @@
-﻿using SophiChainThemeDemo.Extensions;
-using Volo.Abp.AspNetCore.Components.Web.Theming.Layout;
+﻿using Blazorise.Snackbar;
+using SophiChainThemeDemo.Extensions;
+using Volo.Abp.AspNetCore.Components.Notifications;
 using Volo.Abp.AspNetCore.Components.Web.Theming.PageToolbars;
 using Volo.Abp.BlazoriseUI;
 
@@ -21,6 +22,11 @@ public partial class Index
         };
 
         await InvokeAsync(StateHasChanged);
+    }
+
+    private async Task ShowSnack()
+    {
+        await Notify.Warn("این یک متن هشدار برای نوتیفیکیشن است.");
     }
 
     private void GetToolbar()

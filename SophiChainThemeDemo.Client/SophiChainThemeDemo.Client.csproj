@@ -9,9 +9,9 @@
   <ItemGroup>
     <ProjectReference Include="..\modules\SophiChain.Abp.AspNetCore.Components.WebAssembly.MetronicTheme\SophiChain.Abp.AspNetCore.Components.WebAssembly.MetronicTheme.csproj" />
     <ProjectReference Include="..\SophiChainThemeDemo.Contracts\SophiChainThemeDemo.Contracts.csproj" />
-    <PackageReference Include="Blazorise.Bootstrap5" Version="1.6.2" />
-    <PackageReference Include="Blazorise.Icons.FontAwesome" Version="1.6.2" />
-    <PackageReference Include="Blazorise.Components" Version="1.6.2" />
+    <PackageReference Include="Blazorise.Bootstrap5" Version="1.5.2" />
+    <PackageReference Include="Blazorise.Icons.FontAwesome" Version="1.5.2" />
+    <PackageReference Include="Blazorise.Components" Version="1.5.2" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.4" />
     <PackageReference Include="MudBlazor" Version="8.6.0" />

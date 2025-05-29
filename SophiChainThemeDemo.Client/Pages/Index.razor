@@ -1,4 +1,5 @@
 ﻿@page "/"
+@using Blazorise.Snackbar
 @using SophiChainThemeDemo.Menus
 @using Telerik.Blazor
 @using Telerik.Blazor.Components
@@ -17,7 +18,29 @@
 			  MenuName="@SharedMenus.Settings.SettingsSideMenu" />
 
 <div class="page-filters mb-5">
+	<TelerikButton OnClick="@ShowSnack">
+		نمایش نوتیف
+	</TelerikButton>
+
 	<div class="card shadow-sm">
+		<div class="card-header collapsible cursor-pointer rotate" data-bs-toggle="collapse" data-bs-target="#kt_docs_card_collapsible">
+			<h3 class="card-title">Title</h3>
+			<div class="card-toolbar rotate-180">
+				<i class="ki-duotone ki-down fs-1"></i>
+			</div>
+		</div>
+		<div id="kt_docs_card_collapsible" class="collapse show">
+			<div class="card-body">
+				Lorem Ipsum is simply dummy text...
+			</div>
+			<div class="card-footer">
+				Footer
+			</div>
+		</div>
+	</div>
+
+
+	@* <div class="card shadow-sm">
 		<div class="card-header collapsible cursor-pointer rotate collapsed"
 			 data-bs-toggle="collapse"
 			 data-bs-target="#kt_docs_card_collapsible">
@@ -59,7 +82,7 @@
 				</button>
 			</div>
 		</div>
-	</div>
+	</div> *@
 </div>
 
 <div class="row mb-3">

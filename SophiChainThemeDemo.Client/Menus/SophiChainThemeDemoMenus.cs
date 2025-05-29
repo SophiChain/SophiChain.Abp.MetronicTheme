@@ -4,6 +4,9 @@ public class SophiChainThemeDemoMenus
 {
     private const string Prefix = "SC";
     public const string Home = Prefix + ".Home";
+    public const string Form = Prefix + ".Form";
+    public const string Telerik = Prefix + ".Telerik";
+    public const string Auth = Prefix + ".Auth";
     public const string HomeChild1 = Home + ".Child1";
     public const string HomeChild2 = Home + ".Child2";
     public const string HomeChild3 = Home + ".Child3";

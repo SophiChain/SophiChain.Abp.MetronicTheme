@@ -9,8 +9,7 @@ public class CustomToolbarContributor : IToolbarContributor
     {
         if (context.Toolbar.Name == StandardToolbars.Main)
         {
-            context.Toolbar.Items.Insert(0, new ToolbarItem(typeof(ToolbarChatToggle)));
-            context.Toolbar.Items.Insert(1, new ToolbarItem(typeof(ToolbarUserAccount)));
+            context.Toolbar.Items.Insert(0, new ToolbarItem(typeof(ToolbarUserAccount)));
         }
 
         return Task.CompletedTask;
