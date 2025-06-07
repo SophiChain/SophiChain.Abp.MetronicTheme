@@ -2,33 +2,88 @@
 @using Telerik.Blazor
 @using Telerik.Blazor.Components
 @layout Auth1Layout
-@inject IKTTheme KTTheme
-@inject IJSRuntime JS
+@inherits SophiChainThemeDemoComponentBase
 
-<form class="form w-100" novalidate="novalidate" id="kt_sign_up_form" data-kt-redirect-url="/signin" action="#">
-    <div class="text-center mb-11">
-        <h1 class="text-gray-900 mb-3">
-            ورود به پنل
-        </h1>
-    </div>
-    <div class="row g-3 mb-9">
-        <div class="col-md-6">
-            <TelerikButton ThemeColor="@ThemeConstants.Button.ThemeColor.Light" Class="w-100">
-                
-                ورود با نام کاربری
-            </TelerikButton>
-        </div>
-        <div class="col-md-6">
-            <TelerikButton ThemeColor="@ThemeConstants.Button.ThemeColor.Light" Class="w-100">
-                <i class="fa-solid fa-message-sms"></i>
-                ورود با رمز یک بار مصرف
-            </TelerikButton>
-        </div>
-    </div>
-    <div class="d-grid mb-10">
-        <TelerikButton ThemeColor="@ThemeConstants.Button.ThemeColor.Primary" Class="w-100">
+<TelerikRootComponent EnableRtl=true>
+	<div class="login-container">
+		<div class="login-heading">
+			<div class="text-center mb-11">
+				<h1 class="text-gray-900 mb-3">
+					ورود به پنل
+				</h1>
+			</div>
+		</div>
+		<div class="login-content">
+			@if(FormState != "reset-password")
+			{
+				<div class="login-type">
+					<div class="row g-3 mb-9">
+						<div class="col-md-6">
+							@{
+								var passBtn = FormState == "password-login" ? "w-100 active-btn" : "w-100";
+								var otpBtn = FormState == "otp-login" ? "w-100 active-btn" : "w-100";
+							}
+							<TelerikButton 
+								ThemeColor="@ThemeConstants.Button.ThemeColor.Light" 
+								Class="@passBtn" 
+								OnClick="LoginWithPassword">
+								ورود با نام کاربری
+							</TelerikButton>
+						</div>
+						<div class="col-md-6">
+							<TelerikButton 
+								ThemeColor="@ThemeConstants.Button.ThemeColor.Light" 
+								Class="@otpBtn" 
+								OnClick="LoginWithOtp">
+								ورود با رمز یک بار مصرف
+							</TelerikButton>
+						</div>
+					</div>
+				</div>
+			}
+			<div class="login-form">
+				@if (FormState == "otp-login")
+				{
+					if(!OTPSent)
+					{
+						<TelerikTextBox @bind-Value=Captcha Placeholder="شماره تلفن همراه"></TelerikTextBox>
+						<TelerikTextBox @bind-Value=Captcha Placeholder="عبارت امنیتی کپچا"> </TelerikTextBox>
+						<span class="form-hint">
+							عبارت امنیتی کپچا به حروف کوچک و بزرگ حساس است.
+						</span>
+						<TelerikButton OnClick="LoginWithOtp" ThemeColor="@ThemeConstants.Button.ThemeColor.Primary" Class="w-100">ارسال کد</TelerikButton>
+					}
+					else
+					{
+						<TelerikTextBox @bind-Value=Captcha Placeholder="کد تایید"> </TelerikTextBox>
+						<TelerikButton OnClick="LoginWithOtp" ThemeColor="@ThemeConstants.Button.ThemeColor.Primary" Class="w-100">تایید</TelerikButton>
+					}
+				}
+				else if(FormState == "password-login")
+				{
+					<TelerikTextBox @bind-Value=Captcha Placeholder="نام کاربری یا ایمیل"></TelerikTextBox>
+					<TelerikTextBox @bind-Value=Captcha Placeholder="گذرواژه"></TelerikTextBox>
 
-            ورود
-        </TelerikButton>
-    </div>
-</form>
+					<TelerikTextBox @bind-Value=CaptchaInput Placeholder="عبارت امنیتی کپچا"> </TelerikTextBox>
+					<span class="form-hint">
+							عبارت امنیتی کپچا به حروف کوچک و بزرگ حساس است.
+						</span>
+
+					<TelerikButton OnClick="LoginWithOtp" ThemeColor="@ThemeConstants.Button.ThemeColor.Primary" Class="w-100">
+						ورود
+					</TelerikButton>
+					<TelerikButton OnClick="OnForgotPassword" ButtonType=@Telerik.Blazor.ButtonType.Reset Class="w-100">
+						فراموشی رمز عبور
+					</TelerikButton>
+				}
+				else if(FormState == "reset-password")
+				{
+					<TelerikTextBox @bind-Value=Captcha Placeholder="شماره تلفن همراه یا ایمیل"></TelerikTextBox>
+					<TelerikButton OnClick="OnSendPasswordResetLink" ButtonType=@Telerik.Blazor.ButtonType.Reset Class="w-100">
+						ارسال لینک بازیابی رمز عبور
+					</TelerikButton>
+				}
+			</div>
+		</div>
+	</div>
+</TelerikRootComponent>
