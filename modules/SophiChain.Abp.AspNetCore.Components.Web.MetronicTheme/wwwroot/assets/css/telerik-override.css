@@ -486,3 +486,26 @@
     color: var(--sc-primary-color);
     font-weight: bold;
 }
+
+/******************** PANEL BAR ********************/
+.k-panelbar {
+    font-family: 'IRANSansXFaNum';
+    border-radius: 0.625rem;
+}
+
+.k-panelbar > .k-panelbar-header > .k-link {
+    flex-direction: row-reverse;
+    border-radius: 0.625rem;
+}
+
+.k-panelbar .k-panelbar-expand,
+.k-panelbar .k-panelbar-collapse,
+.k-panelbar .k-panelbar-toggle {
+    margin-inline-start: 0;
+    margin-inline-end: auto;
+}
+
+.k-panelbar > .k-panelbar-header > .k-link:focus, 
+.k-panelbar > .k-panelbar-header > .k-link.k-focus {
+    box-shadow: none;
+}

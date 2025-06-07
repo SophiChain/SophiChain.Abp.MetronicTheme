@@ -179,6 +179,37 @@ a {
     text-align: center;
   }
 }
+.page-filters .k-panelbar {
+  border: none;
+}
+.page-filters .k-link .k-panelbar-item-text {
+  font-size: 18px;
+}
+.page-filters .k-link.k-selected {
+  background-color: transparent !important;
+  color: var(--kendo-color-primary) !important;
+}
+.page-filters .card-footer {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.page-filters .page-filters-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.sc-theme-dark .k-panelbar {
+  background-color: var(--bs-card-bg);
+  color: var(--sc-dark-text-color);
+}
+.sc-theme-dark .k-panelbar-item-text {
+  color: var(--sc-dark-text-color);
+}
+.sc-theme-dark .k-panelbar-toggle {
+  color: var(--sc-dark-text-color);
+}
+
 /******************** AUTH PAGE ********************/
 .auth-container {
   min-height: 100vh;
@@ -254,9 +285,7 @@ a {
     color: var(--sc-primary-color);
   }
 }
-/** TOAST NOTIFICATIONS **/
-/** TOAST NOTIFICATIONS **/
-/** TOAST NOTIFICATIONS **/
+/******************** TOAST NOTIFICATIONS ********************/
 .snackbar {
   --bs-toast-zindex: 1090;
   --bs-toast-padding-x: 0.75rem;
@@ -335,4 +364,39 @@ a {
 .snackbar-stack-top-start,
 .snackbar-stack-top {
   z-index: 99999 !important;
+}
+
+/******************** MESSAGE MODAL ********************/
+.modal-content .modal-body h1 {
+  margin-bottom: 20px;
+}
+.modal-content .modal-body h1 i {
+  width: 80px;
+  height: 80px;
+  background-color: var(--sc-background-color);
+  padding: 15px;
+  border-radius: var(--sc-border-radius-circle);
+  font-size: 50px;
+}
+
+/******************** ALERTS ********************/
+.alert {
+  width: 500px;
+  max-width: 100%;
+  right: 40px;
+}
+.alert .btn-close {
+  right: auto;
+  left: 0;
+}
+.alert p {
+  margin-bottom: 0;
+}
+
+@media (max-width: 480px) {
+  .alert {
+    width: 100%;
+    max-width: 330px;
+    right: 20px;
+  }
 }

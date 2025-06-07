@@ -17,72 +17,57 @@
 			  BreadcrumbItems="@CustomBreadcrumb"
 			  MenuName="@SharedMenus.Settings.SettingsSideMenu" />
 
+<TelerikButton OnClick="@ShowSnack">
+	نمایش نوتیف
+</TelerikButton>
+
+<TelerikButton OnClick="@ShowMessage">
+	نمایش مسج
+</TelerikButton>
+
+<TelerikButton OnClick="@ShowAlert">
+	نمایش آلرت
+</TelerikButton>
+
 <div class="page-filters mb-5">
-	<TelerikButton OnClick="@ShowSnack">
-		نمایش نوتیف
-	</TelerikButton>
-
 	<div class="card shadow-sm">
-		<div class="card-header collapsible cursor-pointer rotate" data-bs-toggle="collapse" data-bs-target="#kt_docs_card_collapsible">
-			<h3 class="card-title">Title</h3>
-			<div class="card-toolbar rotate-180">
-				<i class="ki-duotone ki-down fs-1"></i>
-			</div>
-		</div>
-		<div id="kt_docs_card_collapsible" class="collapse show">
-			<div class="card-body">
-				Lorem Ipsum is simply dummy text...
-			</div>
-			<div class="card-footer">
-				Footer
-			</div>
-		</div>
+		<TelerikPanelBar Data="@Data">
+			<PanelBarBindings>
+				<PanelBarBinding Level="0">
+					<ContentTemplate>
+						<div class="card-body">
+							<div class="page-filters-content">
+								<div class="row">
+									<div class="col-md-4">
+										<input type="text" class="form-control" placeholder="name@example.com" />
+									</div>
+									<div class="col-md-4">
+										<input type="text" class="form-control" placeholder="name@example.com" />
+									</div>
+									<div class="col-md-4">
+										<input type="text" class="form-control" placeholder="name@example.com" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="card-footer">
+							<div class="page-filters-buttons">
+								<button class="btn btn-sm btn-primary fs-7" type="button">
+									بازنشانی
+								</button>
+								<button class="btn btn-sm btn-primary fs-7" type="button">
+									جستجو
+								</button>
+								<button class="btn btn-sm btn-primary fs-7" type="button">
+									ذخیره تنظیمات
+								</button>
+							</div>
+						</div>
+					</ContentTemplate>
+				</PanelBarBinding>
+			</PanelBarBindings>
+		</TelerikPanelBar>
 	</div>
-
-
-	@* <div class="card shadow-sm">
-		<div class="card-header collapsible cursor-pointer rotate collapsed"
-			 data-bs-toggle="collapse"
-			 data-bs-target="#kt_docs_card_collapsible">
-			<h3 class="card-title">
-				<i class="ki-duotone ki-filter fs-1 me-2">
-					<span class="path1"></span>
-					<span class="path2"></span>
-				</i>
-				<span class="ml-2">فیلترها</span>
-
-			</h3>
-			<div class="card-toolbar rotate-180">
-				<i class="ki-duotone ki-down fs-1"></i>
-			</div>
-		</div>
-		<div id="kt_docs_card_collapsible" class="collapse">
-			<div class="card-body">
-				<div class="row">
-					<div class="col-md-4">
-						<input type="text" class="form-control" placeholder="name@example.com" />
-					</div>
-					<div class="col-md-4">
-						<input type="text" class="form-control" placeholder="name@example.com" />
-					</div>
-					<div class="col-md-4">
-						<input type="text" class="form-control" placeholder="name@example.com" />
-					</div>
-				</div>
-			</div>
-			<div class="card-footer d-flex align-items-center justify-content-end gap-3">
-				<button class="btn btn-sm btn-primary fs-7" type="button">
-					بازنشانی
-				</button>
-				<button class="btn btn-sm btn-primary fs-7" type="button">
-					جستجو
-				</button>
-				<button class="btn btn-sm btn-primary fs-7" type="button">
-					ذخیره تنظیمات
-				</button>
-			</div>
-		</div>
-	</div> *@
 </div>
 
 <div class="row mb-3">
