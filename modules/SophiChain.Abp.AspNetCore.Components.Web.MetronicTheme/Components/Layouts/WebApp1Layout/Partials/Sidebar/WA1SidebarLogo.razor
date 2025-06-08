@@ -1,19 +1,12 @@
 ﻿@using Volo.Abp.Ui.Branding
 @inject IBrandingProvider BrandingProvider
-@inject MetronicThemeBrandingProvider MetronicThemeBrandingProvider
-
-@{
-	var lightLogo = MetronicThemeBrandingProvider.GetLogoUrl("light-logo");
-	var darkLogo = MetronicThemeBrandingProvider.GetLogoUrl("dark-logo");
-	var minimizedLogo = MetronicThemeBrandingProvider.GetLogoUrl("minimized-logo");
-}
 
 <div class="app-sidebar-logo" id="kt_app_sidebar_logo">
 	<a href="/">
-		<img alt="@BrandingProvider.AppName" src="@lightLogo" class="h-25px app-sidebar-logo-default">
-		<img alt="@BrandingProvider.AppName" src="@darkLogo" class="h-25px app-sidebar-logo-dark">
-		<img alt="@BrandingProvider.AppName" src="@minimizedLogo" class="h-25px app-sidebar-logo-minimize">
-		@if (lightLogo.IsNullOrEmpty())
+		<img alt="@BrandingProvider.AppName" src="@BrandingProvider.LogoUrl" class="h-25px app-sidebar-logo-default">
+		<img alt="@BrandingProvider.AppName" src="@BrandingProvider.LogoUrl" class="h-25px app-sidebar-logo-dark">
+		<img alt="@BrandingProvider.AppName" src="@BrandingProvider.LogoReverseUrl" class="h-25px app-sidebar-logo-minimize">
+		@if (BrandingProvider.LogoUrl.IsNullOrEmpty())
 		{
 			<div class="sc-brand-name">@BrandingProvider.AppName</div>
 		}
