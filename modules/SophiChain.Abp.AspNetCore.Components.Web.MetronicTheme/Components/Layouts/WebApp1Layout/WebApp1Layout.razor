@@ -6,54 +6,60 @@
 @inherits LayoutComponentBase
 @layout MasterInit
 
-<CascadingValue Value="ThemeState" Name="ThemeState">
-	<UiPageProgress />
-	<LayoutHook Name="@LayoutHooks.Body.First" Layout="@StandardLayouts.Application" />
-	<div id="webapp1-layout" class="sc-layout webapp1-layout">
-		<div class="d-flex flex-column flex-root app-root" id="kt_app_root">
-			<div class="app-page flex-column flex-column-fluid" id="kt_app_page">
-				<WA1Header />
-				<div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
-					<WA1Sidebar />
-					<div class="app-main flex-column flex-row-fluid" id="kt_app_main">
-						<div class="d-flex flex-column flex-column-fluid">
-							<WA1PageToolbar />
-							<PageAlert />
-							<div id="kt_app_content" class="app-content flex-column-fluid">
-								<div id="kt_app_content_container" class="app-container container-fluid">
-									<div class="page-layout">
-										<div class="page-container page-full">
-											<div class="page-wrapper">
-												<ErrorBoundary>
-													<ChildContent>
-														<div class="page-content">
-															@Body
-														</div>
-													</ChildContent>
-												</ErrorBoundary>
+@if (IsLoading)
+{
+	<PageLoader IsLoading=@IsLoading IsLoadingText="@IsLoadingText" />
+}
+else
+{
+	<CascadingValue Value="ThemeState" Name="ThemeState">
+		<UiPageProgress />
+		<LayoutHook Name="@LayoutHooks.Body.First" Layout="@StandardLayouts.Application" />
+		<div id="webapp1-layout" class="sc-layout webapp1-layout">
+			<div class="d-flex flex-column flex-root app-root" id="kt_app_root">
+				<div class="app-page flex-column flex-column-fluid" id="kt_app_page">
+					<WA1Header />
+					<div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
+						<WA1Sidebar />
+						<div class="app-main flex-column flex-row-fluid" id="kt_app_main">
+							<div class="d-flex flex-column flex-column-fluid">
+								<WA1PageToolbar />
+								<PageAlert />
+								<div id="kt_app_content" class="app-content flex-column-fluid">
+									<div id="kt_app_content_container" class="app-container container-fluid">
+										<div class="page-layout">
+											<div class="page-container page-full">
+												<div class="page-wrapper">
+													<ErrorBoundary>
+														<ChildContent>
+															<div class="page-content">
+																@Body
+															</div>
+														</ChildContent>
+													</ErrorBoundary>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
+							<WA1Footer />
 						</div>
-						<WA1Footer />
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<LayoutHook Name="@LayoutHooks.Body.Last" Layout="@StandardLayouts.Application" />
-	<DynamicLayoutComponent />
+		<LayoutHook Name="@LayoutHooks.Body.Last" Layout="@StandardLayouts.Application" />
+		<DynamicLayoutComponent />
 
-	<UiMessageAlert />
-	@* <UiNotificationAlert /> *@
-	<SCNotificationAlert />
+		<UiMessageAlert />
+		@* <UiNotificationAlert /> *@
+		<SCNotificationAlert />
 
-	<MobileBottomMenu />
-	<ScrollTop />
-</CascadingValue>
-
+		<MobileBottomMenu />
+		<ScrollTop />
+	</CascadingValue>
+}
 
 <style>
 	:root {

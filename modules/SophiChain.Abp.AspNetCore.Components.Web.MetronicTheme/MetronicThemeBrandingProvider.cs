@@ -16,9 +16,9 @@ public class MetronicThemeBrandingProvider : DefaultBrandingProvider
         _localizer = localizer;
     }
 
-    public override string AppName => _localizer["AppName"];
-    public override string LogoUrl => GetLogoUrl("light-logo");
-    public override string LogoReverseUrl => GetLogoUrl("dark-logo");
+    public override string AppName => GetAppName();
+    public override string LogoUrl => GetLogoUrl("main");
+    public override string LogoReverseUrl => GetLogoUrl("dark");
 
     public string GetAppName()
     {
@@ -31,10 +31,10 @@ public class MetronicThemeBrandingProvider : DefaultBrandingProvider
         //return $"https://files.touristpanel.me/assets/logo/{tname}-{type}-logo.png";
         switch (type)
         {
-            case "light-logo":
+            case "main":
                 return "/_content/SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme/assets/media/logos/default.svg";
 
-            case "dark-logo":
+            case "dark":
                 return "/_content/SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme/assets/media/logos/default-dark.svg";
 
             case "minimized-logo":

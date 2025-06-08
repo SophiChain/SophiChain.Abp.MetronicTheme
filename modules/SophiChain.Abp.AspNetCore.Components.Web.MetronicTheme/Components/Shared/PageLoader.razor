@@ -1,4 +1,6 @@
-﻿@inject IKTTheme KTTheme;
+﻿@using Volo.Abp.Ui.Branding
+@inject IKTTheme KTTheme;
+@inject IBrandingProvider BrandingProvider
 
 @{
 	var isLoadingClass = "d-flex justify-content-center align-items-center";
@@ -6,8 +8,8 @@
 }
 
 <div class="app-page-loader flex-column @(IsLoading ? isLoadingClass : "")">
-	<img alt="Logo" src='@KTTheme.GetAssetPath("media/logos/default.svg")' class="theme-light-show h-25px" />
-	<img alt="Logo" src='@KTTheme.GetAssetPath("media/logos/default-dark.svg")' class="theme-dark-show h-25px" />
+	<img src="@BrandingProvider.LogoUrl" alt="@BrandingProvider.AppName" class="theme-light-show h-25px">
+	<img src="@BrandingProvider.LogoUrl" alt="@BrandingProvider.AppName" class="theme-dark-show h-25px">
 
 	<div class="d-flex align-items-center mt-5">
 		<span class="spinner-border text-primary" role="status"></span>

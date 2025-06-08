@@ -1,4 +1,4 @@
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme.Components.Helpers;
@@ -8,6 +8,9 @@ public partial class WebApp1Layout
 {
     [CascadingParameter(Name = "ThemeState")]
     public ThemeCascadingState ThemeState { get; set; } = new();
+
+    public bool IsLoading { get; set; } = true;
+    public string? IsLoadingText { get; set; }
 
 
     private IKTThemeHelpers KTHelper = default!;
@@ -55,7 +58,6 @@ public partial class WebApp1Layout
                 }
             }
 
-
             var themeStyle = await JS.InvokeAsync<string>("localStorage.getItem", "data-bs-theme");
 
             if (themeStyle != null)
@@ -74,8 +76,10 @@ public partial class WebApp1Layout
                     KTHelper.addBodyClass("sc-theme-light");
                     await JS.InvokeVoidAsync("localStorage.setItem", "data-bs-theme", "light");
                 }
-                await InvokeAsync(StateHasChanged);
+                
             }
+            IsLoading = false;
+            await InvokeAsync(StateHasChanged);
         }
     }
 }
