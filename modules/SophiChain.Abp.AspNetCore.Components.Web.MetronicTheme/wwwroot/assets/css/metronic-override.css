@@ -6,6 +6,12 @@
     background-color: var(--sc-dark-background-color);
 }
 
+@media(min-width: 992px){
+    .app-content {
+        min-height: calc(100vh - 200px);
+    }
+}
+
 .app-sidebar-logo {
     padding: 15px;
     justify-content: center;
@@ -56,6 +62,10 @@
     background-color: var(--bs-app-header-minimize-bg-color);
 }
 
+.app-toolbar {
+    height: 65px;
+}
+
 @media (min-width: 992px) {
     .app-toolbar .app-header-mobile-drawer {
         display: flex;
@@ -87,6 +97,14 @@
     #kt_app_toolbar_container {
         justify-content: center;
     }
+}
+
+.app-header-menu .menu > .menu-item > .menu-link > .menu-title {
+    font-size: 1rem;
+}
+
+.app-header-menu .menu .menu-item .menu-link .menu-icon {
+    font-size: 17px;
 }
 
 .app-footer {
