@@ -250,7 +250,11 @@ a {
     margin: 0;
     padding: 0;
     display: flex;
-    gap: 30px;
+    gap: 10px;
+  }
+  .sc-mobile-navbar-container .sc-mobile-nav-menu .sc-mobile-nav-item {
+    width: 55px;
+    max-width: 55px;
   }
   .sc-mobile-navbar-container .sc-mobile-nav-menu .sc-mobile-nav-link {
     display: flex;
@@ -258,6 +262,10 @@ a {
     align-items: center;
     justify-content: center;
     gap: 10px;
+    max-width: 55px;
+  }
+  .sc-mobile-navbar-container .sc-mobile-nav-menu .sc-mobile-nav-avatar {
+    width: 20px;
   }
   .sc-mobile-navbar-container .sc-mobile-nav-right {
     flex: 1;
