@@ -15,7 +15,7 @@ public class SophiChainThemeDemoBrandingProvider : DefaultBrandingProvider
         _localizer = localizer;
     }
 
-    public override string AppName => GetAppName();
+    public override string AppName => _localizer["AppName"];
     public override string LogoUrl => GetLogoUrl("main");
     public override string LogoReverseUrl => GetLogoUrl("dark");
 
@@ -36,11 +36,8 @@ public class SophiChainThemeDemoBrandingProvider : DefaultBrandingProvider
             case "dark":
                 return "/_content/SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme/assets/media/logos/default-dark.svg";
 
-            case "minimized-logo":
-                return "/_content/SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme/assets/media/logos/favicon.ico";
-
             default:
-                return "/_content/SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme/assets/media/logos/default.svg";
+                return "/_content/SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme/assets/media/logos/favicon.ico";
         }
     }
 }

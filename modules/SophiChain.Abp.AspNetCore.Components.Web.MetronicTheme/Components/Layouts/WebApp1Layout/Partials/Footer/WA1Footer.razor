@@ -1,18 +1,36 @@
-﻿<div id="kt_app_footer" class="app-footer">
+﻿@using System.Globalization
+@using System.Reflection
+
+@code {
+	string PersianCurrentYear = DateTime.Now.ToString("yyyy", new CultureInfo("fa"));
+	string InformationalVersion = typeof(SophiChainAspNetCoreComponentsWebMetronicThemeModule).Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion.ToString();
+}
+
+<div id="kt_app_footer" class="app-footer">
 	<div class="app-container container-fluid d-flex flex-column flex-md-row flex-center flex-md-stack py-3">
-		<div class="text-gray-900 order-2 order-md-1">
-			<span class="text-muted fw-semibold me-1">2023&copy;</span>
-			<a href="https://keenthemes.com" target="_blank" class="text-gray-800 text-hover-primary">Keenthemes</a>
+		<div class="app-footer-copyright text-gray-900 order-1">
+			<span class="text-muted fw-semibold">1398 - @PersianCurrentYear ©</span>
+			<span class="text-muted fw-semibold me-1 ms-1">|</span>
+			<a href="https://toptis.ir" target="_blank">تاپ تیس</a>
+			<span class="text-muted">قدرت گرفته از</span>
+			<a href="https://touristpanel.ir" target="_blank">توریست پنل</a>
 		</div>
-		<ul class="menu menu-gray-600 menu-hover-primary fw-semibold order-1">
+		<div class="app-footbar-version order-3 order-md-2">
+			<span>@InformationalVersion.Substring(0, InformationalVersion.LastIndexOf("+"))</span>
+			<a href="/documents/versions"><i class="fas fa-code-branch"></i></a>
+		</div>
+		<ul class="app-footer-menu menu menu-gray-600 menu-hover-primary fw-semibold order-2 order-md-3">
 			<li class="menu-item">
-				<a href="https://keenthemes.com" target="_blank" class="menu-link px-2">About</a>
+				<a href="/documents" target="_blank" class="menu-link px-2">مستندات فنی</a>
 			</li>
 			<li class="menu-item">
-				<a href="https://devs.keenthemes.com" target="_blank" class="menu-link px-2">Support</a>
+				<a href="/documents/versions" target="_blank" class="menu-link px-2">نسخه</a>
 			</li>
 			<li class="menu-item">
-				<a href="https://1.envato.market/EA4JP" target="_blank" class="menu-link px-2">Purchase</a>
+				<a href="/timche/support-tickets-client" target="_blank" class="menu-link px-2">تیکت پشتیبانی</a>
+			</li>
+			<li class="menu-item">
+				<a href="/documents/download-apps" target="_blank" class="menu-link px-2">دانلود اپلیکیشن ها</a>
 			</li>
 		</ul>
 	</div>
