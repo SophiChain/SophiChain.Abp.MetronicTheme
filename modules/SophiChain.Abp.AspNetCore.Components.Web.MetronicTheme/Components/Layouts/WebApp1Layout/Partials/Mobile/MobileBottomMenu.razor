@@ -9,7 +9,7 @@
 				<ul class="sc-mobile-nav-menu">
 					@if (SelectedMenuItems is not null)
 					{
-						foreach (var viewModel in SelectedMenuItems)
+						foreach (var viewModel in SelectedMenuItems.Take(2))
 						{
 							<li class="sc-mobile-nav-item">
 								<a id="@viewModel.MenuItem.ElementId" href="@viewModel.MenuItem.Url" target="@viewModel.MenuItem.Target" class="sc-mobile-nav-link @viewModel.MenuItem.CssClass">
@@ -32,15 +32,16 @@
 
 			<div class="sc-mobile-nav-left">
 				<ul class="sc-mobile-nav-menu">
-					<li class="sc-mobile-nav-item">
-						<a class="sc-mobile-nav-link" data-sc-mobile-menu-toggle="settings">
-							<i class="ki-duotone ki-setting-2 fs-1">
-								<span class="path1"></span>
-								<span class="path2"></span>
-							</i>
-							<span class="sc-mobile-nav-text">تنظیمات</span>
-						</a>
-					</li>
+					@if (SelectedMenuItems is not null)
+					{
+						var thirdMenu = SelectedMenuItems.ToList()[2];
+						<li class="sc-mobile-nav-item">
+							<a id="@thirdMenu.MenuItem.ElementId" href="@thirdMenu.MenuItem.Url" target="@thirdMenu.MenuItem.Target" class="sc-mobile-nav-link @thirdMenu.MenuItem.CssClass">
+								<i class="sc-mobile-nav-item-icon @thirdMenu.MenuItem.Icon" aria-hidden="true"></i>
+								<span class="sc-mobile-nav-text">@thirdMenu.MenuItem.DisplayName</span>
+							</a>
+						</li>
+					}
 					<li class="sc-mobile-nav-item">
 						<AuthorizeView>
 							<Authorized>
@@ -54,7 +55,7 @@
 							</Authorized>
 							<NotAuthorized>
 								<a href="@LoginLink" class="sc-mobile-nav-link">
-									<i class="ki-duotone ki-profile-circle fs-1">
+									<i class="ki-duotone ki-profile-circle">
 										<span class="path1"></span>
 										<span class="path2"></span>
 										<span class="path3"></span>

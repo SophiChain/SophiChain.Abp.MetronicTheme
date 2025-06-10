@@ -15,26 +15,13 @@ namespace SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme.Components.Layo
 public partial class MobileBottomMenu
 {
     [Inject] protected IMenuManager MenuManager { get; set; }
-
     [Inject] protected ICurrentUser CurrentUser { get; set; }
-
-    [Inject] protected ICurrentTenant CurrentTenant { get; set; }
-
     [Inject] protected MainMenuProvider MainMenuProvider { get; set; }
-
     [Inject] protected IOptions<MetronicThemeBlazorOptions> Options { get; set; }
-
-    [Inject] protected IToolbarManager ToolbarManager { get; set; }
-
     protected ApplicationMenu UserMenu { get; set; }
-
     protected string ProfileImageUrl { get; set; }
-
     protected List<MenuItemViewModel> SelectedMenuItems { get; set; } = new();
-
     protected virtual string LoginLink => "account/login";
-
-    protected Toolbar Toolbar { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
@@ -45,9 +32,9 @@ public partial class MobileBottomMenu
     {
         UserMenu = await MenuManager.GetAsync(StandardMenus.User);
 
-        var menu = await MainMenuProvider.GetMenuAsync();
+        var shortcutsMenu = await MainMenuProvider.GetMenuAsync(StandardMenus.Shortcut);
 
-        SelectedMenuItems = Options.Value.MobileMenuSelector(menu.Items.AsReadOnly()).Take(2).ToList();
+        SelectedMenuItems = Options.Value.MobileMenuSelector(shortcutsMenu.Items.AsReadOnly()).ToList();
 
         if (CurrentUser.IsAuthenticated && CurrentUser.Id != null)
         {

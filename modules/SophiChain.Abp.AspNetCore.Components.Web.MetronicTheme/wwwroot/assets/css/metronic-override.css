@@ -106,6 +106,10 @@
 .app-header-menu .menu .menu-item .menu-link .menu-icon {
     font-size: 17px;
 }
+ 
+.app-sidebar .menu .menu-item .menu-link .menu-icon i {
+    font-size: 15px;
+}
 
 .app-footer {
     font-size: 12px;

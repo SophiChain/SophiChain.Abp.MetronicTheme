@@ -1,6 +1,7 @@
 using Blazorise.Bootstrap5;
 using Blazorise.Icons.FontAwesome;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using SophiChain.Abp.AspNetCore.Components.Server.MetronicTheme;
 using SophiChain.Abp.AspNetCore.Components.WebAssembly.MetronicTheme;
 using SophiChainThemeDemo.Menus;
 using SophiChainThemeDemo.Wrapper;

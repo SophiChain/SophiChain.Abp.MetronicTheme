@@ -290,20 +290,37 @@ a {
             margin: 0;
             padding: 0;
             display: flex;
-            gap: 10px;
+            gap: 5px;
 
             .sc-mobile-nav-item {
                 width: 55px;
                 max-width: 55px;
-            } 
-            
+            }
+
             .sc-mobile-nav-link {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                gap: 10px;
+                gap: 5px;
                 max-width: 55px;
+            }
+
+            .sc-mobile-nav-item-icon {
+                font-size: 22px;
+            }
+
+            .ki-profile-circle {
+                font-size: 22px;
+            }
+
+            .sc-mobile-nav-text {
+                width: 55px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                text-align: center;
+                font-size: 12px;
             }
 
             .sc-mobile-nav-avatar {

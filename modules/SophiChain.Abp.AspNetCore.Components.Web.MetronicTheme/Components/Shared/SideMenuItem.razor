@@ -20,16 +20,7 @@
 	{
 		<div class="menu-item">
 			<a class="menu-link @(MenuItem.IsActive ? "active" : "") @cssClass" id="@MenuItem.MenuItem.ElementId">
-				@if (MenuItem.Parent != null)
-				{
-					<span class="menu-bullet">
-						<span class="bullet bullet-dot"></span>
-					</span>
-				}
-				@if (!MenuItem.MenuItem.Icon.IsNullOrEmpty() || MenuItem.Parent is null)
-				{
-					<span class="menu-icon"><i class="sc-icon @MenuItem.MenuItem.Icon" aria-hidden="true"></i></span>
-				}
+				<span class="menu-icon"><i class="sc-icon @MenuItem.MenuItem.Icon" aria-hidden="true"></i></span>
 				<span class="menu-title">@MenuItem.MenuItem.DisplayName</span>
 			</a>
 		</div>
@@ -40,16 +31,7 @@
 		{
 			<div class="menu-item">
 				<a class="menu-link @(MenuItem.IsActive ? "active" : "") @cssClass" id="@MenuItem.MenuItem.ElementId" @onclick="()=>NavigateToUrl(url)">
-					@if (MenuItem.Parent != null)
-					{
-						<span class="menu-bullet">
-							<span class="bullet bullet-dot"></span>
-						</span>
-					}
-					@if (!MenuItem.MenuItem.Icon.IsNullOrEmpty() || MenuItem.Parent is null)
-					{
-						<span class="menu-icon"><i class="sc-icon @MenuItem.MenuItem.Icon" aria-hidden="true"></i></span>
-					}
+					<span class="menu-icon"><i class="sc-icon @MenuItem.MenuItem.Icon" aria-hidden="true"></i></span>
 					<span class="menu-title">@MenuItem.MenuItem.DisplayName</span>
 				</a>
 			</div>
@@ -58,16 +40,7 @@
 		{
 			<div class="menu-item">
 				<a class="menu-link @(MenuItem.IsActive ? "active" : "") @cssClass" id="@MenuItem.MenuItem.ElementId" href="@url">
-					@if (MenuItem.Parent != null)
-					{
-						<span class="menu-bullet">
-							<span class="bullet bullet-dot"></span>
-						</span>
-					}
-					@if (!MenuItem.MenuItem.Icon.IsNullOrEmpty() || MenuItem.Parent is null)
-					{
-						<span class="menu-icon"><i class="sc-icon @MenuItem.MenuItem.Icon" aria-hidden="true"></i></span>
-					}
+					<span class="menu-icon"><i class="sc-icon @MenuItem.MenuItem.Icon" aria-hidden="true"></i></span>
 					<span class="menu-title">@MenuItem.MenuItem.DisplayName</span>
 				</a>
 			</div>
@@ -86,16 +59,7 @@ else
 
 		<div data-kt-menu-trigger="click" class="menu-item @(openParent ? "here show" : "") menu-accordion" @onclick="ToggleMenu">
 			<span class="menu-link">
-				@if (MenuItem.Parent != null)
-				{
-					<span class="menu-bullet">
-						<span class="bullet bullet-dot"></span>
-					</span>
-				}
-				@if (!MenuItem.MenuItem.Icon.IsNullOrEmpty() || MenuItem.Parent is null)
-				{
-					<span class="menu-icon"><i class="sc-icon @MenuItem.MenuItem.Icon" aria-hidden="true"></i></span>
-				}
+				<span class="menu-icon"><i class="sc-icon @MenuItem.MenuItem.Icon" aria-hidden="true"></i></span>
 				<span class="menu-title">@MenuItem.MenuItem.DisplayName</span>
 				<span class="menu-arrow"></span>
 			</span>
