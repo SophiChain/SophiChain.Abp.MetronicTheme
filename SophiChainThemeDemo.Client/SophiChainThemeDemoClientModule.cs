@@ -1,10 +1,8 @@
 using Blazorise.Bootstrap5;
 using Blazorise.Icons.FontAwesome;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using SophiChain.Abp.AspNetCore.Components.Server.MetronicTheme;
 using SophiChain.Abp.AspNetCore.Components.WebAssembly.MetronicTheme;
 using SophiChainThemeDemo.Menus;
-using SophiChainThemeDemo.Wrapper;
 using Volo.Abp.Account;
 using Volo.Abp.AspNetCore.Components.Web;
 using Volo.Abp.AspNetCore.Components.Web.Theming.Routing;
@@ -22,7 +20,6 @@ using Volo.Abp.SettingManagement;
 using Volo.Abp.SettingManagement.Blazor.WebAssembly;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.TenantManagement.Blazor.WebAssembly;
-using Volo.Abp.Ui.LayoutHooks;
 using Volo.Abp.UI.Navigation;
 
 namespace SophiChainThemeDemo;
@@ -85,8 +82,6 @@ public class SophiChainThemeDemoClientModule : AbpModule
         ConfigureAutoMapper(context);
 
         context.Services.AddHttpClientProxies(typeof(SophiChainThemeDemoContractsModule).Assembly);
-
-        context.Services.AddTelerikBlazor();
     }
 
     private void ConfigureRouter(ServiceConfigurationContext context)

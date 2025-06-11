@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MudBlazor.Services;
 using SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme.Themes.Metronic.libs;
 using Volo.Abp.AspNetCore.Components.Web.Theming;
 using Volo.Abp.AspNetCore.Components.Web.Theming.Layout;
@@ -25,6 +26,7 @@ public class SophiChainAspNetCoreComponentsWebMetronicThemeModule : AbpModule
         ConfigurePageHeaderOptions();
         ConfigureRouterOptions();
         ConfigureSophiChainTheme();
+        ConfigureTelerikAndMud(context);
 
         Configure<AbpVirtualFileSystemOptions>(options =>
         {
@@ -45,6 +47,12 @@ public class SophiChainAspNetCoreComponentsWebMetronicThemeModule : AbpModule
 
         KTThemeSettings.init(themeConfiguration);
         KTIconsSettings.init(iconsConfiguration);
+    }
+
+    private void ConfigureTelerikAndMud(ServiceConfigurationContext context)
+    {
+        context.Services.AddTelerikBlazor();
+        context.Services.AddMudServices();
     }
 
     private void ConfigurePageHeaderOptions()

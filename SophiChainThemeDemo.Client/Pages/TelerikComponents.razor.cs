@@ -133,4 +133,6 @@ public partial class TelerikComponents
     {
         WizardValue = 1;
     }
+
+    private DateTime? _date = DateTime.Today;
 }

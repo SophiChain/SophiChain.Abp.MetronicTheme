@@ -14,7 +14,9 @@ public class BlazorMetronicThemeStyleContributor : BundleContributor
 
         //context.Files.AddIfNotContains("/_content/SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme/libs/abp/css/theme.css");
 
+        //MUD & TELERIK TO BE REMOVED LATER IF NEEDED
         context.Files.AddIfNotContains($"_content/Telerik.UI.for.Blazor/css/kendo-theme-bootstrap/all.css");
+        context.Files.AddIfNotContains($"_content/MudBlazor/MudBlazor.min.css");
         context.Files.AddIfNotContains($"{RootPath}/assets/plugins/global/plugins.bundle.rtl.css");
         context.Files.AddIfNotContains($"{RootPath}/assets/css/fonts.css");
         context.Files.AddIfNotContains($"{RootPath}/assets/css/style.bundle.rtl.css");
