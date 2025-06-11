@@ -9,23 +9,15 @@
 @inherits LayoutComponentBase
 @layout MasterInit
 
-@* MUD & TELERIK TO BE REMOVED LATER IF NEEDED *@
-<MudThemeProvider />
-<MudPopoverProvider />
-<MudDialogProvider />
-<MudSnackbarProvider />
+<div id="empty-layout" class="sc-layout empty-layout">
+	<PageAlert />
+	<UiPageProgress />
+	<LayoutHook Name="@LayoutHooks.Body.First" Layout="@StandardLayouts.Empty" />
+	@Body
+	<LayoutHook Name="@LayoutHooks.Body.Last" Layout="@StandardLayouts.Empty" />
+	<DynamicLayoutComponent />
 
-<TelerikRootComponent  EnableRtl="CultureHelper.IsRtl" IconType="IconType.Svg">
-	<div id="empty-layout" class="sc-layout empty-layout">
-		<PageAlert />
-		<UiPageProgress />
-		<LayoutHook Name="@LayoutHooks.Body.First" Layout="@StandardLayouts.Empty" />
-		@Body
-		<LayoutHook Name="@LayoutHooks.Body.Last" Layout="@StandardLayouts.Empty" />
-		<DynamicLayoutComponent />
-
-		<UiMessageAlert />
-		@* <UiNotificationAlert /> *@
-		<SCNotificationAlert />
-	</div>
-</TelerikRootComponent>
+	<UiMessageAlert />
+	@* <UiNotificationAlert /> *@
+	<SCNotificationAlert />
+</div>

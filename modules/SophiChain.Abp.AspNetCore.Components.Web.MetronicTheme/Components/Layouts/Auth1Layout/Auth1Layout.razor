@@ -8,46 +8,38 @@
 @inherits LayoutComponentBase
 @layout MasterInit
 
-@* MUD & TELERIK TO BE REMOVED LATER IF NEEDED *@
-<MudThemeProvider />
-<MudPopoverProvider />
-<MudDialogProvider />
-<MudSnackbarProvider />
-
-<TelerikRootComponent  EnableRtl="CultureHelper.IsRtl" IconType="IconType.Svg">
-	<div id="auth1-layout" class="sc-layout auth1-layout">
-		<UiPageProgress />
-		<LayoutHook Name="@LayoutHooks.Body.First" Layout="@StandardLayouts.Account" />
-		<div class="d-flex flex-column flex-root" id="kt_app_root">
-			<div class="d-flex flex-column flex-lg-row flex-column-fluid auth-container">
-				<div class="d-flex flex-column flex-lg-row-fluid w-lg-50 p-10 order-2 order-lg-1 auth-content">
-					<div class="d-flex flex-center flex-column flex-lg-row-fluid">
-						<div class="w-lg-500px p-10">
-							@Body
-							<div class="auth-page-alerts">
-								<PageAlert />
-							</div>
+<div id="auth1-layout" class="sc-layout auth1-layout">
+	<UiPageProgress />
+	<LayoutHook Name="@LayoutHooks.Body.First" Layout="@StandardLayouts.Account" />
+	<div class="d-flex flex-column flex-root" id="kt_app_root">
+		<div class="d-flex flex-column flex-lg-row flex-column-fluid auth-container">
+			<div class="d-flex flex-column flex-lg-row-fluid w-lg-50 p-10 order-2 order-lg-1 auth-content">
+				<div class="d-flex flex-center flex-column flex-lg-row-fluid">
+					<div class="w-lg-500px p-10">
+						@Body
+						<div class="auth-page-alerts">
+							<PageAlert />
 						</div>
 					</div>
-					<WA1Footer />
 				</div>
-				<div class="d-flex flex-lg-row-fluid w-lg-50 bgi-size-cover bgi-position-center order-1 order-lg-2 aut-image" style='background-image:url(@KTTheme.GetAssetPath("media/auth-bg.png"))'>
-					<div class="d-flex flex-column flex-center py-7 py-lg-15 px-5 px-md-15 w-100">
-						<a href="/" class="mb-12">
-							<img src="@BrandingProvider.LogoUrl" alt="@BrandingProvider.AppName" class="h-60px h-lg-100px">
-						</a>
-						<h1 class="d-block text-white fs-2qx fw-bolder text-center mb-7">
-							@BrandingProvider.AppName
-						</h1>
-					</div>
+				<WA1Footer />
+			</div>
+			<div class="d-flex flex-lg-row-fluid w-lg-50 bgi-size-cover bgi-position-center order-1 order-lg-2 aut-image" style='background-image:url(@KTTheme.GetAssetPath("media/auth-bg.png"))'>
+				<div class="d-flex flex-column flex-center py-7 py-lg-15 px-5 px-md-15 w-100">
+					<a href="/" class="mb-12">
+						<img src="@BrandingProvider.LogoUrl" alt="@BrandingProvider.AppName" class="h-60px h-lg-100px">
+					</a>
+					<h1 class="d-block text-white fs-2qx fw-bolder text-center mb-7">
+						@BrandingProvider.AppName
+					</h1>
 				</div>
 			</div>
 		</div>
-		<LayoutHook Name="@LayoutHooks.Body.Last" Layout="@StandardLayouts.Account" />
-		<DynamicLayoutComponent />
-
-		<UiMessageAlert />
-		@* <UiNotificationAlert /> *@
-		<SCNotificationAlert />
 	</div>
-</TelerikRootComponent>
+	<LayoutHook Name="@LayoutHooks.Body.Last" Layout="@StandardLayouts.Account" />
+	<DynamicLayoutComponent />
+
+	<UiMessageAlert />
+	@* <UiNotificationAlert /> *@
+	<SCNotificationAlert />
+</div>

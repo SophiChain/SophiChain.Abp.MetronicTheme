@@ -83,8 +83,10 @@ public partial class Index
 
     private void GetToolbar()
     {
-        Toolbar!.AddTPMButton("سبد خرید", "fa-duotone fa-solid fa-shopping-cart", "primary", "kt_drawer_cart_toggle");
-        Toolbar!.AddTPMButton("فیلترها", "fa-duotone fa-solid fa-filter", "secondary", "kt_drawer_filters_toggle");
-        Toolbar!.AddTPMButton("مدیریت", "icon-accounts-management-solid", "light", "kt_drawer_filters_toggle", enabled: false, href: "/");
+        Toolbar!.AddTelerikButton("سبد خرید", Refresh, "fa-duotone fa-solid fa-shopping-cart", "primary");
+    }
+
+    private async Task Refresh()
+    {
     }
 }

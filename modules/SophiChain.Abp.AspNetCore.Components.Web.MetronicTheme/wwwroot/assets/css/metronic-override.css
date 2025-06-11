@@ -8,7 +8,7 @@
 
 @media(min-width: 992px){
     .app-content {
-        min-height: calc(100vh - 200px);
+        min-height: calc(100vh - 216px);
     }
 }
 

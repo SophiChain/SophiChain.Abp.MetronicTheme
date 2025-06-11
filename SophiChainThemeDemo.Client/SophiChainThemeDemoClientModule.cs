@@ -1,6 +1,7 @@
 using Blazorise.Bootstrap5;
 using Blazorise.Icons.FontAwesome;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using MudBlazor.Services;
 using SophiChain.Abp.AspNetCore.Components.WebAssembly.MetronicTheme;
 using SophiChainThemeDemo.Menus;
 using Volo.Abp.Account;
@@ -80,8 +81,15 @@ public class SophiChainThemeDemoClientModule : AbpModule
         ConfigureRouter(context);
         ConfigureMenu(context);
         ConfigureAutoMapper(context);
+        ConfigureTelerikAndMud(context);
 
         context.Services.AddHttpClientProxies(typeof(SophiChainThemeDemoContractsModule).Assembly);
+    }
+
+    private void ConfigureTelerikAndMud(ServiceConfigurationContext context)
+    {
+        context.Services.AddTelerikBlazor();
+        context.Services.AddMudServices();
     }
 
     private void ConfigureRouter(ServiceConfigurationContext context)

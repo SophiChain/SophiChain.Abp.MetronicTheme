@@ -9,58 +9,59 @@ public partial class WA1PageToolbar
     [CascadingParameter(Name = "ThemeState")]
     public ThemeCascadingState ThemeState { get; set; }
 
+    private object _lastProcessedToolbarKey;
+    private bool _shouldRenderToolbar;
+
     protected override void OnInitialized()
     {
-        if (ThemeState.ShowToolBar)
-        {
-            Options.Value.RenderToolbar = true;
-        }
+        _shouldRenderToolbar = ThemeState?.ShowToolBar ?? false;
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (firstRender)
+        if (ThemeState?.PageToolbar != null && ThemeState.PageToolbar != _lastProcessedToolbarKey)
         {
-            if (ThemeState.PageToolbar != null)
+            _lastProcessedToolbarKey = ThemeState.PageToolbar;
+
+            var toolbarItems = await PageToolbarManager.GetItemsAsync(ThemeState.PageToolbar);
+            ToolbarItemRenders.Clear();
+
+            if (!ShouldRenderToolbarItems(toolbarItems))
             {
-                var toolbarItems = await PageToolbarManager.GetItemsAsync(ThemeState.PageToolbar);
-                ToolbarItemRenders.Clear();
+                return;
+            }
 
-                if (!ShouldRenderToolbarItems(toolbarItems))
-                {
-                    return;
-                }
-
-                if (!Options.Value.RenderToolbar)
-                {
-                    PageLayout.ToolbarItems.Clear();
-                    foreach (var item in toolbarItems)
-                    {
-                        PageLayout.ToolbarItems.Add(item);
-                    }
-                    return;
-                }
-
+            if (!_shouldRenderToolbar)
+            {
+                PageLayout.ToolbarItems.Clear();
                 foreach (var item in toolbarItems)
                 {
-                    var sequence = 0;
-                    ToolbarItemRenders.Add(builder =>
-                    {
-                        builder.OpenComponent(sequence, item.ComponentType);
-                        if (item.Arguments != null)
-                        {
-                            foreach (var argument in item.Arguments)
-                            {
-                                sequence++;
-                                builder.AddAttribute(sequence, argument.Key, argument.Value);
-                            }
-                        }
-                        builder.CloseComponent();
-                    });
+                    PageLayout.ToolbarItems.Add(item);
                 }
+                return;
             }
+
+            foreach (var item in toolbarItems)
+            {
+                var sequence = 0;
+                ToolbarItemRenders.Add(builder =>
+                {
+                    builder.OpenComponent(sequence, item.ComponentType);
+                    if (item.Arguments != null)
+                    {
+                        foreach (var argument in item.Arguments)
+                        {
+                            sequence++;
+                            builder.AddAttribute(sequence, argument.Key, argument.Value);
+                        }
+                    }
+                    builder.CloseComponent();
+                });
+            }
+
+            StateHasChanged();
         }
 
-        await base.OnAfterRenderAsync(firstRender);
+        await Task.CompletedTask;
     }
 }

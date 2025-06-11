@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using MudBlazor.Services;
 using OpenIddict.Validation.AspNetCore;
 using SophiChain.Abp.AspNetCore.Components.Server.MetronicTheme;
 using SophiChain.Abp.AspNetCore.Components.Server.MetronicTheme.Bundling;
@@ -14,8 +15,6 @@ using SophiChainThemeDemo.Data;
 using SophiChainThemeDemo.Localization;
 using SophiChainThemeDemo.Menus;
 using SophiChainThemeDemo.MultiTenancy;
-using SophiChainThemeDemo.Wrapper;
-using Telerik.Blazor.Components;
 using Volo.Abp;
 using Volo.Abp.Account;
 using Volo.Abp.Account.Web;
@@ -200,20 +199,13 @@ public class SophiChainThemeDemoModule : AbpModule
         ConfigureVirtualFiles(hostingEnvironment);
         ConfigureMongoDB(context);
         ConfigureToolbarOptions();
+        ConfigureTelerikAndMud(context);
+    }
 
-        //context.Services.AddScoped<TelerikWrapperStateService>();
-
-        //Configure<AbpLayoutHookOptions>(options =>
-        //{
-        //    options.Add(
-        //        LayoutHooks.Body.First, 
-        //        typeof(TelerikRootComponentWrapper),
-        //        layout: StandardLayouts.Application);
-        //    options.Add(
-        //        LayoutHooks.Body.Last, 
-        //        typeof(TelerikRootComponentWrapper),
-        //        layout: StandardLayouts.Application);
-        //});
+    private void ConfigureTelerikAndMud(ServiceConfigurationContext context)
+    {
+        context.Services.AddTelerikBlazor();
+        context.Services.AddMudServices();
     }
 
     private void ConfigureAuthentication(ServiceConfigurationContext context)
