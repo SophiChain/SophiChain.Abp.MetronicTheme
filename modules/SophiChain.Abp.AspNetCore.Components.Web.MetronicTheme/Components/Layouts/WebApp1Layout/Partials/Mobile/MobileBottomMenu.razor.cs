@@ -34,7 +34,10 @@ public partial class MobileBottomMenu
 
         var shortcutsMenu = await MainMenuProvider.GetMenuAsync(StandardMenus.Shortcut);
 
-        SelectedMenuItems = Options.Value.MobileMenuSelector(shortcutsMenu.Items.AsReadOnly()).ToList();
+        if(shortcutsMenu.Items.Count > 0)
+        {
+            SelectedMenuItems = Options.Value.MobileMenuSelector(shortcutsMenu.Items.AsReadOnly()).ToList();
+        }
 
         if (CurrentUser.IsAuthenticated && CurrentUser.Id != null)
         {

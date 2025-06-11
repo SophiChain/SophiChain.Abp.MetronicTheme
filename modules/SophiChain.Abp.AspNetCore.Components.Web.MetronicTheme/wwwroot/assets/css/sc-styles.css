@@ -279,7 +279,13 @@ a {
     font-size: 12px;
   }
   .sc-mobile-navbar-container .sc-mobile-nav-menu .sc-mobile-nav-avatar {
-    width: 20px;
+    width: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .sc-mobile-navbar-container .sc-mobile-nav-menu .sc-mobile-nav-avatar img {
+    width: 22px;
   }
   .sc-mobile-navbar-container .sc-mobile-nav-right {
     flex: 1;

@@ -7,7 +7,7 @@
 		<div class="sc-mobile-nav-wrapper">
 			<div class="sc-mobile-nav-right">
 				<ul class="sc-mobile-nav-menu">
-					@if (SelectedMenuItems is not null)
+					@if (!SelectedMenuItems.IsNullOrEmpty())
 					{
 						foreach (var viewModel in SelectedMenuItems.Take(2))
 						{
@@ -32,15 +32,18 @@
 
 			<div class="sc-mobile-nav-left">
 				<ul class="sc-mobile-nav-menu">
-					@if (SelectedMenuItems is not null)
+					@if (!SelectedMenuItems.IsNullOrEmpty() && SelectedMenuItems.Count >= 3)
 					{
-						var thirdMenu = SelectedMenuItems.ToList()[2];
-						<li class="sc-mobile-nav-item">
-							<a id="@thirdMenu.MenuItem.ElementId" href="@thirdMenu.MenuItem.Url" target="@thirdMenu.MenuItem.Target" class="sc-mobile-nav-link @thirdMenu.MenuItem.CssClass">
-								<i class="sc-mobile-nav-item-icon @thirdMenu.MenuItem.Icon" aria-hidden="true"></i>
-								<span class="sc-mobile-nav-text">@thirdMenu.MenuItem.DisplayName</span>
-							</a>
-						</li>
+						var thirdMenu = SelectedMenuItems[2];
+						if(thirdMenu != null)
+						{
+							<li class="sc-mobile-nav-item">
+								<a id="@thirdMenu.MenuItem.ElementId" href="@thirdMenu.MenuItem.Url" target="@thirdMenu.MenuItem.Target" class="sc-mobile-nav-link @thirdMenu.MenuItem.CssClass">
+									<i class="sc-mobile-nav-item-icon @thirdMenu.MenuItem.Icon" aria-hidden="true"></i>
+									<span class="sc-mobile-nav-text">@thirdMenu.MenuItem.DisplayName</span>
+								</a>
+							</li>
+						}
 					}
 					<li class="sc-mobile-nav-item">
 						<AuthorizeView>
