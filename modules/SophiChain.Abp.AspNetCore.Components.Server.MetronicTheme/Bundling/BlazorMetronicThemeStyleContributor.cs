@@ -17,7 +17,6 @@ public class BlazorMetronicThemeStyleContributor : BundleContributor
         context.Files.AddIfNotContains($"{RootPath}/assets/plugins/global/plugins.bundle.rtl.css");
         context.Files.AddIfNotContains($"{RootPath}/assets/css/fonts.css");
         context.Files.AddIfNotContains($"{RootPath}/assets/css/style.bundle.rtl.css");
-        context.Files.AddIfNotContains($"{RootPath}/assets/css/telerik-override.css");
         context.Files.AddIfNotContains($"{RootPath}/assets/css/metronic-override.css");
         context.Files.AddIfNotContains($"{RootPath}/assets/css/sc-styles.css");
     }

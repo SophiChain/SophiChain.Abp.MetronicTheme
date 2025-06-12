@@ -247,6 +247,7 @@ public class SophiChainThemeDemoModule : AbpModule
                 bundle =>
                 {
                     bundle.AddFiles("/global-styles.css");
+                    bundle.AddFiles("/css/telerik-override.css");
                     bundle.AddFiles("/css/shared-styles.css");
                 }
             );
