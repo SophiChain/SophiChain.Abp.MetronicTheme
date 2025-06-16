@@ -614,7 +614,7 @@
 			<strong>عنوان پنجره</strong>
 		</WindowTitle>
 		<WindowActions>
-			<WindowAction Name="Close"></WindowAction>
+			<WindowAction Name="Cancel" Icon="@SvgIcon.X" OnClick="@Cancel"></WindowAction>
 		</WindowActions>
 		<WindowContent>
 			<p>محتوای پنجره</p>
@@ -640,13 +640,14 @@
 				   Modal="true"
 				   Width="400px"
 				   Height="fit-content"
+				   Draggable="true"
 				   FooterLayoutAlign="@WindowFooterLayoutAlign.Center"
 				   ThemeColor="@ThemeConstants.Window.ThemeColor.Primary">
 		<WindowTitle>
 			<strong>عنوان مودال</strong>
 		</WindowTitle>
 		<WindowActions>
-			<WindowAction Name="Close"></WindowAction>
+			<WindowAction Name="Cancel" Icon="@SvgIcon.X" OnClick="@CancelModal"></WindowAction>
 		</WindowActions>
 		<WindowContent>
 			<p>محتوای مودال</p>

@@ -203,49 +203,6 @@ a {
     }
 }
 
-.page-filters {
-    .k-panelbar {
-        border: none;
-    }
-
-    .k-link {
-        .k-panelbar-item-text {
-            font-size: 18px;
-        }
-    }
-
-    .k-link.k-selected {
-        background-color: transparent !important;
-        color: var(--kendo-color-primary) !important;
-    }
-
-    .card-footer {
-        padding-top: 15px;
-        padding-bottom: 15px;
-    }
-
-    .page-filters-buttons {
-        display: flex;
-        gap: 15px;
-        justify-content: center;
-    }
-}
-
-.sc-theme-dark {
-    .k-panelbar {
-        background-color: var(--bs-card-bg);
-        color: var(--sc-dark-text-color);
-    }
-
-    .k-panelbar-item-text {
-        color: var(--sc-dark-text-color);
-    }
-
-    .k-panelbar-toggle {
-        color: var(--sc-dark-text-color);
-    }
-}
-
 /******************** AUTH PAGE ********************/
 .auth-container {
     min-height: 100vh;
