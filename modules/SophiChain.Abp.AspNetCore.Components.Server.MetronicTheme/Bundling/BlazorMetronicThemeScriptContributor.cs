@@ -9,7 +9,6 @@ public class BlazorMetronicThemeScriptContributor : BundleContributor
 
     public override void ConfigureBundle(BundleConfigurationContext context)
     {
-        context.Files.AddIfNotContains($"_content/Telerik.UI.for.Blazor/js/telerik-blazor.js");
         context.Files.AddIfNotContains($"{RootPath}/assets/plugins/global/plugins.bundle.js");
         context.Files.AddIfNotContains($"{RootPath}/assets/js/widgets.bundle.js");
         context.Files.AddIfNotContains($"{RootPath}/assets/js/scripts.bundle.js");

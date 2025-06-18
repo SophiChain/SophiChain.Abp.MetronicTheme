@@ -1,10 +1,16 @@
 ﻿@page "/signup"
 @using Telerik.Blazor
 @using Telerik.Blazor.Components
+@using Volo.Abp.Localization
 @layout Auth1Layout
 @inherits SophiChainThemeDemoComponentBase
 
-<TelerikRootComponent EnableRtl=true>
+<MudThemeProvider />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<TelerikRootComponent EnableRtl="CultureHelper.IsRtl" IconType="IconType.Svg">
 	<div class="login-container">
 		<div class="login-heading">
 			<div class="text-center mb-11">

@@ -28,6 +28,10 @@ public class SophiChainThemeDemoMenuContributor : IMenuContributor
         {
             await ConfigureUserMenuAsync(context);
         }
+        if (context.Menu.Name == StandardMenus.Shortcut)
+        {
+            await ConfigureShortcutsMenu(context);
+        }
 
         if (context.Menu.Name == SharedMenus.Timche.TimcheSideMenu)
         {
@@ -101,6 +105,7 @@ public class SophiChainThemeDemoMenuContributor : IMenuContributor
                     SophiChainThemeDemoMenus.HomeChild3,
                     displayName: l["گزارش"],
                     "/report",
+                    icon: "fas fa-globe",
                     target: "forceLoad"
                 )
             )
@@ -109,6 +114,7 @@ public class SophiChainThemeDemoMenuContributor : IMenuContributor
                     SophiChainThemeDemoMenus.HomeChild2,
                     displayName: l["تیکت"],
                     "/ticket",
+                    icon: "fas fa-globe",
                     target: "forceLoad"
                 )
             )
@@ -128,6 +134,7 @@ public class SophiChainThemeDemoMenuContributor : IMenuContributor
                     SophiChainThemeDemoMenus.HomeChild5,
                     displayName: l["صفحه پنج"],
                     "/services/pagefive",
+                    icon: "fas fa-globe",
                     target: "forceLoad"
                 )
                 .AddItem(
@@ -135,6 +142,7 @@ public class SophiChainThemeDemoMenuContributor : IMenuContributor
                         SophiChainThemeDemoMenus.HomeChild6,
                         displayName: l["صفحه شش"],
                         "/services/pagefive/pagesix",
+                        icon: "fas fa-globe",
                         target: "forceLoad"
                     )
                 )
@@ -226,6 +234,7 @@ public class SophiChainThemeDemoMenuContributor : IMenuContributor
                         SophiChainThemeDemoMenus.HomeChild3,
                         displayName: l["گزارش"],
                         "/report",
+                        icon: "fas fa-globe",
                         target: "forceLoad"
                     )
                 )
@@ -235,6 +244,7 @@ public class SophiChainThemeDemoMenuContributor : IMenuContributor
                     SophiChainThemeDemoMenus.HomeChild2,
                     displayName: l["تیکت"],
                     "/ticket",
+                    icon: "fas fa-globe",
                     target: "forceLoad"
                 )
             )
@@ -282,6 +292,45 @@ public class SophiChainThemeDemoMenuContributor : IMenuContributor
                     "/ticket",
                     target: "forceLoad"
                 )
+            )
+        );
+
+        context.Menu.AddItem(
+            new ApplicationMenuItem(
+                SophiChainThemeDemoMenus.HomeChild4,
+                l["مدیریت خدمات"],
+                "/next/test",
+                icon: "fas fa-pen",
+                order: 2,
+                target: "forceLoad"
+            )
+        );
+
+        await Task.CompletedTask;
+    }
+
+    private async Task ConfigureShortcutsMenu(MenuConfigurationContext context)
+    {
+        var l = context.GetLocalizer<SophiChainThemeDemoResource>();
+
+        context.Menu.AddItem(
+            new ApplicationMenuItem(
+                SophiChainThemeDemoMenus.HomeChild3,
+                displayName: l["گزارش"],
+                "/report",
+                icon: "fas fa-pen",
+                order: 2,
+                target: "forceLoad"
+            )
+        );
+
+        context.Menu.AddItem(
+            new ApplicationMenuItem(
+                SophiChainThemeDemoMenus.HomeChild2,
+                displayName: l["تیکت"],
+                "/ticket",
+                icon: "fas fa-pen",
+                target: "forceLoad"
             )
         );
 

@@ -10,7 +10,6 @@ namespace SophiChainThemeDemo.Pages;
 public partial class TelerikComponents 
 {
     public PageToolbar PageToolbar { get; set; } = new PageToolbar();
-    private bool IsLoading { get; set; }
     public string? IsLoadingText { get; set; }
 
     private int PageIndex = 1;
@@ -133,4 +132,6 @@ public partial class TelerikComponents
     {
         WizardValue = 1;
     }
+
+    private DateTime? _date = DateTime.Today;
 }

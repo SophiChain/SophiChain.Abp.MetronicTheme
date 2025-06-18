@@ -47,6 +47,8 @@ public class SophiChainAspNetCoreComponentsWebMetronicThemeModule : AbpModule
         KTIconsSettings.init(iconsConfiguration);
     }
 
+   
+
     private void ConfigurePageHeaderOptions()
     {
         Configure<PageHeaderOptions>(options =>

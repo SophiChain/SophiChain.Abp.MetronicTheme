@@ -8,7 +8,7 @@
 
 @media(min-width: 992px){
     .app-content {
-        min-height: calc(100vh - 200px);
+        min-height: calc(100vh - 216px);
     }
 }
 
@@ -105,6 +105,10 @@
 
 .app-header-menu .menu .menu-item .menu-link .menu-icon {
     font-size: 17px;
+}
+ 
+.app-sidebar .menu .menu-item .menu-link .menu-icon i {
+    font-size: 15px;
 }
 
 .app-footer {

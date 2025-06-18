@@ -2,6 +2,7 @@
 @using Volo.Abp.AspNetCore.Components.Web.Theming.Components.LayoutHooks
 @using Volo.Abp.AspNetCore.Components.Web.Theming.Layout
 @using Volo.Abp.BlazoriseUI.Components
+@using Volo.Abp.Localization
 @using Volo.Abp.Ui.LayoutHooks
 @inherits LayoutComponentBase
 @layout MasterInit
@@ -25,15 +26,13 @@
 								<div id="kt_app_content_container" class="app-container container-fluid">
 									<div class="page-layout">
 										<div class="page-container page-full">
-											<div class="page-wrapper">
-												<ErrorBoundary>
-													<ChildContent>
-														<div class="page-content">
-															@Body
-														</div>
-													</ChildContent>
-												</ErrorBoundary>
-											</div>
+											<ErrorBoundary>
+												<ChildContent>
+													<div class="page-content">
+														@Body
+													</div>
+												</ChildContent>
+											</ErrorBoundary>
 										</div>
 									</div>
 								</div>

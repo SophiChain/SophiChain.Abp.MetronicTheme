@@ -1,8 +1,6 @@
 @using System.Globalization
 @using Microsoft.AspNetCore.RequestLocalization
 @using Microsoft.Extensions.Hosting
-@using Telerik.Blazor
-@using Telerik.Blazor.Components
 @using Volo.Abp.Localization
 @using Volo.Abp.AspNetCore.Components.Web.Theming.Bundling
 @using Volo.Abp.Ui.Branding
@@ -31,6 +29,10 @@
     <link rel="shortcut icon" href="@KTTheme.GetFavicon()" />
     <!-- METRONIC -->
 
+    <link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="_content/Telerik.UI.for.Blazor/css/kendo-theme-default/all.css" />
+    <script src="_content/Telerik.UI.for.Blazor/js/telerik-blazor.js"></script>
+
     <AbpStyles BundleName="@BlazorMetronicThemeBundles.Styles.Global" @rendermode="InteractiveServer" />
 
     <HeadOutlet @rendermode="InteractiveAuto" />
@@ -41,7 +43,6 @@
     <!-- METRONIC -->
     <Routes @rendermode="InteractiveAuto" />
  
-
     <div id="blazor-error-ui">
         @if (Env.IsDevelopment())
         {
@@ -56,6 +57,8 @@
     </div>
 
     <script src="_framework/blazor.web.js"></script>
+
+    <script src="_content/MudBlazor/MudBlazor.min.js"></script>
 
     <AbpScripts BundleName="@BlazorMetronicThemeBundles.Scripts.Global" @rendermode="InteractiveServer" />
 </body>

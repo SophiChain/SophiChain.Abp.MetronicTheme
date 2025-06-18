@@ -1,18 +1,28 @@
 ﻿@page "/telerik-component"
+@using MudBlazor
 @using SophiChainThemeDemo.Components.Drawers
 @using SophiChainThemeDemo.Menus
 @using Telerik.Blazor
 @using Telerik.Blazor.Components
 @using Telerik.Blazor.Components.Editor
 @using Telerik.SvgIcons
+@using Volo.Abp.Localization
 @inherits SophiChainThemeDemoComponentBase
+
+<MudThemeProvider />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
 
 <SCPageLayout Title="کامپوننت های تلریک"
 			  MenuName="@SharedMenus.Timche.TimcheSideMenu" />
 
-<TelerikRootComponent EnableRtl="true" IconType="IconType.Svg">
+<TelerikRootComponent EnableRtl="CultureHelper.IsRtl" IconType="IconType.Svg">
 	<div class="card shadow-sm">
 		<div class="card-body">
+			<h3>MUD DATEPICKER</h3>
+			<MudDatePicker Label="Basic example" @bind-Date="_date" />
+
 			<h3>Badge</h3>
 			<TelerikButton Icon="@SvgIcon.Cart">
 				سبد خرید
@@ -604,7 +614,7 @@
 			<strong>عنوان پنجره</strong>
 		</WindowTitle>
 		<WindowActions>
-			<WindowAction Name="Close"></WindowAction>
+			<WindowAction Name="Cancel" Icon="@SvgIcon.X" OnClick="@Cancel"></WindowAction>
 		</WindowActions>
 		<WindowContent>
 			<p>محتوای پنجره</p>
@@ -630,13 +640,14 @@
 				   Modal="true"
 				   Width="400px"
 				   Height="fit-content"
+				   Draggable="true"
 				   FooterLayoutAlign="@WindowFooterLayoutAlign.Center"
 				   ThemeColor="@ThemeConstants.Window.ThemeColor.Primary">
 		<WindowTitle>
 			<strong>عنوان مودال</strong>
 		</WindowTitle>
 		<WindowActions>
-			<WindowAction Name="Close"></WindowAction>
+			<WindowAction Name="Cancel" Icon="@SvgIcon.X" OnClick="@CancelModal"></WindowAction>
 		</WindowActions>
 		<WindowContent>
 			<p>محتوای مودال</p>
@@ -656,8 +667,8 @@
 			</TelerikButton>
 		</WindowFooter>
 	</TelerikWindow>
-</TelerikRootComponent>
 
+</TelerikRootComponent>
 
 <style>
 	.demo-container {
