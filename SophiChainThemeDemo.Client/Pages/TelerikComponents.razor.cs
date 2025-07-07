@@ -5,6 +5,7 @@ using Telerik.Blazor.Components;
 using Volo.Abp.AspNetCore.Components.Web.Theming.PageToolbars;
 using Telerik.SvgIcons;
 using Volo.Abp.AspNetCore.Components;
+using Volo.Abp.BlazoriseUI;
 
 namespace SophiChainThemeDemo.Pages;
 public partial class TelerikComponents 
@@ -95,14 +96,14 @@ public partial class TelerikComponents
 
     public int WizardValue { get; set; }
 
-    protected override Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync()
     {
         CarouselData = Enumerable.Range(1, 7).Select(x => new CarouselModel
         {
             ImageID = x
         }).ToList();
 
-        return base.OnInitializedAsync();
+        await Task.CompletedTask;
     }
 
     private void CloseDialog()

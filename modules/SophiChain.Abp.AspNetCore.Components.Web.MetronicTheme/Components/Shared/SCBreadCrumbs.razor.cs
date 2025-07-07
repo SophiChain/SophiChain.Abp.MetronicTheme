@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Components;
-using Microsoft.Extensions.Options;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components;
+using Microsoft.Extensions.Options;
+using SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme.Components.Helpers;
 using Volo.Abp.AspNetCore.Components.Web.Theming.Layout;
 using Volo.Abp.BlazoriseUI;
 using Volo.Abp.UI.Navigation;
@@ -9,6 +10,9 @@ using Volo.Abp.UI.Navigation;
 namespace SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme.Components.Shared;
 public partial class SCBreadCrumbs
 {
+    [CascadingParameter(Name = "ThemeState")]
+    public ThemeCascadingState ThemeState { get; set; }
+
     [Inject] public IOptions<PageHeaderOptions> Options { get; set; } = default!;
     [Inject] private IMenuManager MenuManager { get; set; }
     [Inject] protected NavigationManager NavigationManager { get; set; }
@@ -17,6 +21,8 @@ public partial class SCBreadCrumbs
 
     protected override async Task OnInitializedAsync()
     {
+        ThemeState.OnStateHasChanged += StateHasChanged;
+
         Options.Value.RenderBreadcrumbs = true;
 
         var menu = await MenuManager.GetMainMenuAsync();

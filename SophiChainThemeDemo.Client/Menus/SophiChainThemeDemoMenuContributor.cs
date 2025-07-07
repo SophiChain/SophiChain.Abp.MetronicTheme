@@ -41,6 +41,11 @@ public class SophiChainThemeDemoMenuContributor : IMenuContributor
         {
             await ConfigureSettingsMenu(context);
         }
+
+        if (context.Menu.Name == "reports")
+        {
+            await ConfigureReportsMenu(context);
+        }
     }
 
     private static async Task ConfigureMainMenuAsync(MenuConfigurationContext context)
@@ -64,8 +69,8 @@ public class SophiChainThemeDemoMenuContributor : IMenuContributor
                 l["فرم"],
                 "/form",
                 icon: "fas fa-circle",
-                order: 2,
-                target: "forceLoad"
+                order: 2
+                //target: "forceLoad"
             )
         );
 
@@ -86,8 +91,8 @@ public class SophiChainThemeDemoMenuContributor : IMenuContributor
                 l["ورود"],
                 "/signup",
                 icon: "fas fa-circle",
-                order: 4,
-                target: "forceLoad"
+                order: 4
+                //target: "forceLoad"
             )
         );
 
@@ -218,8 +223,8 @@ public class SophiChainThemeDemoMenuContributor : IMenuContributor
                 l["Menu:Home"],
                 "/",
                 icon: "fas fa-home",
-                order: 1,
-                target: "forceLoad"
+                order: 1
+                //target: "forceLoad"
             )
             .AddItem(
                 new ApplicationMenuItem(
@@ -342,6 +347,43 @@ public class SophiChainThemeDemoMenuContributor : IMenuContributor
                 icon: "fas fa-pen",
                 order: 2,
                 target: "forceLoad"
+            )
+        );
+
+        await Task.CompletedTask;
+    }
+
+    private async Task ConfigureReportsMenu(MenuConfigurationContext context)
+    {
+        var l = context.GetLocalizer<SophiChainThemeDemoResource>();
+
+        context.Menu.AddItem(
+            new ApplicationMenuItem(
+                SophiChainThemeDemoMenus.HomeChild3,
+                displayName: l["فاکتور"],
+                "/report/invoice",
+                icon: "fas fa-pen",
+                order: 1
+            )
+        );
+
+        context.Menu.AddItem(
+            new ApplicationMenuItem(
+                SophiChainThemeDemoMenus.HomeChild2,
+                displayName: l["تیکت"],
+                "/report/ticket",
+                icon: "fas fa-pen",
+                order: 2
+            )
+        );
+
+        context.Menu.AddItem(
+            new ApplicationMenuItem(
+                SophiChainThemeDemoMenus.HomeChild4,
+                displayName: l["تجمیعی"],
+                "/report/agg",
+                icon: "fas fa-pen",
+                order: 3
             )
         );
 

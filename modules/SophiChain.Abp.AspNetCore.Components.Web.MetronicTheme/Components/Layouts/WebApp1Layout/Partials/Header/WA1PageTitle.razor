@@ -6,13 +6,13 @@
 
 <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
 	<h1 class="page-heading d-flex flex-column justify-content-center mb-2">
-		@if (PageLayout.Title.IsNullOrEmpty())
+		@if (ThemeState.Title.IsNullOrEmpty())
 		{
 			@BrandingProvider.AppName
 		}
 		else
 		{
-			@PageLayout.Title
+			@ThemeState.Title
 		}
 	</h1>
 	<SCBreadCrumbs />

@@ -39,7 +39,7 @@
 		else
 		{
 			<div class="menu-item">
-				<a class="menu-link @(MenuItem.IsActive ? "active" : "") @cssClass" id="@MenuItem.MenuItem.ElementId" @onclick="() => NavigateToUrl(url)">
+				<a href="@url" target="@MenuItem.MenuItem.Target" class="menu-link @(MenuItem.IsActive ? "active" : "") @cssClass" id="@MenuItem.MenuItem.ElementId">
 					<span class="menu-icon"><i class="sc-icon @MenuItem.MenuItem.Icon" aria-hidden="true"></i></span>
 					<span class="menu-title">@MenuItem.MenuItem.DisplayName</span>
 				</a>

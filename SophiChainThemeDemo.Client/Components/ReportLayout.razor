@@ -1,0 +1,13 @@
+﻿@using SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme.Components.Layouts.WebApp1Layout
+@layout WebApp1Layout
+@inherits LayoutComponentBase
+
+<CascadingValue Name="ReportFiltersHelper" Value="@_Helper">
+	<div class="reports-layout">
+		@* <ReportsFilter /> *@
+
+		<div class="reports-content">
+			@Body
+		</div>
+	</div>
+</CascadingValue>

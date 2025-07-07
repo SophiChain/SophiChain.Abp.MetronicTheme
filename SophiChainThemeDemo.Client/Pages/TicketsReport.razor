@@ -1,0 +1,26 @@
+﻿@page "/report/ticket"
+@using SophiChainThemeDemo.Components
+@using Volo.Abp.AspNetCore.Components.Web.Theming.Layout
+@layout ReportLayout
+@inject PageLayout PageLayout
+
+<SCPageLayout Title="بلیت" MenuName="reports" BreadcrumbItems="@CustomBreadcrumb" />
+
+<h3>TicketsReport</h3>
+
+@code {
+	[CascadingParameter(Name = "ReportFiltersHelper")]
+	public required ReportFiltersHelper _Helper { get; set; }
+
+	public List<Volo.Abp.BlazoriseUI.BreadcrumbItem> CustomBreadcrumb { get; set; }
+
+	protected override void OnInitialized()
+	{
+		CustomBreadcrumb = new List<Volo.Abp.BlazoriseUI.BreadcrumbItem>()
+		{
+			new(text: "خانه", url: "/"),
+			new(text: "صفحه هشت"),
+		};
+		base.OnInitialized();
+	}
+}

@@ -9,6 +9,7 @@ public partial class WA1PageTitle
 {
     [CascadingParameter(Name = "ThemeState")]
     public ThemeCascadingState ThemeState { get; set; }
+
     [Inject] public IOptions<PageHeaderOptions> Options { get; set; } = default!;
 
     protected override void OnInitialized()
@@ -22,5 +23,12 @@ public partial class WA1PageTitle
         {
             Options.Value.RenderBreadcrumbs = true;
         }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        ThemeState.OnStateHasChanged += StateHasChanged;
+
+        await Task.CompletedTask;
     }
 }
