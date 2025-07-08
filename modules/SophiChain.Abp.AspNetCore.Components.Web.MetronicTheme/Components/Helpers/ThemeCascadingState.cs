@@ -10,13 +10,98 @@ namespace SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme.Components.Help
 {
     public class ThemeCascadingState
     {
-        public string PageMenuName { get; set; } = default!;
-        public string Title { get; set; } = default!;
-        public bool ShowToolBar { get; set; } = true;
-        public bool ShowTitle { get; set; } = true;
-        public bool ShowBreadCrumb { get; set; } = true;
-        public List<BreadcrumbItem> CustomBreadcrumb { get; set; }
-        public PageToolbar PageToolbar { get; set; } = new PageToolbar();
+        private string _pageMenuName = string.Empty;
+        private string _title = string.Empty;
+        private bool _showToolBar = true;
+        private bool _showTitle = true;
+        private bool _showBreadCrumb = true;
+        private List<BreadcrumbItem> _customBreadcrumb = new();
+        private PageToolbar _pageToolbar = new();
+
+        public string PageMenuName 
+        { 
+            get => _pageMenuName;
+            set
+            {
+                if (_pageMenuName != value)
+                {
+                    _pageMenuName = value ?? string.Empty;
+                    NotifyStateChanged();
+                }
+            }
+        }
+
+        public string Title 
+        { 
+            get => _title;
+            set
+            {
+                if (_title != value)
+                {
+                    _title = value ?? string.Empty;
+                    NotifyStateChanged();
+                }
+            }
+        }
+
+        public bool ShowToolBar 
+        { 
+            get => _showToolBar;
+            set
+            {
+                if (_showToolBar != value)
+                {
+                    _showToolBar = value;
+                    NotifyStateChanged();
+                }
+            }
+        }
+
+        public bool ShowTitle 
+        { 
+            get => _showTitle;
+            set
+            {
+                if (_showTitle != value)
+                {
+                    _showTitle = value;
+                    NotifyStateChanged();
+                }
+            }
+        }
+
+        public bool ShowBreadCrumb 
+        { 
+            get => _showBreadCrumb;
+            set
+            {
+                if (_showBreadCrumb != value)
+                {
+                    _showBreadCrumb = value;
+                    NotifyStateChanged();
+                }
+            }
+        }
+
+        public List<BreadcrumbItem> CustomBreadcrumb 
+        { 
+            get => _customBreadcrumb;
+            set
+            {
+                _customBreadcrumb = value ?? new List<BreadcrumbItem>();
+                NotifyStateChanged();
+            }
+        }
+
+        public PageToolbar PageToolbar 
+        { 
+            get => _pageToolbar;
+            set
+            {
+                _pageToolbar = value ?? new PageToolbar();
+                NotifyStateChanged();
+            }
+        }
 
         public event Action OnStateHasChanged;
 

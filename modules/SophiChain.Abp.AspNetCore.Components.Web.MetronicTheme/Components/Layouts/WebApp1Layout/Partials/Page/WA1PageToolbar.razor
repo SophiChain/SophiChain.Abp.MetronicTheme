@@ -13,13 +13,16 @@
 		<WA1PageTitle />
 
 		<div class="d-flex align-items-center gap-2 gap-lg-3">
-			@foreach (var toolbarItemRender in ToolbarItemRenders)
+			@if(ThemeState.PageToolbar != null)
 			{
-				@toolbarItemRender
-			}
-			@if (Toolbar == null)
-			{
-				@ChildContent
+				foreach (var toolbarItemRender in ToolbarItemRenders)
+				{
+					@toolbarItemRender
+				}
+				if (Toolbar == null)
+				{
+					@ChildContent
+				}
 			}
 		</div>
 	</div>

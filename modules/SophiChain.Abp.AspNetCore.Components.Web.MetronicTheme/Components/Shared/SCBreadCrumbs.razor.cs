@@ -21,16 +21,34 @@ public partial class SCBreadCrumbs
 
     protected override async Task OnInitializedAsync()
     {
-        ThemeState.OnStateHasChanged += StateHasChanged;
+        ThemeState.OnStateHasChanged += OnThemeStateChanged;
 
         Options.Value.RenderBreadcrumbs = true;
 
-        var menu = await MenuManager.GetMainMenuAsync();
-        var currentUrl = NavigationManager.Uri.Replace(NavigationManager.BaseUri, "/");
-
-        Breadcrumbs = await GenerateBreadcrumbs(menu, currentUrl);
-
+        await UpdateBreadcrumbsAsync();
         await base.OnInitializedAsync();
+    }
+
+    private async void OnThemeStateChanged()
+    {
+        await UpdateBreadcrumbsAsync();
+        await InvokeAsync(StateHasChanged);
+    }
+
+    private async Task UpdateBreadcrumbsAsync()
+    {
+        // If custom breadcrumbs are provided, use them
+        if (ThemeState.CustomBreadcrumb != null && ThemeState.CustomBreadcrumb.Count > 0)
+        {
+            Breadcrumbs = ThemeState.CustomBreadcrumb;
+        }
+        else
+        {
+            // Generate breadcrumbs from menu
+            var menu = await MenuManager.GetMainMenuAsync();
+            var currentUrl = NavigationManager.Uri.Replace(NavigationManager.BaseUri, "/");
+            Breadcrumbs = await GenerateBreadcrumbs(menu, currentUrl);
+        }
     }
 
     private void OnBreadcrumbItemClick(BreadcrumbItem item)

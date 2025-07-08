@@ -7,4 +7,10 @@ public partial class WA1Header
 {
     [CascadingParameter(Name = "ThemeState")]
     public ThemeCascadingState ThemeState { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        ThemeState.OnStateHasChanged += StateHasChanged;
+        await Task.CompletedTask;
+    }
 }

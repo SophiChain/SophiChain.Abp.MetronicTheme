@@ -78,6 +78,8 @@ public partial class WebApp1Layout
         await Task.Delay(200);
         await JS.InvokeVoidAsync("document.body.removeAttribute", "data-kt-app-page-loading");
 
+        ThemeState.NotifyStateChanged();
+
         if (IsLoading)
         {
             IsLoading = false;

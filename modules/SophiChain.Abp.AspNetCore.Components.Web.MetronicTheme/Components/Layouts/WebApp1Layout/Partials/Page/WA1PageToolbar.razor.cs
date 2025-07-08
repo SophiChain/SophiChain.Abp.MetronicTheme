@@ -17,6 +17,12 @@ public partial class WA1PageToolbar
         _shouldRenderToolbar = ThemeState?.ShowToolBar ?? false;
     }
 
+    protected override async Task OnInitializedAsync()
+    {
+        ThemeState.OnStateHasChanged += StateHasChanged;
+        await Task.CompletedTask;
+    }
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (ThemeState?.PageToolbar != null && ThemeState.PageToolbar != _lastProcessedToolbarKey)

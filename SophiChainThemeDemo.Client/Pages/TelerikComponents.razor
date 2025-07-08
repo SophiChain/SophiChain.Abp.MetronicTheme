@@ -14,8 +14,7 @@
 <MudDialogProvider />
 <MudSnackbarProvider />
 
-<SCPageLayout Title="کامپوننت های تلریک"
-			  MenuName="@SharedMenus.Timche.TimcheSideMenu" />
+<SCPageLayout Title="کامپوننت های تلریک" BreadcrumbItems="@CustomBreadcrumb" />
 
 <TelerikRootComponent EnableRtl="CultureHelper.IsRtl" IconType="IconType.Svg">
 	<div class="card shadow-sm">
@@ -97,7 +96,7 @@
 
 			<hr />
 			<h3>Carousel</h3>
-			<TelerikCarousel Arrows="true"
+			@* <TelerikCarousel Arrows="true"
 							 Pageable="true"
 							 LoopPages="true"
 							 @bind-Page="@PageIndex"
@@ -110,7 +109,7 @@
 				<Template>
 					<img src="images/photos/@(context.ImageID).jpg" alt="Photograph" width="512" height="384" />
 				</Template>
-			</TelerikCarousel>
+			</TelerikCarousel> *@
 
 			<hr />
 			<h3>Chip</h3>

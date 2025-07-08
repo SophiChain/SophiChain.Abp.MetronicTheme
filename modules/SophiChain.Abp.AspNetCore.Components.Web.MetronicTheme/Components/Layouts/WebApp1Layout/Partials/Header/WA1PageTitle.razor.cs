@@ -14,6 +14,23 @@ public partial class WA1PageTitle
 
     protected override void OnInitialized()
     {
+        UpdatePageHeaderOptions();
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        ThemeState.OnStateHasChanged += OnThemeStateChanged;
+        await Task.CompletedTask;
+    }
+
+    private void OnThemeStateChanged()
+    {
+        UpdatePageHeaderOptions();
+        InvokeAsync(StateHasChanged);
+    }
+
+    private void UpdatePageHeaderOptions()
+    {
         if (ThemeState.ShowTitle)
         {
             Options.Value.RenderPageTitle = true;
@@ -23,12 +40,5 @@ public partial class WA1PageTitle
         {
             Options.Value.RenderBreadcrumbs = true;
         }
-    }
-
-    protected override async Task OnInitializedAsync()
-    {
-        ThemeState.OnStateHasChanged += StateHasChanged;
-
-        await Task.CompletedTask;
     }
 }

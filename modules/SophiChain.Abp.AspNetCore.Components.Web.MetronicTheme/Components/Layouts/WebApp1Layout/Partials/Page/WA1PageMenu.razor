@@ -11,7 +11,7 @@
 	 data-kt-swapper-parent="{default: '#kt_app_body', lg: '#kt_app_header_wrapper'}">
 	<div class="menu menu-rounded menu-column menu-lg-row my-5 my-lg-0 align-items-stretch fw-semibold px-2 px-lg-0"
 		 id="kt_app_header_menu" data-kt-menu="true">
-		@if (PageMenu != null)
+		@if (!ThemeState.PageMenuName.IsNullOrWhiteSpace() && PageMenu != null)
 		{
 			foreach (var menuItem in PageMenu.Items.Where(x => x.MenuItem.GroupName.IsNullOrWhiteSpace()))
 			{

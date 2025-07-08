@@ -39,6 +39,8 @@ public partial class TelerikComponents
 
     public TelerikDrawer<DrawerItem> Drawer { get; set; }
 
+    public List<BreadcrumbItem> CustomBreadcrumb { get; set; }
+
 
     public async Task ActivateAlert()
     {
@@ -102,6 +104,12 @@ public partial class TelerikComponents
         {
             ImageID = x
         }).ToList();
+
+        CustomBreadcrumb = new List<BreadcrumbItem>()
+        {
+            new(text: "خانه", url: "/"),
+            new(text: "صفحه هفت"),
+        };
 
         await Task.CompletedTask;
     }
