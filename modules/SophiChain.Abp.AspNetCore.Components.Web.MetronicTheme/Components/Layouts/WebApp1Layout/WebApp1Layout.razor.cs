@@ -31,8 +31,6 @@ public partial class WebApp1Layout
             KTHelper.addBodyAttribute("data-kt-app-sidebar-push-footer", "true");
             KTHelper.addBodyAttribute("data-kt-app-toolbar-enabled", "true");
 
-            KTHelper.addBodyClass("app-default");
-
             JS.InvokeVoidAsync("KTModalUpgradePlan.init");
             JS.InvokeVoidAsync("KTCreateApp.init");
             JS.InvokeVoidAsync("KTModalUserSearch.init");
@@ -63,6 +61,7 @@ public partial class WebApp1Layout
                 KTTheme.SetModeSwitch(true);
                 KTHelper.addBodyAttribute("data-kt-app-layout", "dark-sidebar");
                 KTHelper.addBodyClass("sc-theme-dark");
+                KTHelper.addBodyClass("app-default");
                 await JS.InvokeVoidAsync("localStorage.setItem", "data-bs-theme", "dark");
             }
             else if (themeStyle == "light")
@@ -70,6 +69,7 @@ public partial class WebApp1Layout
                 KTTheme.SetModeSwitch(false);
                 KTHelper.addBodyAttribute("data-kt-app-layout", "light-sidebar");
                 KTHelper.addBodyClass("sc-theme-light");
+                KTHelper.addBodyClass("app-default");
                 await JS.InvokeVoidAsync("localStorage.setItem", "data-bs-theme", "light");
             }
 
