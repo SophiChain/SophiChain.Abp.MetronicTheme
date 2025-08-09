@@ -42,7 +42,7 @@ public partial class Index
 
     private async Task ShowSnack()
     {
-        await Notify.Warn("این یک متن هشدار برای نوتیفیکیشن است.");
+        await Notify.Success("نشست سشی ضصی ضص ضصیضصی ضصیضص یصضیض ضصیصضی ضصیصضیضصی ضصیضصیض صیضصیضصیضص ضصیضصیضصیضص ضصیض صیضص");
     }
 
     private async Task ShowMessage()
