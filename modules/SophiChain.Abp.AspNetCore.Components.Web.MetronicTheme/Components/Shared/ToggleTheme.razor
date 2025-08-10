@@ -1,12 +1,12 @@
-﻿<div class="app-navbar-item ms-1 ms-md-4">
-	<div class="btn btn-icon btn-custom btn-active-light btn-active-color-primary w-35px h-35px position-relative" @onclick="@(() => ToggleThemeMode(ThemeStyle))">
+﻿<div class="app-navbar-item toggle-mode ms-1 ms-md-4">
+	<div class="cursor-pointer symbol symbol-35px" @onclick="@(() => ToggleThemeMode(ThemeStyle))">
 		@if (ThemeStyle == "dark")
 		{
-			@((MarkupString)KTTheme.GetIcon("sun", "fs-2"))
+			<i class="fa-duotone fa-solid fa-sun"></i>
 		}
 		else
 		{
-			@((MarkupString)KTTheme.GetIcon("moon", "fs-2"))
+			<i class="fa-duotone fa-solid fa-moon"></i>
 		}
 	</div>
 </div>

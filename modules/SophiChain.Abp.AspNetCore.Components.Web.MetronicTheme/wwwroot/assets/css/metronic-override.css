@@ -17,6 +17,10 @@
     justify-content: center;
 }
 
+.app-sidebar-logo img {
+    width: 50px;
+}
+
 .app-sidebar-logo a {
     display: flex;
     align-items: center;
