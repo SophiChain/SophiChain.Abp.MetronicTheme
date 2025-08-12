@@ -327,6 +327,7 @@ a {
 .snackbar-body {
     font-size: 14px;
     padding: var(--bs-toast-padding-x);
+    white-space: normal;
 }
 
 .snackbar-action-button {

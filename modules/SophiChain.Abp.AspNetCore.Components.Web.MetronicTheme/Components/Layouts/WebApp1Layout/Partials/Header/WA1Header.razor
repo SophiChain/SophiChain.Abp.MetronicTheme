@@ -1,5 +1,7 @@
 ﻿@using Microsoft.Extensions.Options
 @using Volo.Abp.AspNetCore.Components.Web.Theming.Layout
+@using Volo.Abp.Ui.Branding
+@inject IBrandingProvider BrandingProvider
 
 <div id="kt_app_header"
 	 class="app-header"
@@ -9,6 +11,11 @@
 	 data-kt-sticky-offset="{default: '200px', lg: '0'}"
 	 data-kt-sticky-animation="false">
 	<div class="app-container container-fluid d-flex align-items-stretch justify-content-between" id="kt_app_header_container">
+		<div class="mobile-header-logo">
+			<a href="/">
+				<img alt="@BrandingProvider.AppName" src="@BrandingProvider.LogoUrl" class="h-50px">
+			</a>
+		</div>
 		@if (!ThemeState.PageMenuName.IsNullOrWhiteSpace())
 		{
 			<div class="d-flex align-items-center d-lg-none ms-n3 me-1 me-md-2" title="Show header menu">

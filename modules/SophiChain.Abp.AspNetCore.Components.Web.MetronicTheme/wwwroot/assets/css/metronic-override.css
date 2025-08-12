@@ -62,6 +62,35 @@
     background-color: #fff;
 }
 
+.mobile-header-logo {
+    display: none;
+}
+
+@media (max-width: 480px) {
+    .mobile-header-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 59px;
+        height: 59px;
+        margin-left: 10px;
+    }
+
+    .mobile-header-logo a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 59px;
+        height: 59px;
+    }
+
+    .mobile-header-logo img {
+        max-width: 100%;
+        width: 45px;
+        height: 45px;
+    }
+}
+
 .sc-theme-dark .app-header {
     background-color: var(--bs-app-header-minimize-bg-color);
 }
