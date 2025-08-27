@@ -1,8 +1,24 @@
-# SophiChainThemeDemo
+# SophiChain ABP Metronic Theme
 
 ## About this solution
 
-This is a minimalist, non-layered startup solution with the ABP Framework. All the fundamental ABP modules are already installed.
+This repository contains **SophiChain ABP Metronic Theme modules** for the ABP Framework, along with **demo applications** for testing and developing these themes.
+
+### Project Structure
+
+- **`modules/`** - Contains the actual ABP theme modules that can be distributed as NuGet packages:
+  - `SophiChain.Abp.AspNetCore.Components.Server.MetronicTheme` - Blazor Server theme
+  - `SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme` - Blazor Web theme  
+  - `SophiChain.Abp.AspNetCore.Components.WebAssembly.MetronicTheme` - Blazor WebAssembly theme
+  - `SophiChain.Abp.AspNetCore.Mvc.UI.Theme.Metronic` - MVC theme
+  - Additional bundling and installer modules
+
+- **Demo Applications** - Used for testing and developing the theme modules:
+  - `SophiChainThemeDemo/` - Main demo application showcasing the themes
+  - `SophiChainThemeDemo.Client/` - Client-side demo components
+  - `SophiChainThemeDemo.Contracts/` - Shared contracts for demo
+
+> **Note**: The demo applications are **development tools** designed to test and showcase the theme modules. They are not production applications but rather serve as a testing environment for theme development and integration.
 
 ### Pre-requirements
 
@@ -39,21 +55,66 @@ abp install-libs
 
 > This command installs all NPM packages for MVC/Razor Pages and Blazor Server UIs and this command is already run by the ABP CLI, so most of the time you don't need to run this command manually.
 
-## How to run
+## How to run the demo application
 
-The application needs a database. Run the following command in the [SophiChainThemeDemo](./SophiChainThemeDemo) project directory to migrate the database and seed the initial data. This step is automatically done when you create a new solution, if you didn't especially disable it.
+The demo application is used to test and develop the theme modules. It needs a database to run properly.
+
+### Setting up the demo database
+
+Run the following command in the [SophiChainThemeDemo](./SophiChainThemeDemo) project directory to migrate the database and seed the initial data:
 
 ````bash
 dotnet run --migrate-database
 ````
 
-This command will create and seed the initial database. Then you can run the application with any IDE that supports .NET.
+### Running the demo
+
+After database setup, you can run the demo application with any IDE that supports .NET, or use:
+
+````bash
+dotnet run
+````
+
+The demo application will showcase the Metronic theme modules and provide a development environment for testing theme changes.
+
+### Development workflow
+
+When developing theme modules:
+1. Make changes to files in the `modules/` directory
+2. The demo application will automatically reflect changes due to physical file replacement in development mode
+3. Test your changes in the running demo application
+4. Package the modules when ready for distribution
 
 Happy coding..!
 
-## Deploying the application
+## Using the theme modules in your application
 
-Deploying an ABP application follows the same process as deploying any .NET or ASP.NET Core application. However, there are important considerations to keep in mind. For detailed guidance, refer to ABP's [deployment documentation](https://abp.io/docs/latest/Deployment/Index).
+To use these Metronic theme modules in your own ABP application:
+
+1. **Install the NuGet packages** (when available):
+   ```bash
+   abp add-package SophiChain.Abp.AspNetCore.Components.Web.MetronicTheme
+   # or other theme modules as needed
+   ```
+
+2. **Add module dependencies** to your application module:
+   ```csharp
+   [DependsOn(typeof(SophiChainAbpAspNetCoreComponentsWebMetronicThemeModule))]
+   public class YourApplicationModule : AbpModule
+   {
+       // ...
+   }
+   ```
+
+3. **Configure the theme** in your application as needed.
+
+For detailed integration instructions, refer to the specific module documentation or examine the demo application's configuration.
+
+## Deploying the demo application
+
+The demo application can be deployed like any standard ABP application for testing purposes. For production applications using these theme modules, refer to ABP's [deployment documentation](https://abp.io/docs/latest/Deployment/Index).
+
+> **Important**: This deployment guide is for the demo application only. For production applications, you would typically install the theme modules as NuGet packages rather than deploying this entire repository.
 
 ### How to deploy on Docker
 
@@ -75,6 +136,10 @@ Navigate to [etc/docker](./etc/docker) folder and run the `stop-docker.ps1` scri
 
 ### Additional resources
 
-You can see the following resources to learn more about your solution and the ABP Framework:
+You can see the following resources to learn more about ABP Framework themes and this solution:
 
+* [ABP Theming Documentation](https://abp.io/docs/latest/UI/AspNetCore/Theming)
+* [ABP Blazor UI Theming](https://abp.io/docs/latest/UI/Blazor/Theming)
+* [ABP Module Development](https://abp.io/docs/latest/Module-Development-Basics)
 * [Application (Single Layer) Startup Template](https://abp.io/docs/latest/startup-templates/application-single-layer/index)
+* [Metronic Theme Official Documentation](https://keenthemes.com/metronic)
