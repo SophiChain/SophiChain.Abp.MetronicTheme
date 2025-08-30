@@ -67,9 +67,9 @@ public partial class SideMenuItem
         Menu.ToggleOpen(MenuItem);
     }
 
-    private void NavigateToUrl(string url)
+    private void NavigateToUrl(string url, bool forceReload)
     {
-        Navigation.NavigateTo(url, true);
+        Navigation.NavigateTo(url, forceReload);
 
     }
 }

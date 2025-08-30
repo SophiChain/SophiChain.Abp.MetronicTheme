@@ -1,5 +1,4 @@
 ﻿using SophiChainThemeDemo.Localization;
-using SophiChainThemeDemo.Permissions;
 using Volo.Abp.Account.Localization;
 using Volo.Abp.Authorization.Permissions;
 using Volo.Abp.SettingManagement.Blazor.Menus;
@@ -70,7 +69,6 @@ public class SophiChainThemeDemoMenuContributor : IMenuContributor
                 "/form",
                 icon: "fas fa-circle",
                 order: 2
-                //target: "forceLoad"
             )
         );
 
@@ -81,7 +79,6 @@ public class SophiChainThemeDemoMenuContributor : IMenuContributor
                 "/test",
                 icon: "fas fa-circle",
                 order: 3
-            //target: "forceLoad"
             )
         );
 
@@ -92,7 +89,6 @@ public class SophiChainThemeDemoMenuContributor : IMenuContributor
                 "/telerik-component",
                 icon: "fas fa-circle",
                 order: 4
-                //target: "forceLoad"
             )
         );
 
@@ -103,7 +99,6 @@ public class SophiChainThemeDemoMenuContributor : IMenuContributor
                 "/signup",
                 icon: "fas fa-circle",
                 order: 5
-                //target: "forceLoad"
             )
         );
 
@@ -113,16 +108,14 @@ public class SophiChainThemeDemoMenuContributor : IMenuContributor
                 displayName: l["تیمچه"],
                 "/timche",
                 icon: "fas fa-globe",
-                order: 6,
-                target: "forceLoad"
+                order: 6
             )
             .AddItem(
                 new ApplicationMenuItem(
                     SophiChainThemeDemoMenus.HomeChild3,
                     displayName: l["گزارش"],
                     "/report",
-                    icon: "fas fa-globe",
-                    target: "forceLoad"
+                    icon: "fas fa-globe"
                 )
             )
             .AddItem(
@@ -130,8 +123,7 @@ public class SophiChainThemeDemoMenuContributor : IMenuContributor
                     SophiChainThemeDemoMenus.HomeChild2,
                     displayName: l["تیکت"],
                     "/ticket",
-                    icon: "fas fa-globe",
-                    target: "forceLoad"
+                    icon: "fas fa-globe"
                 )
             )
         );
@@ -140,18 +132,14 @@ public class SophiChainThemeDemoMenuContributor : IMenuContributor
             new ApplicationMenuItem(
                 SophiChainThemeDemoMenus.HomeChild4,
                 l["مدیریت خدمات"],
-                "/services",
                 icon: "fas fa-pen",
-                order: 7,
-                target: "forceLoad"
+                order: 7
             )
             .AddItem(
                 new ApplicationMenuItem(
                     SophiChainThemeDemoMenus.HomeChild5,
                     displayName: l["صفحه پنج"],
-                    "/services/pagefive",
-                    icon: "fas fa-globe",
-                    target: "forceLoad"
+                    icon: "fas fa-globe"
                 )
                 .AddItem(
                     new ApplicationMenuItem(

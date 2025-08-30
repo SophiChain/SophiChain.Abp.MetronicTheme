@@ -27,10 +27,11 @@
 	}
 	else
 	{
-		@if (@MenuItem.MenuItem.Target == "forceLoad")
+		@if (MenuItem.MenuItem.Target == "forceLoad")
 		{
+			var isForced = MenuItem.MenuItem.Target == "forceLoad";
 			<div class="menu-item">
-				<a class="menu-link @(MenuItem.IsActive ? "active" : "") @cssClass" id="@MenuItem.MenuItem.ElementId" @onclick="()=>NavigateToUrl(url)">
+				<a class="menu-link @(MenuItem.IsActive ? "active" : "") @cssClass" id="@MenuItem.MenuItem.ElementId" @onclick="() => NavigateToUrl(url, isForced)">
 					<span class="menu-icon"><i class="sc-icon @MenuItem.MenuItem.Icon" aria-hidden="true"></i></span>
 					<span class="menu-title">@MenuItem.MenuItem.DisplayName</span>
 				</a>
@@ -58,11 +59,24 @@ else
 		var openParent = MenuItem.Items.Any(x => x.IsActive);
 
 		<div data-kt-menu-trigger="click" class="menu-item @(openParent ? "here show" : "") menu-accordion" @onclick="ToggleMenu">
-			<span class="menu-link">
-				<span class="menu-icon"><i class="sc-icon @MenuItem.MenuItem.Icon" aria-hidden="true"></i></span>
-				<span class="menu-title">@MenuItem.MenuItem.DisplayName</span>
-				<span class="menu-arrow"></span>
-			</span>
+			@if (MenuItem.MenuItem.Url.IsNullOrWhiteSpace())
+			{
+				<span class="menu-link">
+					<span class="menu-icon"><i class="sc-icon @MenuItem.MenuItem.Icon" aria-hidden="true"></i></span>
+					<span class="menu-title">@MenuItem.MenuItem.DisplayName</span>
+					<span class="menu-arrow"></span>
+				</span>
+			}
+			else
+			{
+				var isForced = MenuItem.MenuItem.Target == "forceLoad";
+				<a class="menu-link @(MenuItem.IsActive ? "active" : "") @cssClass" id="@MenuItem.MenuItem.ElementId" @onclick="() => NavigateToUrl(MenuItem.MenuItem.Url, isForced)">
+					<span class="menu-icon"><i class="sc-icon @MenuItem.MenuItem.Icon" aria-hidden="true"></i></span>
+					<span class="menu-title">@MenuItem.MenuItem.DisplayName</span>
+					<span class="menu-arrow"></span>
+				</a>
+			}
+			
 			<div class="menu-sub menu-sub-accordion">
 				@foreach (var childMenuItem in MenuItem.Items)
 				{
