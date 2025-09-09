@@ -1,5 +1,23 @@
 # SophiChain ABP Metronic Theme
 
+## ⚠️ Important License Notice
+
+**Metronic is NOT a free theme.** This repository provides ABP Framework integration modules for the Metronic theme, but **does not include a Metronic license**.
+
+### Commercial Usage Requirements
+
+- **For commercial projects**: You **MUST** purchase a valid Metronic license from [Keenthemes](https://keenthemes.com/metronic)
+- **License purchase**: Visit [Metronic Licensing Page](https://keenthemes.com/metronic/licensing) to buy the appropriate license
+- **Our responsibility**: We are **NOT responsible** for any license violations or legal issues arising from unauthorized use of Metronic theme
+
+### Before Using This Repository
+
+1. **Purchase Metronic License**: Get your license from [https://keenthemes.com/metronic](https://keenthemes.com/metronic)
+2. **Review License Terms**: Ensure your usage complies with Metronic's licensing terms
+3. **Commercial Projects**: A commercial license is required for any commercial use
+
+**By using this repository, you acknowledge that you are responsible for obtaining proper Metronic licensing for your use case.**
+
 ## About this solution
 
 This repository contains **SophiChain ABP Metronic Theme modules** for the ABP Framework, along with **demo applications** for testing and developing these themes.
