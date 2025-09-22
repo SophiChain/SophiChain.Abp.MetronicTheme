@@ -9,11 +9,20 @@ public partial class WA1SidebarMenu
     [Inject] protected MainMenuProvider MainMenuProvider { get; set; }
 
     protected MenuViewModel Menu { get; set; }
+    public bool IsLoading { get; set; } = true;
 
     protected override async Task OnInitializedAsync()
     {
         Menu = await MainMenuProvider.GetMenuAsync();
         Menu.StateChanged += RefreshMenu;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await Task.Delay(3000);
+        Menu.StateChanged += RefreshMenu;
+
+        await base.OnAfterRenderAsync(firstRender);
     }
 
     private void RefreshMenu(object sender, EventArgs e)
