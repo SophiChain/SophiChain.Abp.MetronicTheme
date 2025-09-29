@@ -16,6 +16,7 @@ public partial class WebApp1Layout
     protected override void OnInitialized()
     {
         KTHelper = new KTThemeHelpers(JS);
+        KTHelper.removeBodyClass("web-default");
         KTHelper.addBodyClass("app-default");
         KTHelper.addBodyAttribute("data-kt-app-page-loading", "on");
     }

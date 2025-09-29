@@ -75,6 +75,16 @@ a {
 .breadcrumb .breadcrumb-link {
     cursor: pointer;
 }
+
+.auth1-layout-box {
+    width: 100%;
+    max-width: 700px;
+    padding: 20px;
+
+    @media(max-width: 480px){
+        max-width: 100%;
+    }
+}
 /******************** NAV/MENU ********************/
 .show.menu-dropdown > .menu-sub-dropdown,
 .menu-sub-dropdown.menu.show,
