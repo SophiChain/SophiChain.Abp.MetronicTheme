@@ -9,8 +9,8 @@ public class BlazorMetronicThemeScriptContributor : BundleContributor
 
     public override void ConfigureBundle(BundleConfigurationContext context)
     {
-        context.Files.AddIfNotContains($"{RootPath}/assets/plugins/global/plugins.bundle.js");
-        context.Files.AddIfNotContains($"{RootPath}/assets/js/widgets.bundle.js");
-        context.Files.AddIfNotContains($"{RootPath}/assets/js/scripts.bundle.js");
+        context.Files.AddIfNotContains($"{RootPath}/assets/plugins/global/plugins.bundle.min.js");
+        context.Files.AddIfNotContains($"{RootPath}/assets/js/widgets.bundle.min.js");
+        context.Files.AddIfNotContains($"{RootPath}/assets/js/scripts.bundle.min.js");
     }
 }

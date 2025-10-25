@@ -2,5 +2,9 @@
     {
         "outputFile": "wwwroot/assets/css/sc-styles.css",
         "inputFile": "wwwroot/assets/css/sc-styles.scss"
+    },
+    {
+        "outputFile": "wwwroot/assets/css/metronic-override.css",
+        "inputFile": "wwwroot/assets/css/metronic-override.scss"
     }
 ]
